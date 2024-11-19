@@ -198,6 +198,20 @@
   </url>
   
   <url>
+    <loc>https://torchman005.github.io/tags/%E5%90%8E%E7%AB%AF/</loc>
+    <lastmod>2024-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://torchman005.github.io/tags/Minecraft/</loc>
+    <lastmod>2024-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://torchman005.github.io/tags/Markdown/</loc>
     <lastmod>2024-11-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -212,21 +226,7 @@
   </url>
   
   <url>
-    <loc>https://torchman005.github.io/tags/Minecraft/</loc>
-    <lastmod>2024-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://torchman005.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2024-11-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://torchman005.github.io/tags/%E5%90%8E%E7%AB%AF/</loc>
     <lastmod>2024-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -242,7 +242,7 @@
   </url>
   
   <url>
-    <loc>https://torchman005.github.io/categories/%E6%A1%88%E4%BE%8B%E6%BC%94%E7%A4%BA/</loc>
+    <loc>https://torchman005.github.io/categories/%E5%90%8E%E7%AB%AF/</loc>
     <lastmod>2024-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -256,14 +256,14 @@
   </url>
   
   <url>
-    <loc>https://torchman005.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</loc>
+    <loc>https://torchman005.github.io/categories/%E6%A1%88%E4%BE%8B%E6%BC%94%E7%A4%BA/</loc>
     <lastmod>2024-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://torchman005.github.io/categories/%E5%90%8E%E7%AB%AF/</loc>
+    <loc>https://torchman005.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2024-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
