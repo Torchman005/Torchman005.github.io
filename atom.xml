@@ -38,27 +38,6 @@
   </entry>
   
   <entry>
-    <title>存储与数据库——1.认识存储与数据库</title>
-    <link href="https://torchman005.github.io/posts/0.html"/>
-    <id>https://torchman005.github.io/posts/0.html</id>
-    <published>2024-11-10T07:54:03.000Z</published>
-    <updated>2024-11-19T00:44:04.108Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="存储与数据库——1-认识存储与数据库">存储与数据库——1.认识存储与数据库</h1><h2 id="前言">前言</h2><blockquote><p>本文是参考字节跳动存储与数据库课程而编写的笔记文，有雷同太正常了</p></blockquote><h2 id="1-1-存储">1.1 存储</h2><h3 id="1-1-1-经典案例介绍数据的产生">1.1.1 经典案例介绍数据的产生</h3><blockquote><p>有一天,李华要在QQ要在Hello Talk(一款可以与外国人交流锻炼语言能力的app)与老外交流.他注册的用户名为lihua,密码为123456,最后按下注册按钮,如此,数据便产生了,并且以极快的速度向app的后台服务器传输</p></blockquote><p>我们可以把这个过程剖析过来看看：<br>李华的注册操作产生了一条结构化的用户注册数据→数据产生→数据飞速传输到后端服务器→数据在数据库中存储持久化保存下来(若不存储到数据库，你此前的操作都是白干，信息不会被记录)</p><p>数据库后面可能还会有存储系统和非存储系统，在这里不展开讲了</p><blockquote><p>若数据已到达数据库，它会做哪些事情呢？</p></blockquote><ol><li>首先，数据库会对数据进行校验，比如校验用户名是否重复，密码是否符合要求等<br>2.数据库会修改内存，用高效的数据结构组织数据并进行运算，来准备后续的持久化<br>3.数据库会将数据写入硬件，且对硬件的寿命及性能不会产生较大影响</li></ol><h3 id="1-1-2-存储系统概览">1.1.2 存储系统概览</h3><blockquote><p>啥是存储系统!?</p></blockquote><p>存储系统是一个提供读写、控制类接口，能够安全、高效的访问存储设备将数据持久化的软件</p><blockquote><p>存储系统有啥特点</p></blockquote><p>1.存储系统作为后端软件的底座，性能敏感，需要保证高吞吐和低时延<br>2.存储系统是软件架构，容易受硬件的影响（硬件发生变革，存储系统要做出改变来适应硬件的变化）<br>3.存储系统的代码必须简洁，但要应对复杂的业务逻辑（说白了就是你要用简单的代码来应对多种复杂的情况）</p><h3 id="1-1-3存储器层级结构">1.1.3存储器层级结构</h3><p><img src="/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/1.png" alt="这是一张层级结构概览图"></p><p>容量从上往下依次增大<br>访问速度从上往下依次减小</p><p>在中间层其实有一个兼顾存储容量和访问速度的东西叫Persistent Memory,它是介于CPU和内存之间的一个高速缓存,它的访问速度比内存快,但是容量比内存小</p><h3 id="1-1-4-数据怎么从应用到存储介质">1.1.4 数据怎么从应用到存储介质</h3><p><img src="/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/2.png" alt="数据链路图"></p><blockquote><p>注：缓存很重要，它直接贯穿整个存储体系(可以帮助我们以硬件友好的方式来跟硬件打交道);<br>拷贝很昂贵(太消耗cpu了),应尽量减少;<br>硬件设备需要有抽象统一的接入层(否则如果硬件变化了，软件还得重写，很麻烦)</p></blockquote><h3 id="1-1-5-RAID技术">1.1.5 RAID技术</h3><blockquote><p>出现背景：</p></blockquote><p>单块大容量磁盘的价格&gt;多块小容量磁盘<br>单块磁盘的写入功能&lt;多块磁盘的并发写入性能<br>单块磁盘的容错能力有限，不够安全</p><blockquote><p>所以,RAID技术做到了高性能/高性价比/高可靠性(很牛)</p></blockquote>]]></content>
-    
-    
-    <summary type="html">此文章会带你基本了解存储和数据库</summary>
-    
-    
-    
-    <category term="后端" scheme="https://torchman005.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
-    
-    
-    <category term="后端" scheme="https://torchman005.github.io/tags/%E5%90%8E%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
     <title>计算机基础(1)——进制转换与表示，原码、反码、补码</title>
     <link href="https://torchman005.github.io/posts/ee909484.html"/>
     <id>https://torchman005.github.io/posts/ee909484.html</id>
@@ -76,6 +55,27 @@
     
     
     <category term="计算机基础" scheme="https://torchman005.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>存储与数据库——1.认识存储与数据库</title>
+    <link href="https://torchman005.github.io/posts/0.html"/>
+    <id>https://torchman005.github.io/posts/0.html</id>
+    <published>2024-11-10T07:54:03.000Z</published>
+    <updated>2024-11-19T00:44:04.108Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="存储与数据库——1-认识存储与数据库">存储与数据库——1.认识存储与数据库</h1><h2 id="前言">前言</h2><blockquote><p>本文是参考字节跳动存储与数据库课程而编写的笔记文，有雷同太正常了</p></blockquote><h2 id="1-1-存储">1.1 存储</h2><h3 id="1-1-1-经典案例介绍数据的产生">1.1.1 经典案例介绍数据的产生</h3><blockquote><p>有一天,李华要在QQ要在Hello Talk(一款可以与外国人交流锻炼语言能力的app)与老外交流.他注册的用户名为lihua,密码为123456,最后按下注册按钮,如此,数据便产生了,并且以极快的速度向app的后台服务器传输</p></blockquote><p>我们可以把这个过程剖析过来看看：<br>李华的注册操作产生了一条结构化的用户注册数据→数据产生→数据飞速传输到后端服务器→数据在数据库中存储持久化保存下来(若不存储到数据库，你此前的操作都是白干，信息不会被记录)</p><p>数据库后面可能还会有存储系统和非存储系统，在这里不展开讲了</p><blockquote><p>若数据已到达数据库，它会做哪些事情呢？</p></blockquote><ol><li>首先，数据库会对数据进行校验，比如校验用户名是否重复，密码是否符合要求等<br>2.数据库会修改内存，用高效的数据结构组织数据并进行运算，来准备后续的持久化<br>3.数据库会将数据写入硬件，且对硬件的寿命及性能不会产生较大影响</li></ol><h3 id="1-1-2-存储系统概览">1.1.2 存储系统概览</h3><blockquote><p>啥是存储系统!?</p></blockquote><p>存储系统是一个提供读写、控制类接口，能够安全、高效的访问存储设备将数据持久化的软件</p><blockquote><p>存储系统有啥特点</p></blockquote><p>1.存储系统作为后端软件的底座，性能敏感，需要保证高吞吐和低时延<br>2.存储系统是软件架构，容易受硬件的影响（硬件发生变革，存储系统要做出改变来适应硬件的变化）<br>3.存储系统的代码必须简洁，但要应对复杂的业务逻辑（说白了就是你要用简单的代码来应对多种复杂的情况）</p><h3 id="1-1-3存储器层级结构">1.1.3存储器层级结构</h3><p><img src="/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/1.png" alt="这是一张层级结构概览图"></p><p>容量从上往下依次增大<br>访问速度从上往下依次减小</p><p>在中间层其实有一个兼顾存储容量和访问速度的东西叫Persistent Memory,它是介于CPU和内存之间的一个高速缓存,它的访问速度比内存快,但是容量比内存小</p><h3 id="1-1-4-数据怎么从应用到存储介质">1.1.4 数据怎么从应用到存储介质</h3><p><img src="/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/2.png" alt="数据链路图"></p><blockquote><p>注：缓存很重要，它直接贯穿整个存储体系(可以帮助我们以硬件友好的方式来跟硬件打交道);<br>拷贝很昂贵(太消耗cpu了),应尽量减少;<br>硬件设备需要有抽象统一的接入层(否则如果硬件变化了，软件还得重写，很麻烦)</p></blockquote><h3 id="1-1-5-RAID技术">1.1.5 RAID技术</h3><blockquote><p>出现背景：</p></blockquote><p>单块大容量磁盘的价格&gt;多块小容量磁盘<br>单块磁盘的写入功能&lt;多块磁盘的并发写入性能<br>单块磁盘的容错能力有限，不够安全</p><blockquote><p>所以,RAID技术做到了高性能/高性价比/高可靠性(很牛)</p></blockquote>]]></content>
+    
+    
+    <summary type="html">此文章会带你基本了解存储和数据库</summary>
+    
+    
+    
+    <category term="后端" scheme="https://torchman005.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+    <category term="后端" scheme="https://torchman005.github.io/tags/%E5%90%8E%E7%AB%AF/"/>
     
   </entry>
   
