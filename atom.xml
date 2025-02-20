@@ -6,7 +6,7 @@
   <link href="https://torchman005.github.io/atom.xml" rel="self"/>
   
   <link href="https://torchman005.github.io/"/>
-  <updated>2025-02-20T02:55:51.628Z</updated>
+  <updated>2025-02-20T03:08:49.409Z</updated>
   <id>https://torchman005.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>二十行代码带你写一个爬虫程序</title>
-    <link href="https://torchman005.github.io/posts/2.html"/>
-    <id>https://torchman005.github.io/posts/2.html</id>
-    <published>2025-02-20T02:47:48.000Z</published>
-    <updated>2025-02-20T02:55:51.628Z</updated>
+    <title>redis介绍及使用</title>
+    <link href="https://torchman005.github.io/posts/3524ae86.html"/>
+    <id>https://torchman005.github.io/posts/3524ae86.html</id>
+    <published>2025-02-20T03:08:49.000Z</published>
+    <updated>2025-02-20T03:08:49.409Z</updated>
     
     
     
@@ -30,21 +30,12 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://torchman005.github.io/posts/0.html"/>
-    <id>https://torchman005.github.io/posts/0.html</id>
-    <published>2024-12-14T09:16:32.733Z</published>
-    <updated>2025-02-20T02:31:53.335Z</updated>
+    <title>二十行代码带你写一个爬虫程序</title>
+    <link href="https://torchman005.github.io/posts/2.html"/>
+    <id>https://torchman005.github.io/posts/2.html</id>
+    <published>2025-02-20T02:47:48.000Z</published>
+    <updated>2025-02-20T02:55:51.628Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="redis介绍及使用">redis介绍及使用</h1><h2 id="redis简介">redis简介</h2>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;redis介绍及使用&quot;&gt;redis介绍及使用&lt;/h1&gt;
-&lt;h2 id=&quot;redis简介&quot;&gt;redis简介&lt;/h2&gt;
-</summary>
-      
     
     
     
