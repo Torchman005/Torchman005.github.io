@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://torchman005.github.io/aplayer/aplayer.html</loc>
+    
+    <lastmod>2025-06-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://torchman005.github.io/personal/about/index.html</loc>
     
     <lastmod>2025-06-03</lastmod>
@@ -68,15 +77,6 @@
     <loc>https://torchman005.github.io/posts/3.html</loc>
     
     <lastmod>2025-03-15</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://torchman005.github.io/aplayer/aplayer.html</loc>
-    
-    <lastmod>2024-11-19</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -250,6 +250,13 @@
   </url>
   
   <url>
+    <loc>https://torchman005.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</loc>
+    <lastmod>2025-06-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://torchman005.github.io/tags/Minecraft/</loc>
     <lastmod>2025-06-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -258,13 +265,6 @@
   
   <url>
     <loc>https://torchman005.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
-    <lastmod>2025-06-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://torchman005.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2025-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -308,6 +308,13 @@
   </url>
   
   <url>
+    <loc>https://torchman005.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</loc>
+    <lastmod>2025-06-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://torchman005.github.io/categories/Minecraft/</loc>
     <lastmod>2025-06-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -316,13 +323,6 @@
   
   <url>
     <loc>https://torchman005.github.io/categories/%E5%90%8E%E7%AB%AF/</loc>
-    <lastmod>2025-06-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://torchman005.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2025-06-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
