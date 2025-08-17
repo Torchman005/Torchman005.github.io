@@ -181,31 +181,6 @@
     
     
     <entry>
-      <title>redis基础及使用</title>
-      <link href="/posts/3.html"/>
-      <url>/posts/3.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      <categories>
-          
-          <category> 后端 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 数据库 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>python爬虫入门</title>
       <link href="/posts/2.html"/>
       <url>/posts/2.html</url>
