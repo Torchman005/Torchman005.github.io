@@ -1,0 +1,1255 @@
+
+  <!DOCTYPE html>
+  <html lang="en"  
+    
+      data-theme-mode="auto"
+    
+  >
+  <head>
+  
+  <meta charset="utf-8">
+  
+
+  
+
+  
+
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)","en":"Copy successfully (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://example.com';window.REIMU_CONFIG.i18n_languages = ["en"];</script>
+  
+  <title>
+    计算机基础(1)——进制转换与表示，原码、反码、补码 |
+    
+    Luminous&#39;s Tiny Home
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+  
+  
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+  
+  
+    <meta name="description" content="🥧本文汇总二、八、十、十六进制转换以及原码、反码、补码的概念">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机基础(1)——进制转换与表示，原码、反码、补码">
+<meta property="og:url" content="http://example.com/en/2024/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80(1)%E2%80%94%E2%80%94%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%A1%A8%E7%A4%BA%EF%BC%8C%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81/index.html">
+<meta property="og:site_name" content="Luminous&#39;s Tiny Home">
+<meta property="og:description" content="🥧本文汇总二、八、十、十六进制转换以及原码、反码、补码的概念">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-11-10T07:54:03.000Z">
+<meta property="article:modified_time" content="2025-10-04T09:34:47.317Z">
+<meta property="article:author" content="Luminous">
+<meta property="article:tag" content="计算机基础">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="alternate" href="/atom.xml" title="Luminous's Tiny Home" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
+  
+  
+  
+  
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+  
+  
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
+
+  
+  
+    <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css" integrity="sha384-tLMkTWh2pfXNWGFlUS0w1TFtRG5xZ9lPWFOooj+vDDLIL+xBGQU&#x2F;voDBY5XE2lVh" crossorigin="anonymous">
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body>
+    
+    
+  <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate">
+        
+          <img src="/images/favicon.ico" alt="loading" />
+        
+      </div>
+      
+      
+        
+      
+      <div class="loading-word">Loading...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+    
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon rotate">
+             
+              &#xe62b;
+             
+          </div>
+          <a class="main-nav-link" href="/en/">Home</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon rotate">
+             
+              &#xe62b;
+             
+          </div>
+          <a class="main-nav-link" href="/en/archives">Archives</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon rotate">
+             
+              &#xe62b;
+             
+          </div>
+          <a class="main-nav-link" href="/en/about">About</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon rotate">
+             
+              &#xe62b;
+             
+          </div>
+          <a class="main-nav-link" href="/en/friend">Friend</a>
+        </span>
+      
+    
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+    
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed" aria-label="RSS Feed" target="_blank"></a>
+    
+    
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="Search" aria-label="Search"></a>
+    
+  </nav>
+  
+    
+    <nav id="i18n-nav" aria-label="Language selection">
+      <div class="custom-dropdown">
+        <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
+          <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
+          <span id="selected-lang">English</span>
+        </div>
+        <ul class="select-items" id="select-items" role="listbox" aria-label="Languages">
+          
+            <li data-value="zh-CN" role="option" aria-selected="false">简体中文</li>
+          
+            <li data-value="en" role="option" class="selected" aria-selected="true">English</li>
+          
+        </ul>
+      </div>
+      <script>
+        var selectSelected = document.getElementById("select-selected");
+        var selectedLang = document.getElementById("selected-lang");
+        var selectItems = document.getElementById("select-items");
+        var selectOptions = selectItems.querySelectorAll("li");
+
+        selectSelected.addEventListener("click", () => {
+          selectItems.classList.toggle("show");
+          var expanded = selectSelected.getAttribute("aria-expanded") === "true";
+          selectSelected.setAttribute("aria-expanded", (!expanded).toString());
+        });
+
+        selectOptions.forEach((item) => {
+          item.addEventListener("click", () => {
+            const langMap = {};
+            
+              langMap['zh-CN'] = '/2024/11/10/计算机基础(1)——进制转换与表示，原码、反码、补码/';
+            
+              langMap['en'] = '/en/2024/11/10/计算机基础(1)——进制转换与表示，原码、反码、补码/';
+            
+            selectedLang.textContent = item.textContent;
+            selectItems.classList.remove("show");
+            selectOptions.forEach((option) => {
+              option.classList.remove("selected");
+            });
+            item.classList.add("selected");
+            window.location = langMap[item.dataset.value];
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!event.target.closest(".custom-dropdown")) {
+            selectItems.classList.remove("show");
+            selectSelected.setAttribute("aria-expanded", "false");
+          }
+        });
+      </script>
+    </nav>
+  
+</div>
+<header id="header" aria-label="Site header">
+  
+    
+      
+        <picture>
+          
+            
+              <source media="(max-width: 479px)" srcset="/images/banner-600w.webp">
+            
+              <source media="(max-width: 799px)" srcset="/images/banner-800w.webp">
+            
+              <source media="(min-width: 800px)" srcset="/images/banner.webp">
+            
+            <img  fetchpriority="high" src="/images/banner.webp" alt="计算机基础(1)——进制转换与表示，原码、反码、补码">
+          
+        </picture>
+        
+          <img alt="计算机基础(1)——进制转换与表示，原码、反码、补码" style="visibility: hidden;">
+        
+      
+    
+  
+  <div id="header-outer">
+    <div id="header-title">
+      
+        
+        
+          <span id="logo">
+            <h1 data-aos="slide-up">计算机基础(1)——进制转换与表示，原码、反码、补码</h1>
+          </span>
+        
+      
+      
+        
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+          
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content" class="sidebar-left"  >
+          <aside id="sidebar" aria-label="Sidebar">
+  
+  <div class="sidebar-wrapper-container sticky">
+  
+    
+    
+      <meting-js
+        theme="var(--color-link)"
+        id="13796951407"
+        server="netease"
+        type="playlist"
+        
+        
+        
+        
+        
+        preload="true"
+        
+        
+        list-folded="true"
+        
+      ></meting-js>
+    
+  
+ 
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+      
+        
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+  
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-1-%E2%80%94%E2%80%94%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%A1%A8%E7%A4%BA%EF%BC%8C%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">计算机基础(1)——进制转换与表示，原码、反码、补码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.1.</span> <span class="toc-text">进制转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E8%BF%9B%E5%88%B6%E7%94%A8%E6%9D%A5%E8%A1%A8%E7%A4%BA%E6%95%B0%E5%AD%97%E7%9A%84%E7%AC%A6%E5%8F%B7"><span class="toc-number">1.1.1.</span> <span class="toc-text">不同进制用来表示数字的符号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E6%84%8F%E8%BF%9B%E5%88%B6%E4%B8%8E%E5%8D%81%E8%BF%9B%E5%88%B6"><span class="toc-number">1.1.2.</span> <span class="toc-text">任意进制与十进制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%BB%E6%84%8F%E8%BF%9B%E5%88%B6%E2%80%94-%E5%8D%81%E8%BF%9B%E5%88%B6"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">任意进制—&gt;十进制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E2%80%94-%E5%85%B6%E4%BB%96%E8%BF%9B%E5%88%B6"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">十进制—&gt;其他进制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.1.3.</span> <span class="toc-text">其他进制转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%8E%E5%85%AB%E8%BF%9B%E5%88%B6"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">二进制与八进制</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E2%80%94-%E5%85%AB%E8%BF%9B%E5%88%B6"><span class="toc-number">1.1.3.1.1.</span> <span class="toc-text">二进制—&gt;八进制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%AB%E8%BF%9B%E5%88%B6%E2%80%94-%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="toc-number">1.1.3.1.2.</span> <span class="toc-text">八进制—&gt;二进制</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%8E%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">二进制与十六进制</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E2%80%94-%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6"><span class="toc-number">1.1.3.2.1.</span> <span class="toc-text">二进制—&gt;十六进制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E2%80%94-%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="toc-number">1.1.3.2.2.</span> <span class="toc-text">十六进制—&gt;二进制</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AB%E8%BF%9B%E5%88%B6%E5%92%8C%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">八进制和十六进制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81"><span class="toc-number">1.2.</span> <span class="toc-text">原码、反码、补码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%A0%81%EF%BC%88Sign-Magnitude%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">原码（Sign-Magnitude）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E7%A0%81%EF%BC%88One%E2%80%99s-Complement%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">反码（One’s Complement）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A5%E7%A0%81%EF%BC%88Two%E2%80%99s-Complement%EF%BC%89"><span class="toc-number">1.2.3.</span> <span class="toc-text">补码（Two’s Complement）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.2.4.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E5%86%85%E5%AE%B9"><span class="toc-number">1.3.</span> <span class="toc-text">扩展内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.3.1.</span> <span class="toc-text">关于进制转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EXP%EF%BC%88C-%EF%BC%8C%E4%BA%8C%E3%80%81%E5%85%AB%E3%80%81%E5%8D%81%E3%80%81%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%EF%BC%89"><span class="toc-number">1.3.2.</span> <span class="toc-text">EXP（C++，二、八、十、十六进制转换）</span></a></li></ol></li></ol></li></ol>
+  
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="Luminous" class="lazyload">
+  <div class="sidebar-author-name">Luminous</div>
+  <div class="sidebar-description">动漫宅&amp;技术宅</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Post</div>
+    <div class="sidebar-state-number">12</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>Category</div>
+    <div class="sidebar-state-number">6</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>Tag</div>
+    <div class="sidebar-state-number">8</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/Torchman005 itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
+    <div class="icon-bilibili sidebar-social-icon">
+      <a href=https://space.bilibili.com/356164519?spm_id_from=333.1007.0.0 itemprop="url" target="_blank" aria-label="bilibili" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
+    <div class="icon-stackoverflow sidebar-social-icon">
+      <a href=https://stackoverflow.com/users/30805314/luminous itemprop="url" target="_blank" aria-label="stackoverflow" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/" aria-label="Home"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">Home</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/archives" aria-label="Archives"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">Archives</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/about" aria-label="About"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">About</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/friend" aria-label="Friend"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">Friend</div>
+      </div>
+    
+  
+</div>
+</div>
+        
+      
+      
+        
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+        
+      
+    </div>
+  </div>
+  
+  <div class="sidebar-widget">
+  
+  </div>
+  
+  </div>
+  
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-计算机基础(1)——进制转换与表示，原码、反码、补码" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2024-11-10T07:54:03.000Z" itemprop="datePublished">2024-11-10</time>
+    <time style="display: none;" id="post-update-time">2025-10-04</time>
+  </span>
+  
+</div>
+
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/en/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" title="计算机基础">计算机基础</a>
+  </div>
+
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+      
+        <h1 id="计算机基础-1-——进制转换与表示，原码、反码、补码"><a href="#计算机基础-1-——进制转换与表示，原码、反码、补码" class="headerlink" title="计算机基础(1)——进制转换与表示，原码、反码、补码"></a>计算机基础(1)——进制转换与表示，原码、反码、补码</h1><h2 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h2><h3 id="不同进制用来表示数字的符号"><a href="#不同进制用来表示数字的符号" class="headerlink" title="不同进制用来表示数字的符号"></a>不同进制用来表示数字的符号</h3><table>
+<thead>
+<tr>
+<th>进制</th>
+<th>符号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>二进制</td>
+<td>0  1</td>
+</tr>
+<tr>
+<td>八进制</td>
+<td>0  1  2  3  4  5  6  7</td>
+</tr>
+<tr>
+<td>十进制</td>
+<td>0  1  2  3  4  5  6  7  8  9  10</td>
+</tr>
+<tr>
+<td>十六进制</td>
+<td>0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F</td>
+</tr>
+</tbody></table>
+<p>几进制就是满几进一</p>
+<p>其中十六进制的 A ~ F 在十进制代表的是10 ~ 15，因为要用一个符号代替，所以用了字母</p>
+<h3 id="任意进制与十进制"><a href="#任意进制与十进制" class="headerlink" title="任意进制与十进制"></a>任意进制与十进制</h3><h4 id="任意进制—-十进制"><a href="#任意进制—-十进制" class="headerlink" title="任意进制—&gt;十进制"></a>任意进制—&gt;十进制</h4><p>假设进制数是x</p>
+<p>任意进制转换十进制的算法为：从右往左数第n位乘x的n-1次幂然后加起来，下面计算是原式从左往右算，手算的话从右往左写幂数更不容易错</p>
+<p>比如说十进制数567，可以表示成：<br>$$<br>5<em>10^2 + 6</em>10^1 + 7<em>10^0<br>$$<br>二进制1010101转十进制，计算方式为<br>$$<br>1</em>2^6+0<em>2^5+1</em>2^4+0<em>2^3+1</em>2^2+0<em>2^1+1</em>2^0&#x3D;85<br>$$<br>八进制13105640转十进制，计算方式为<br>$$<br>1<em>8^7+3</em>8^6+1<em>8^5+0</em>8^4+5<em>8^3+6</em>8^2+4<em>8^1+0</em>8^0&#x3D;2919328<br>$$<br>十六进制同理，任意进制都可以这么算</p>
+<h4 id="十进制—-其他进制"><a href="#十进制—-其他进制" class="headerlink" title="十进制—&gt;其他进制"></a>十进制—&gt;其他进制</h4><p>用十进制数除进制数x得到商和余数，商继续除x得到新的商和余数，继续下去直到商为0，得到的余数就可以组合成对应进制数</p>
+<p>十进制数50转二进制</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">50÷2，商25余0</span><br><span class="line">25÷2，商12余1</span><br><span class="line">12÷2，商 6余0</span><br><span class="line"> 6÷2，商 3余0</span><br><span class="line"> 3÷2，商 1余1</span><br><span class="line"> 1÷2，商 0余1	&lt;-商为0，停止</span><br><span class="line"></span><br><span class="line">现在从上到下得到余数010011，实际上的二进制要从下往上倒过来，是110010</span><br><span class="line">所以十进制50的二进制是110010</span><br></pre></td></tr></table></figure>
+
+<p>十进制数50转八进制</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">50÷8，商6余2</span><br><span class="line"> 6÷8，商0余6	&lt;-商为0，停止</span><br><span class="line"> </span><br><span class="line">现在从上到下得到余数26，实际上的八进制要从下往上倒过来，是62</span><br><span class="line">所以十进制50的八进制是62</span><br></pre></td></tr></table></figure>
+
+<p>十进制数2717转十六进制</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2717÷16，商169余13，13对应十六进制为D</span><br><span class="line"> 169÷16，商 10余9</span><br><span class="line">  10÷16，商  0余10，10对应十六进制为A	&lt;-商为0，停止</span><br><span class="line">  </span><br><span class="line">现在从上到下得到余数D9A，实际上的十六进制要从下往上倒过来，是A9D</span><br><span class="line">所以十进制50的十六进制是A9D</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他进制转换"><a href="#其他进制转换" class="headerlink" title="其他进制转换"></a>其他进制转换</h3><p><del>实在不会一步转换就用十进制做跳板罢</del></p>
+<h4 id="二进制与八进制"><a href="#二进制与八进制" class="headerlink" title="二进制与八进制"></a>二进制与八进制</h4><h5 id="二进制—-八进制"><a href="#二进制—-八进制" class="headerlink" title="二进制—&gt;八进制"></a>二进制—&gt;八进制</h5><p>$$<br>2^3&#x3D;8<br>$$</p>
+<p>因为2和8的幂次关系，从右往左数每3位二进制可以找转换为一个八进制字符，最后不够的可以补0</p>
+<p>二进制 10111001 转八进制：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">首先将 10111001 每三个划分一组</span><br><span class="line">10  111  001</span><br><span class="line">然后对每组分别计算</span><br></pre></td></tr></table></figure>
+
+<p>对 10 计算：<br>$$<br>1<em>2^1 +0</em>2^0&#x3D;2<br>$$<br>对 111 计算：<br>$$<br>1<em>2^2+1</em>2^1 +1<em>2^0&#x3D;7<br>$$<br>对 001 计算：<br>$$<br>0</em>2^2+0<em>2^1+1</em>2^0&#x3D;1<br>$$<br>组合起来八进制就是271</p>
+<p>二进制 10111001 转八进制为 271</p>
+<h5 id="八进制—-二进制"><a href="#八进制—-二进制" class="headerlink" title="八进制—&gt;二进制"></a>八进制—&gt;二进制</h5><p>将八进制数的每一位用三个二进制符号表示即可，这里单个数字可以用十进制转二进制时的算法<br>八进制数512转二进制：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">5 —&gt; 5连除2得到余数逆序为101</span><br><span class="line">1 —&gt; 1连除2得到余数逆序为01，补0至三位即为001</span><br><span class="line">2 —&gt; 2连除2得到余数逆序为10，补0为010</span><br><span class="line"></span><br><span class="line">二进制即为101001010</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="二进制与十六进制"><a href="#二进制与十六进制" class="headerlink" title="二进制与十六进制"></a>二进制与十六进制</h4><h5 id="二进制—-十六进制"><a href="#二进制—-十六进制" class="headerlink" title="二进制—&gt;十六进制"></a>二进制—&gt;十六进制</h5><p>$$<br>2^4&#x3D;16<br>$$<br>因为2和16的幂次关系，从右往左数每4位二进制可以找转换为一个十六进制字符，最后不够的可以补0</p>
+<p>计算过程和二进制转八进制非常相似</p>
+<p>二进制 10111001 转十六进制：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">首先将 10111001 每四个划分一组</span><br><span class="line">1011  1001</span><br><span class="line">然后对每组分别计算</span><br></pre></td></tr></table></figure>
+
+<p>$$<br>1<em>2^3+0</em>2^2+1<em>2^1+1</em>2^0&#x3D;11（B）<br>$$</p>
+<p>$$<br>1<em>2^3+0</em>2^2+0<em>2^1+1</em>2^0&#x3D;9<br>$$</p>
+<p>二进制 10111001 转十六进制为 B9</p>
+<h5 id="十六进制—-二进制"><a href="#十六进制—-二进制" class="headerlink" title="十六进制—&gt;二进制"></a>十六进制—&gt;二进制</h5><p>类比八进制转二进制，十六进制每个字符要用四个二进制数表示</p>
+<p>十六进制B9A转二进制</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">B —&gt; 11连除2，得到余数逆序1011</span><br><span class="line">9 —&gt; 9连除2，得到余数逆序1001</span><br><span class="line">A —&gt; 10连除2，得到余数逆序1010</span><br><span class="line"></span><br><span class="line">二进制即为101110011010</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="八进制和十六进制"><a href="#八进制和十六进制" class="headerlink" title="八进制和十六进制"></a>八进制和十六进制</h4><p>用二进制或者十进制做桥梁</p>
+<h2 id="原码、反码、补码"><a href="#原码、反码、补码" class="headerlink" title="原码、反码、补码"></a>原码、反码、补码</h2><p>计算机通常使用二进制，原码、反码、补码是计算机中对的二进制表示方法</p>
+<blockquote>
+<p>原码：将最高位作为符号位（0表示正，1表示负），其它数字位代表数值本身的绝对值的数字表示方式。</p>
+<p>反码：如果是正数，则表示方法和原码一样；如果是负数，符号位不变，其余各位取反，则得到这个数字的反码表示形式。</p>
+<p>补码：如果是正数，则表示方法和原码一样；如果是负数，则将数字的反码加上1（相当于将原码数值位取反然后在最低位加1）。</p>
+<p>正数的原码、反码、补码完全一样，只有负数需要按照以上规则计算</p>
+</blockquote>
+<h3 id="原码（Sign-Magnitude）"><a href="#原码（Sign-Magnitude）" class="headerlink" title="原码（Sign-Magnitude）"></a>原码（Sign-Magnitude）</h3><p>原码是最简单的表示有符号整数的方式。它的规则很简单，即使用二进制表示数值的绝对值，最高位表示符号位（0表示正数，1表示负数）。例如，+5的原码为00000101，-5的原码为10000101。</p>
+<p>原码的优点是直观简单，符号位可以直接判断正负。但是原码存在加减法运算时出现的溢出问题。</p>
+<blockquote>
+<p>扩展：原码为什么会有溢出问题</p>
+<ol>
+<li><p>符号位干扰。两个正数相加可能会因为进位问题导致符号位变化，从而产生错误的负数结果。</p>
+<p>比如5的原码为0101，3的原码为0011，十进制相加后十进制为8，而二进制为1000，对应十进制为-8</p>
+</li>
+<li><p>表示范围有限。对于n位二进制数，能够表示的范围是-（2^(n-1)-1）到2^(n-1)-1。如果运算结果超出这个范围，就会发生溢出。</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="反码（One’s-Complement）"><a href="#反码（One’s-Complement）" class="headerlink" title="反码（One’s Complement）"></a>反码（One’s Complement）</h3><p>为了解决原码的溢出问题，反码被提出。反码的规则是：正数的反码与原码相同，负数的反码是对该数的原码按位取反，将原码中的0变为1，1变为0。</p>
+<p>例如，+5的反码仍为00000101，-5的反码为11111010。</p>
+<p>反码解决了原码运算溢出的问题，但是存在“0”的两个表示（正0和负0），并且减法运算仍然存在一些问题。</p>
+<blockquote>
+<p>扩展：反码的减法问题</p>
+<p>主要问题在于<strong>零的表示不唯一</strong>。在反码表示法中，零有两种表示形式：正零（所有位为0）和负零（符号位为1，其余位为0）</p>
+<p>-5的反码为11111010，7的反码为00000111，7-5也就是7+(-5)，得到的二进制结果是00000001（+1）</p>
+<p>因为反码中+0是0000000表示的，-0是11111111表示的，-0变为+0需要一个1，所以导致运算结果错误</p>
+</blockquote>
+<h3 id="补码（Two’s-Complement）"><a href="#补码（Two’s-Complement）" class="headerlink" title="补码（Two’s Complement）"></a>补码（Two’s Complement）</h3><p>为了进一步解决反码的问题，补码被引入。补码的规则是：正数的补码与原码相同，负数的补码是对该数的反码加1，这一步解决了反码中少1的问题。</p>
+<p>例如，+5的补码仍为00000101，-5的补码为11111011。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通常使用补码来表示二进制负数，结合上述，表示二进制负数方法为：<strong>绝对值按位取反(每一位1变0，0变1)后最后一位加1</strong></p>
+<h2 id="扩展内容"><a href="#扩展内容" class="headerlink" title="扩展内容"></a>扩展内容</h2><h3 id="关于进制转换"><a href="#关于进制转换" class="headerlink" title="关于进制转换"></a>关于进制转换</h3><p>小trick：windows计算器中的程序员模式能快速计算不同进制</p>
+<p>也有很多在线工具能够快速计算 <a target="_blank" rel="noopener" href="https://tool.lu/hexconvert/">进制转换 - 在线工具</a></p>
+<h3 id="EXP（C-，二、八、十、十六进制转换）"><a href="#EXP（C-，二、八、十、十六进制转换）" class="headerlink" title="EXP（C++，二、八、十、十六进制转换）"></a>EXP（C++，二、八、十、十六进制转换）</h3><p>输入格式：代转换数 当前进制 目标进制</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">long</span> <span class="type">long</span> <span class="title">to10</span><span class="params">(string s,<span class="type">int</span> k)</span></span>&#123;</span><br><span class="line">	<span class="type">long</span> <span class="type">long</span> ans=<span class="number">0</span>,d=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;s.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(s[i]&gt;=<span class="string">&#x27;A&#x27;</span>) ans=ans*k+(s[i]-<span class="string">&#x27;A&#x27;</span><span class="number">+10</span>);</span><br><span class="line">		<span class="keyword">else</span> ans=ans*k+(s[i]-<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">		d++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">string <span class="title">from10</span><span class="params">(<span class="type">long</span> <span class="type">long</span> n,<span class="type">int</span> k)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="string">&quot;0&quot;</span>;</span><br><span class="line">	string b=<span class="string">&quot;0123456789ABCDEF&quot;</span>,ans;</span><br><span class="line">	<span class="keyword">while</span>(n&gt;<span class="number">0</span>)&#123;</span><br><span class="line">		ans+=b[n%k];</span><br><span class="line">		n/=k;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">reverse</span>(ans.<span class="built_in">begin</span>(),ans.<span class="built_in">end</span>());</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> b,d;</span><br><span class="line">    string s;</span><br><span class="line">    cin&gt;&gt;s&gt;&gt;b&gt;&gt;d;</span><br><span class="line">    cout&lt;&lt;<span class="built_in">from10</span>(<span class="built_in">to10</span>(s,b),d);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+        <div class="share-wrapper">
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com%2F2024%2F11%2F10%2F%25E8%25AE%25A1%25E7%25AE%2597%25E6%259C%25BA%25E5%259F%25BA%25E7%25A1%2580(1)%25E2%2580%2594%25E2%2580%2594%25E8%25BF%259B%25E5%2588%25B6%25E8%25BD%25AC%25E6%258D%25A2%25E4%25B8%258E%25E8%25A1%25A8%25E7%25A4%25BA%25EF%25BC%258C%25E5%258E%259F%25E7%25A0%2581%25E3%2580%2581%25E5%258F%258D%25E7%25A0%2581%25E3%2580%2581%25E8%25A1%25A5%25E7%25A0%2581%2F" target="_blank" rel="noopener noreferrer" title="计算机基础(1)——进制转换与表示，原码、反码、补码">
+      <div class="share-icon icon icon-facebook">
+        
+      </div>
+    </a>
+  
+    <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fexample.com%2F2024%2F11%2F10%2F%25E8%25AE%25A1%25E7%25AE%2597%25E6%259C%25BA%25E5%259F%25BA%25E7%25A1%2580(1)%25E2%2580%2594%25E2%2580%2594%25E8%25BF%259B%25E5%2588%25B6%25E8%25BD%25AC%25E6%258D%25A2%25E4%25B8%258E%25E8%25A1%25A8%25E7%25A4%25BA%25EF%25BC%258C%25E5%258E%259F%25E7%25A0%2581%25E3%2580%2581%25E5%258F%258D%25E7%25A0%2581%25E3%2580%2581%25E8%25A1%25A5%25E7%25A0%2581%2F&amp;text=%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80(1)%E2%80%94%E2%80%94%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%A1%A8%E7%A4%BA%EF%BC%8C%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81&amp;via=http%3A%2F%2Fexample.com" target="_blank" rel="noopener noreferrer" title="计算机基础(1)——进制转换与表示，原码、反码、补码">
+      <div class="share-icon icon icon-twitter">
+        
+      </div>
+    </a>
+  
+    <a href="https://connect.qq.com/widget/shareqq/index.html?url=www.baidu.com&amp;title=%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80(1)%E2%80%94%E2%80%94%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%A1%A8%E7%A4%BA%EF%BC%8C%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81&amp;desc=%F0%9F%A5%A7%E6%9C%AC%E6%96%87%E6%B1%87%E6%80%BB%E4%BA%8C%E3%80%81%E5%85%AB%E3%80%81%E5%8D%81%E3%80%81%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%BB%A5%E5%8F%8A%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81%E7%9A%84%E6%A6%82%E5%BF%B5&amp;source=http%3A%2F%2Fexample.com" target="_blank" rel="noopener noreferrer" title="计算机基础(1)——进制转换与表示，原码、反码、补码">
+      <div class="share-icon icon icon-qq">
+        
+      </div>
+    </a>
+  
+    <a href="javascript:;"  title="计算机基础(1)——进制转换与表示，原码、反码、补码">
+      <div class="share-icon icon icon-weixin">
+        
+          <div id="share-weixin">
+            <div class="share-weixin-dom">
+              <div class="share-weixin-content">
+                <img id="share-weixin-banner"> 
+                <div id="share-weixin-title"></div>
+                <div id="share-weixin-desc"></div>
+              </div>
+              <div class="share-weixin-qrcode">
+                <div class="share-weixin-info">
+                  <div id="share-weixin-author"></div>
+                  <div id="share-weixin-theme">Powered By hexo-theme-reimu</div>
+                </div>
+                <img id="share-weixin-qr" >
+              </div>
+            </div>
+            <div class="share-weixin-canvas"></div>
+          </div>
+        
+      </div>
+    </a>
+  
+</div>
+      
+      
+        <a data-aos="zoom-in" href="/en/2024/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80(1)%E2%80%94%E2%80%94%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%A1%A8%E7%A4%BA%EF%BC%8C%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81/#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/en/2024/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80(1)%E2%80%94%E2%80%94%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%A1%A8%E7%A4%BA%EF%BC%8C%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81/" itemprop="commentCount"></span>
+          Comments
+        </a>
+      
+      
+      
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/en/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" rel="tag" title="计算机基础">计算机基础</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+  <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+    
+      
+      <div class="article-nav-link-wrap left">
+        
+          
+          
+            <img data-src="/covers/cover22.webp" data-sizes="auto" alt="存储与数据库——1.认识存储与数据库" class="lazyload">
+          
+        
+        <a href="/en/2024/11/10/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/" aria-label="Prev: 存储与数据库——1.认识存储与数据库" title="Prev: 存储与数据库——1.认识存储与数据库"></a>
+        <div class="article-nav-caption">Prev</div>
+        <h3 class="article-nav-title">
+          
+            存储与数据库——1.认识存储与数据库
+          
+        </h3>
+      </div>
+    
+    
+    
+    <div class="article-nav-link-wrap right">
+      
+        
+        
+          <img data-src="/covers/cover22.webp" data-sizes="auto" alt="从0 → ∞ 成为 Minecraft JE腐竹" class="lazyload">
+        
+      
+      <a href="/en/2024/10/13/%E4%BB%8E0%20%E2%86%92%20%E2%88%9E%20%E6%88%90%E4%B8%BA%20Minecraft%20JE%E8%85%90%E7%AB%B9/" aria-label="Next: 从0 → ∞ 成为 Minecraft JE腐竹"  title="Next: 从0 → ∞ 成为 Minecraft JE腐竹"></a>
+      <div class="article-nav-caption">Next</div>
+      <h3 class="article-nav-title">
+        
+          从0 → ∞ 成为 Minecraft JE腐竹
+        
+      </h3>
+    </div>
+    
+  </nav>
+
+
+</article>
+
+
+
+
+
+
+
+
+
+  <section id="comments" data-aos="fade-up">
+    <div class="comment-header">
+      
+      
+        
+      
+      <h2 class="comment-title">Leave a comment</h2>
+      <div class="comment-selector">
+        <div class="comment-selector-wrap">
+            
+            <div class="selector-item" data-selector="valine">
+              <span>valine</span>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+    <div class="comment-content">
+      
+        <div class="comment valine-comment" data-aos="fade-up"
+          id="valine-comment">
+        </div>
+      
+    </div>
+  </section>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    
+    <div>
+      <span class="icon-copyright"></span>
+      
+      
+      
+        2020-2025
+      
+      <span class="footer-info-sep rotate"></span>
+      Luminous
+    </div>
+    
+      <div>
+        Powered by&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+    
+    
+      <div>
+        <span class="icon-brush"></span>
+        67k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        05:33
+      </div>
+    
+    
+    
+    
+    
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">Number of visits&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">Number of visitors&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+    
+  </div>
+</footer>
+
+        
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+    
+      
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+  
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-1-%E2%80%94%E2%80%94%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%A1%A8%E7%A4%BA%EF%BC%8C%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">计算机基础(1)——进制转换与表示，原码、反码、补码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.1.</span> <span class="toc-text">进制转换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E8%BF%9B%E5%88%B6%E7%94%A8%E6%9D%A5%E8%A1%A8%E7%A4%BA%E6%95%B0%E5%AD%97%E7%9A%84%E7%AC%A6%E5%8F%B7"><span class="toc-number">1.1.1.</span> <span class="toc-text">不同进制用来表示数字的符号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E6%84%8F%E8%BF%9B%E5%88%B6%E4%B8%8E%E5%8D%81%E8%BF%9B%E5%88%B6"><span class="toc-number">1.1.2.</span> <span class="toc-text">任意进制与十进制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%BB%E6%84%8F%E8%BF%9B%E5%88%B6%E2%80%94-%E5%8D%81%E8%BF%9B%E5%88%B6"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">任意进制—&gt;十进制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E2%80%94-%E5%85%B6%E4%BB%96%E8%BF%9B%E5%88%B6"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">十进制—&gt;其他进制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.1.3.</span> <span class="toc-text">其他进制转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%8E%E5%85%AB%E8%BF%9B%E5%88%B6"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">二进制与八进制</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E2%80%94-%E5%85%AB%E8%BF%9B%E5%88%B6"><span class="toc-number">1.1.3.1.1.</span> <span class="toc-text">二进制—&gt;八进制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%AB%E8%BF%9B%E5%88%B6%E2%80%94-%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="toc-number">1.1.3.1.2.</span> <span class="toc-text">八进制—&gt;二进制</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%8E%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">二进制与十六进制</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E2%80%94-%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6"><span class="toc-number">1.1.3.2.1.</span> <span class="toc-text">二进制—&gt;十六进制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E2%80%94-%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="toc-number">1.1.3.2.2.</span> <span class="toc-text">十六进制—&gt;二进制</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AB%E8%BF%9B%E5%88%B6%E5%92%8C%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">八进制和十六进制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81"><span class="toc-number">1.2.</span> <span class="toc-text">原码、反码、补码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%A0%81%EF%BC%88Sign-Magnitude%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">原码（Sign-Magnitude）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E7%A0%81%EF%BC%88One%E2%80%99s-Complement%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">反码（One’s Complement）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A5%E7%A0%81%EF%BC%88Two%E2%80%99s-Complement%EF%BC%89"><span class="toc-number">1.2.3.</span> <span class="toc-text">补码（Two’s Complement）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.2.4.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E5%86%85%E5%AE%B9"><span class="toc-number">1.3.</span> <span class="toc-text">扩展内容</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.3.1.</span> <span class="toc-text">关于进制转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EXP%EF%BC%88C-%EF%BC%8C%E4%BA%8C%E3%80%81%E5%85%AB%E3%80%81%E5%8D%81%E3%80%81%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%EF%BC%89"><span class="toc-number">1.3.2.</span> <span class="toc-text">EXP（C++，二、八、十、十六进制转换）</span></a></li></ol></li></ol></li></ol>
+  
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="Luminous" class="lazyload">
+  <div class="sidebar-author-name">Luminous</div>
+  <div class="sidebar-description">动漫宅&amp;技术宅</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Post</div>
+    <div class="sidebar-state-number">12</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>Category</div>
+    <div class="sidebar-state-number">6</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>Tag</div>
+    <div class="sidebar-state-number">8</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/Torchman005 itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
+    <div class="icon-bilibili sidebar-social-icon">
+      <a href=https://space.bilibili.com/356164519?spm_id_from=333.1007.0.0 itemprop="url" target="_blank" aria-label="bilibili" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
+    <div class="icon-stackoverflow sidebar-social-icon">
+      <a href=https://stackoverflow.com/users/30805314/luminous itemprop="url" target="_blank" aria-label="stackoverflow" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/" aria-label="Home"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">Home</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/archives" aria-label="Archives"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">Archives</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/about" aria-label="About"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">About</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/friend" aria-label="Friend"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">Friend</div>
+      </div>
+    
+  
+</div>
+</div>
+      
+    
+  </div>
+  
+    
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+    
+  
+</nav>
+
+    </div>
+    
+      <div class="site-search">
+        <div class="reimu-popup popup">
+          <div class="reimu-search">
+            <div class="reimu-search-input-icon"></div>
+            <div id="reimu-search-input"></div>
+            <div class="popup-btn-close"></div>
+          </div>
+          <div class="reimu-results">
+            <div id="reimu-stats"></div>
+            <div id="reimu-hits"></div>
+            <div id="reimu-pagination" class="reimu-pagination"></div>
+          </div>
+          <img class="reimu-bg" src="/images/reimu.png"/>
+        </div>
+      </div>
+    
+    
+    
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+  
+<script src="/js/generator_search.js" defer></script>
+
+
+
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js" integrity="sha384-8LyaidD9GPxQQgLJO&#x2F;WRw&#x2F;O2h3BoNq&#x2F;ApI&#x2F;ecpvM6RsrCz2qP2ppBXUKihP4V&#x2F;2d" crossorigin="anonymous"></script>
+
+  <script>
+    window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'))
+  </script>
+
+
+
+  
+<script src="https://npm.webcache.cn/theme-shokax-pjax@0.0.3/dist/index.umd.js" integrity="sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE&#x2F;jMSCxD+jAPU55x&#x2F;jj3wlf" crossorigin="anonymous"></script>
+
+  
+<script src="/js/pjax.js"></script>
+
+
+
+
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+    
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "Luminous",
+          title: "计算机基础(1)——进制转换与表示，原码、反码、补码",
+          url: "http://example.com/2024/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80(1)%E2%80%94%E2%80%94%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%A1%A8%E7%A4%BA%EF%BC%8C%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81/",
+          excerpt: "",
+          description: "🥧本文汇总二、八、十、十六进制转换以及原码、反码、补码的概念",
+          stripContent: "计算机基础(1)——进制转换与表示，原码、反码、补码进制转换不同进制用来表示数字的符号   进制 符号    二进制 0  1   八进制 0  1  2  3  4  5  6  7   十进制 0  1  2  3  4  5  6  7  8  9  10   十六进制 0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F   几进制就是满几进一 其中十六进制的 A ~ F 在十进制代表的是10 ~ 15，因为要用一个符号代替，所以用了字母 任意进制",
+          date: "Sun Nov 10 2024 15:54:03 GMT+0800",
+          updated: "Sat Oct 04 2025 17:34:47 GMT+0800",
+          cover: "/images/banner.webp",
+        };
+      </script>
+       
+    
+    
+      
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+        
+          
+<script src="https://npm.webcache.cn/@zumer/snapdom@1.9.9/dist/snapdom.min.js" integrity="sha384-taz9Bq0wPqLsuiB4ix4blTozt&#x2F;y84cjbMX5ZWkfPPjpVBme8M&#x2F;jWopanNBcdH&#x2F;qp" crossorigin="anonymous" defer data-pjax></script>
+
+          
+<script src="https://npm.webcache.cn/qrcode@1.5.1/build/qrcode.js" integrity="sha384-VT1EeewTCEXgndcPMQ0PzV+uVFYjxFIjmAA7s5gcMX9t4Dt5TD+OVQIn7NJWIXn7" crossorigin="anonymous" defer data-pjax></script>
+
+        
+      
+    
+    
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+      
+        
+
+
+
+
+
+
+
+
+<script data-pjax>
+  var loadScript = (src, integrity) => {
+    const script = document.createElement('script');
+    script.src = src;
+    if (integrity) script.integrity = integrity;
+    script.crossOrigin = 'anonymous';
+    return script;
+  };
+
+  var commentConfigKeys = ["valine"];
+  var commentConfig = {
+    
+    valine: {
+      enable: true,
+      load: () => {
+        const container = document.querySelector('.valine-comment');
+        if (!container) return;
+        container.style.display = 'block';
+
+        const script = loadScript(
+          'https://npm.webcache.cn/valine@1.5.1/dist/Valine.min.js',
+          'sha384-3ma91AExDeMAZ1rjTjaP8V2A2obQE+s5ltKRwYlwdpArz9xVbp0tF3b0VV2ACNPn'
+        );
+        script.onload = () => {
+          var GUEST_INFO = ['nick', 'mail', 'link'];
+          var guest_info = 'nick,mail,link'.split(',').filter((item) => {
+            return GUEST_INFO.indexOf(item) > -1
+          });
+          var recordIP = JSON.parse('true');
+          var highlight = JSON.parse('true');
+          var visitor = JSON.parse('false');
+          var serverURLs = undefined;
+
+          if (window.Valine) {
+            new Valine({
+              el: '.valine-comment',
+              appId: "FImzK7Zq31FxHsg4MvI8uSp4-gzGzoHsz",
+              appKey: "7yYoAw12c80oLHKYfmAOy5CU",
+              placeholder: "Just go go",
+              pageSize: '10',
+              avatar: 'mp',
+              lang: document.documentElement.lang || 'en',
+              recordIP: recordIP,
+              highlight: highlight,
+              visitor: visitor,
+              requiredFields: guest_info,
+              path: window.location.pathname,
+              serverURLs
+            });
+          }
+        };
+        document.head.appendChild(script);
+      }
+    },
+    
+    
+    
+    
+    
+  }
+  commentConfig.enable = commentConfigKeys.some(key => commentConfig[key].enable);
+
+  var defaultComment = '';
+  if (commentConfig.enable) {
+    // 1. 首先检查localStorage中是否有保存的评论类型
+    var savedCommentType = localStorage.getItem('commentType');
+    
+    // 2. 如果localStorage中有值且对应的评论系统可用，就使用它
+    if (savedCommentType) {
+      if (commentConfig[savedCommentType]?.enable) {
+        defaultComment = savedCommentType;
+      }
+    }
+    
+    // 3. 如果localStorage无效，检查配置的默认评论系统
+    if (!defaultComment) {
+      var configDefault = 'waline';
+      if (commentConfig[configDefault]?.enable) {
+        defaultComment = configDefault;
+      }
+    }
+    
+    // 4. 如果前两项都无效，按指定顺序找到第一个可用的评论系统
+    if (!defaultComment) {
+      defaultComment = commentConfigKeys.find(sys => commentConfig[sys].enable) || '';
+    }
+  }
+  function loadComments() {
+    if (!commentConfig.enable) return;
+    const loadedComments = {
+      valine: false,
+      waline: false,
+      twikoo: false,
+      gitalk: false,
+      giscus: false
+    };
+
+    // 隐藏所有评论容器
+    const hideAllComments = () => {
+      const commentContainers = document.querySelectorAll('.comment');
+      commentContainers.forEach(container => {
+        container.style.display = 'none';
+      });
+    };
+
+    // 按需加载评论系统
+    const loadCommentSystem = (type) => {
+      if (loadedComments[type]) {
+        // 如果已加载，只需显示对应容器
+        document.querySelector(`.${type}-comment`).style.display = 'block';
+        return;
+      }
+
+      // 根据类型加载对应的脚本
+      commentConfig[type]?.load();
+      loadedComments[type] = true;
+    };
+
+    // 评论组件选择器
+    const changeActiveCommentItems = (item) => {
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let i = 0; i < commentItems.length; i++) {
+        commentItems[i].classList.remove('active');
+      }
+      item.classList.add('active');
+
+      // 获取要加载的评论系统类型
+      const commentType = item.getAttribute('data-selector');
+
+      // 隐藏所有评论系统
+      hideAllComments();
+
+      // 加载选中的评论系统
+      loadCommentSystem(commentType);
+    };
+
+    const commentInit = () => {
+      // 评论组件选择器点击事件
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let item of commentItems) {
+        item.addEventListener('click', () => {
+          // 保存选择器状态
+          const commentType = item.getAttribute('data-selector');
+          window.localStorage.setItem('commentType', commentType);
+          // 切换选中状态
+          changeActiveCommentItems(item);
+        });
+      }
+
+      // 检查是否需要加载默认评论系统
+      if (defaultComment) {
+        const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
+        if (!defaultSelectorItem) return;
+        defaultSelectorItem.style.display = 'block';
+        defaultSelectorItem.classList.add('active');
+        loadCommentSystem(defaultComment);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', commentInit);
+    } else {
+      commentInit();
+    }
+  };
+  loadComments();
+</script>
+
+      
+    
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.10.0' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+
+
+
+  
+<script src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js" integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr+h5UfruuRL&#x2F;aORyw+5+HZoU6e" crossorigin="anonymous"></script>
+
+  
+
+
+
+  
+  <script>
+    if (window.matchMedia('(max-width: 959px)').matches) {
+      const meting = _$('meting-js');
+      if (meting) {
+        meting.setAttribute('fixed', 'true');
+        const aside = meting.parentNode?.parentNode;
+        if (aside?.tagName === 'ASIDE') {
+          meting.parentNode.removeChild(meting);
+          document.body.appendChild(meting);
+        }
+      }
+    }
+  </script>
+  
+<script src="https://npm.webcache.cn/meting@2.0.1/dist/Meting.min.js" integrity="sha384-ASVlpKF80A22OXTK3tfEjZm1EL6uFMKIC4p8+0maanw1S&#x2F;IyB+Y4JG+ZDU7GpKE8" crossorigin="anonymous"></script>
+
+
+
+
+    
+  </body>
+  </html>
+

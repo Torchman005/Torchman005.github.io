@@ -1,0 +1,1453 @@
+
+  <!DOCTYPE html>
+  <html lang="zh-CN"  
+    
+      data-theme-mode="auto"
+    
+  >
+  <head>
+  
+  <meta charset="utf-8">
+  
+
+  
+
+  
+
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)","en":"Copy successfully (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://example.com';window.REIMU_CONFIG.i18n_languages = ["en"];</script>
+  
+  <title>
+    存储与数据库——1.认识存储与数据库 |
+    
+    Luminous&#39;s Tiny Home
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+  
+  
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+  
+  
+    <meta name="description" content="此文章会带你基本了解存储和数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="存储与数据库——1.认识存储与数据库">
+<meta property="og:url" content="http://example.com/2024/11/10/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
+<meta property="og:site_name" content="Luminous&#39;s Tiny Home">
+<meta property="og:description" content="此文章会带你基本了解存储和数据库">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/1.png">
+<meta property="og:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/2.png">
+<meta property="og:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/3.png">
+<meta property="og:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/4.png">
+<meta property="og:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/5.png">
+<meta property="og:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/6.png">
+<meta property="og:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/7.png">
+<meta property="og:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/8.png">
+<meta property="og:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/9.png">
+<meta property="og:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/10.png">
+<meta property="article:published_time" content="2024-11-10T07:54:03.000Z">
+<meta property="article:modified_time" content="2025-10-04T09:34:41.877Z">
+<meta property="article:author" content="Luminous">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/1.png">
+  
+  
+    <link rel="alternate" href="/atom.xml" title="Luminous's Tiny Home" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
+  
+  
+  
+  
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+  
+  
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
+
+  
+  
+    <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css" integrity="sha384-tLMkTWh2pfXNWGFlUS0w1TFtRG5xZ9lPWFOooj+vDDLIL+xBGQU&#x2F;voDBY5XE2lVh" crossorigin="anonymous">
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body>
+    
+    
+  <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate">
+        
+          <img src="/images/favicon.ico" alt="loading" />
+        
+      </div>
+      
+      
+        
+      
+      <div class="loading-word">(∠・ω&lt; )⌒☆</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+    
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon rotate">
+             
+              &#xe62b;
+             
+          </div>
+          <a class="main-nav-link" href="/">首页</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon rotate">
+             
+              &#xe62b;
+             
+          </div>
+          <a class="main-nav-link" href="/archives">归档</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon rotate">
+             
+              &#xe62b;
+             
+          </div>
+          <a class="main-nav-link" href="/about">关于</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon rotate">
+             
+              &#xe62b;
+             
+          </div>
+          <a class="main-nav-link" href="/friend">友链</a>
+        </span>
+      
+    
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+    
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
+    
+    
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索" aria-label="搜索"></a>
+    
+  </nav>
+  
+    
+    <nav id="i18n-nav" aria-label="Language selection">
+      <div class="custom-dropdown">
+        <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
+          <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
+          <span id="selected-lang">简体中文</span>
+        </div>
+        <ul class="select-items" id="select-items" role="listbox" aria-label="Languages">
+          
+            <li data-value="zh-CN" role="option" class="selected" aria-selected="true">简体中文</li>
+          
+            <li data-value="en" role="option" aria-selected="false">English</li>
+          
+        </ul>
+      </div>
+      <script>
+        var selectSelected = document.getElementById("select-selected");
+        var selectedLang = document.getElementById("selected-lang");
+        var selectItems = document.getElementById("select-items");
+        var selectOptions = selectItems.querySelectorAll("li");
+
+        selectSelected.addEventListener("click", () => {
+          selectItems.classList.toggle("show");
+          var expanded = selectSelected.getAttribute("aria-expanded") === "true";
+          selectSelected.setAttribute("aria-expanded", (!expanded).toString());
+        });
+
+        selectOptions.forEach((item) => {
+          item.addEventListener("click", () => {
+            const langMap = {};
+            
+              langMap['zh-CN'] = '/2024/11/10/存储与数据库/';
+            
+              langMap['en'] = '/en/2024/11/10/存储与数据库/';
+            
+            selectedLang.textContent = item.textContent;
+            selectItems.classList.remove("show");
+            selectOptions.forEach((option) => {
+              option.classList.remove("selected");
+            });
+            item.classList.add("selected");
+            window.location = langMap[item.dataset.value];
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!event.target.closest(".custom-dropdown")) {
+            selectItems.classList.remove("show");
+            selectSelected.setAttribute("aria-expanded", "false");
+          }
+        });
+      </script>
+    </nav>
+  
+</div>
+<header id="header" aria-label="Site header">
+  
+    
+      
+        <picture>
+          
+            
+              <source media="(max-width: 479px)" srcset="/images/banner-600w.webp">
+            
+              <source media="(max-width: 799px)" srcset="/images/banner-800w.webp">
+            
+              <source media="(min-width: 800px)" srcset="/images/banner.webp">
+            
+            <img  fetchpriority="high" src="/images/banner.webp" alt="存储与数据库——1.认识存储与数据库">
+          
+        </picture>
+        
+          <img alt="存储与数据库——1.认识存储与数据库" style="visibility: hidden;">
+        
+      
+    
+  
+  <div id="header-outer">
+    <div id="header-title">
+      
+        
+        
+          <span id="logo">
+            <h1 data-aos="slide-up">存储与数据库——1.认识存储与数据库</h1>
+          </span>
+        
+      
+      
+        
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+          
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content" class="sidebar-left"  >
+          <aside id="sidebar" aria-label="Sidebar">
+  
+  <div class="sidebar-wrapper-container sticky">
+  
+    
+    
+      <meting-js
+        theme="var(--color-link)"
+        id="13796951407"
+        server="netease"
+        type="playlist"
+        
+        
+        
+        
+        
+        preload="true"
+        
+        
+        list-folded="true"
+        
+      ></meting-js>
+    
+  
+ 
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+      
+        
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+  
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E2%80%94%E2%80%941-%E8%AE%A4%E8%AF%86%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">存储与数据库——1.认识存储与数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8"><span class="toc-number">1.2.</span> <span class="toc-text">存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E6%A1%88%E4%BE%8B%E4%BB%8B%E7%BB%8D%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BA%A7%E7%94%9F"><span class="toc-number">1.2.1.</span> <span class="toc-text">经典案例介绍数据的产生</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%A7%88"><span class="toc-number">1.2.2.</span> <span class="toc-text">存储系统概览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%99%A8%E5%B1%82%E7%BA%A7%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.3.</span> <span class="toc-text">存储器层级结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%80%8E%E4%B9%88%E4%BB%8E%E5%BA%94%E7%94%A8%E5%88%B0%E5%AD%98%E5%82%A8%E4%BB%8B%E8%B4%A8"><span class="toc-number">1.2.4.</span> <span class="toc-text">数据怎么从应用到存储介质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RAID%E6%8A%80%E6%9C%AF"><span class="toc-number">1.2.5.</span> <span class="toc-text">RAID技术</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.3.</span> <span class="toc-text">数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%88%86%E7%B1%BB%E5%8F%8A%E7%89%B9%E7%82%B9"><span class="toc-number">1.3.1.</span> <span class="toc-text">数据库的分类及特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93-vs-%E7%BB%8F%E5%85%B8%E5%AD%98%E5%82%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">数据库 vs 经典存储</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%B5%81%E4%BA%A7%E5%93%81%E5%89%96%E6%9E%90"><span class="toc-number">1.4.</span> <span class="toc-text">主流产品剖析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E6%9C%BA%E5%AD%98%E5%82%A8"><span class="toc-number">1.4.1.</span> <span class="toc-text">单机存储</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E8%A7%88OwO"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">概览OwO</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#key-value%E5%AD%98%E5%82%A8"><span class="toc-number">1.4.2.</span> <span class="toc-text">key-value存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8"><span class="toc-number">1.4.3.</span> <span class="toc-text">分布式存储</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E8%A7%88UwU"><span class="toc-number">1.4.3.1.</span> <span class="toc-text">概览UwU</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HDFS"><span class="toc-number">1.4.3.2.</span> <span class="toc-text">HDFS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ceph"><span class="toc-number">1.4.3.3.</span> <span class="toc-text">Ceph</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E6%9C%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.5.</span> <span class="toc-text">单机数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%A7%88"><span class="toc-number">1.5.1.</span> <span class="toc-text">概览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.5.2.</span> <span class="toc-text">关系型数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MySQL%EF%BC%88%E5%B0%8F%E6%B5%B7%E8%B1%9Alogo%EF%BC%89"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">MySQL（小海豚logo）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PostgreSQL%EF%BC%88%E5%A4%A7%E8%B1%A1logo%EF%BC%89"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">PostgreSQL（大象logo）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.5.3.</span> <span class="toc-text">非关系型数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Elasticsearch%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="toc-number">1.5.4.</span> <span class="toc-text">Elasticsearch使用案例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E5%8D%95%E6%9C%BA%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.6.</span> <span class="toc-text">从单机到分布式数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%AE%B9%E9%87%8F%E9%97%AE%E9%A2%98"><span class="toc-number">1.6.1.</span> <span class="toc-text">解决容量问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%BC%B9%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">1.6.2.</span> <span class="toc-text">解决弹性问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E8%A6%81%E5%81%9A%E7%9A%84"><span class="toc-number">1.6.3.</span> <span class="toc-text">其它要做的</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E6%8A%80%E6%9C%AF%E6%BC%94%E8%BF%9B"><span class="toc-number">1.7.</span> <span class="toc-text">新技术演进</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%A7%88-1"><span class="toc-number">1.7.1.</span> <span class="toc-text">概览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SPDK"><span class="toc-number">1.7.2.</span> <span class="toc-text">SPDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AI-Storage"><span class="toc-number">1.7.3.</span> <span class="toc-text">AI &amp; Storage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E6%80%A7%E8%83%BD%E7%A1%AC%E4%BB%B6"><span class="toc-number">1.7.4.</span> <span class="toc-text">高性能硬件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.8.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.8.1.</span> <span class="toc-text">存储系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.8.2.</span> <span class="toc-text">数据库系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84"><span class="toc-number">1.8.3.</span> <span class="toc-text">分布式架构</span></a></li></ol></li></ol></li></ol>
+  
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="Luminous" class="lazyload">
+  <div class="sidebar-author-name">Luminous</div>
+  <div class="sidebar-description">动漫宅&amp;技术宅</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">12</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">6</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">8</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/Torchman005 itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
+    <div class="icon-bilibili sidebar-social-icon">
+      <a href=https://space.bilibili.com/356164519?spm_id_from=333.1007.0.0 itemprop="url" target="_blank" aria-label="bilibili" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
+    <div class="icon-stackoverflow sidebar-social-icon">
+      <a href=https://stackoverflow.com/users/30805314/luminous itemprop="url" target="_blank" aria-label="stackoverflow" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+    
+  
+</div>
+</div>
+        
+      
+      
+        
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+        
+      
+    </div>
+  </div>
+  
+  <div class="sidebar-widget">
+  
+  </div>
+  
+  </div>
+  
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-存储与数据库" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2024-11-10T07:54:03.000Z" itemprop="datePublished">2024-11-10</time>
+    <time style="display: none;" id="post-update-time">2025-10-04</time>
+  </span>
+  
+</div>
+
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/" title="后端">后端</a>
+  </div>
+
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+      
+        <h1 id="存储与数据库——1-认识存储与数据库"><a href="#存储与数据库——1-认识存储与数据库" class="headerlink" title="存储与数据库——1.认识存储与数据库"></a>存储与数据库——1.认识存储与数据库</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>本文是参考字节跳动存储与数据库课程而编写的笔记文</p>
+</blockquote>
+<hr>
+<h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><h3 id="经典案例介绍数据的产生"><a href="#经典案例介绍数据的产生" class="headerlink" title="经典案例介绍数据的产生"></a>经典案例介绍数据的产生</h3><blockquote>
+<p>有一天,李华要在QQ要在Hello Talk(一款可以与外国人交流锻炼语言能力的app)与老外交流.他注册的用户名为lihua,密码为123456,最后按下注册按钮,如此,数据便产生了,并且以极快的速度向app的后台服务器传输</p>
+</blockquote>
+<p>我们可以把这个过程剖析过来看看：<br>李华的注册操作产生了一条结构化的用户注册数据→数据产生→数据飞速传输到后端服务器→数据在数据库中存储持久化保存下来(若不存储到数据库，你此前的操作都是白干，信息不会被记录)</p>
+<p><strong>这里面存储系统也参与了工作，这里就先不展开叙述了(懒)</strong></p>
+<blockquote>
+<p>若数据已到达数据库，它会做哪些事情呢？</p>
+</blockquote>
+<ol>
+<li>首先，数据库会对数据进行校验，比如校验用户名是否重复，密码是否符合要求等</li>
+<li>数据库会修改内存，用高效的数据结构组织数据并进行运算，来准备后续的持久化</li>
+<li>数据库会将数据写入硬件，且对硬件的寿命及性能不会产生较大影响</li>
+</ol>
+<h3 id="存储系统概览"><a href="#存储系统概览" class="headerlink" title="存储系统概览"></a>存储系统概览</h3><blockquote>
+<p>啥是存储系统!?w(ﾟДﾟ)w</p>
+</blockquote>
+<p>存储系统是一个提供读写、控制类接口，能够安全、高效的访问存储设备将数据持久化的软件</p>
+<blockquote>
+<p>存储系统有啥特点<del>_</del></p>
+</blockquote>
+<ol>
+<li>存储系统作为后端软件的底座，性能敏感，需要保证高吞吐和低时延</li>
+<li>存储系统是软件架构，容易受硬件的影响（硬件发生变革，存储系统要做出改变来适应硬件的变化）</li>
+<li>存储系统的代码必须简洁，但要应对复杂的业务逻辑（说白了就是你要用简单的代码来应对多种复杂的情况）</li>
+</ol>
+<h3 id="存储器层级结构"><a href="#存储器层级结构" class="headerlink" title="存储器层级结构"></a>存储器层级结构</h3><p><img src="/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/1.png" alt="这是一张层级结构概览图"></p>
+<p>容量从上往下依次增大<br>访问速度从上往下依次减小</p>
+<p>在中间层其实有一个兼顾存储容量和访问速度的东西叫Persistent Memory,它是介于CPU和内存之间的一个高速缓存,它的访问速度比内存快,但是容量比内存小</p>
+<h3 id="数据怎么从应用到存储介质"><a href="#数据怎么从应用到存储介质" class="headerlink" title="数据怎么从应用到存储介质"></a>数据怎么从应用到存储介质</h3><p><img src="/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/2.png" alt="数据链路图"></p>
+<blockquote>
+<p>注：缓存很重要，它直接贯穿整个存储体系(可以帮助我们以硬件友好的方式来跟硬件打交道);<br>拷贝很昂贵(太消耗cpu了),应尽量减少;<br>硬件设备需要有抽象统一的接入层(否则如果硬件变化了，软件还得重写，很麻烦)</p>
+</blockquote>
+<h3 id="RAID技术"><a href="#RAID技术" class="headerlink" title="RAID技术"></a>RAID技术</h3><blockquote>
+<p>出现背景：</p>
+</blockquote>
+<ul>
+<li><p>单块大容量磁盘的价格&gt;多块小容量磁盘</p>
+</li>
+<li><p>单块磁盘的写入功能&lt;多块磁盘的并发写入性能</p>
+</li>
+<li><p>单块磁盘的容错能力有限，不够安全</p>
+</li>
+</ul>
+<blockquote>
+<p>所以,RAID技术做到了高性能&#x2F;高性价比&#x2F;高可靠性(很牛)</p>
+</blockquote>
+<p>RAID 0:</p>
+<ul>
+<li>多块磁盘的简单组合</li>
+<li>数据条带化存储,提高磁盘带宽</li>
+<li>没有额外的存储设计</li>
+</ul>
+<p>RAID 1:</p>
+<ul>
+<li>一块磁盘对应一块额外镜像盘</li>
+<li>真是空间利用率仅有50%</li>
+<li>容错能力强</li>
+</ul>
+<p>RAID 0+1(比如说先用RAID 0两两组合成若干个单元,再用RAID 1将这些单元两两组合):</p>
+<ul>
+<li>结合了RAID 0和RAID 1的优点</li>
+<li>真实利用率仅50%</li>
+<li>容错能力强，写入带宽好</li>
+</ul>
+<hr>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><h3 id="数据库的分类及特点"><a href="#数据库的分类及特点" class="headerlink" title="数据库的分类及特点"></a>数据库的分类及特点</h3><blockquote>
+<p>关系&#x3D;集合&#x3D;任意元素组成的若干有序偶对,反应了事物间的关系<br>关系代数&#x3D;对关系作运算的抽象查询语言(雀食抽象)<br>SQL&#x3D;一种DSL&#x3D;方便人类阅读的关系代数表达形式</p>
+</blockquote>
+<p>关系型数据库:就是存储系统(对,它就是),但是在存储之外,又发展出其他能力(结构化数据友好、支持事务、支持复杂查询语言)</p>
+<p>非关系型数据库:也是存储系统，但是一般不要求严格的结构化(半结构化数据友好、可能支持事务、可能支持复杂查询语言)</p>
+<blockquote>
+<p><em>PS:此处描述的可能有点抽象。。。具体后面会学到</em></p>
+</blockquote>
+<h3 id="数据库-vs-经典存储"><a href="#数据库-vs-经典存储" class="headerlink" title="数据库 vs 经典存储"></a>数据库 vs 经典存储</h3><table>
+<thead>
+<tr>
+<th align="left">存储方式</th>
+<th align="center">数据管理</th>
+<th align="center">事务能力</th>
+<th align="right">复杂查询能力</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">数据库</td>
+<td align="center">结构化管理</td>
+<td align="center">优越</td>
+<td align="right">灵活简洁</td>
+</tr>
+<tr>
+<td align="left">经典存储</td>
+<td align="center">半结构化管理</td>
+<td align="center">一般</td>
+<td align="right">僵化复杂</td>
+</tr>
+</tbody></table>
+<p><em>事务的ACID中:<br>A:事务的操作要么全做，要么不做<br>C:事务执行前后,数据状态是一样的<br>I:可以隔离多个并发事务,避免影响<br>D:事务一旦提交成功,数据保证持久性</em></p>
+<p><strong><u>（反正记住一个原则，数据库肯定比经典存储优势多得多）</u></strong></p>
+<hr>
+<h2 id="主流产品剖析"><a href="#主流产品剖析" class="headerlink" title="主流产品剖析"></a>主流产品剖析</h2><h3 id="单机存储"><a href="#单机存储" class="headerlink" title="单机存储"></a>单机存储</h3><h4 id="概览OwO"><a href="#概览OwO" class="headerlink" title="概览OwO"></a>概览OwO</h4><blockquote>
+<p>单机存储 &#x3D; 单个计算机节点上的存储软件系统，一般不涉及网络交互。一般分为：**<u>本地存储系统</u>        <u>key-value存储</u>**</p>
+</blockquote>
+<p>接下来我们先介绍一下<del>单机</del>本地文件系统</p>
+<p>Linux系统（<del>应该没有人不知道吧</del>）就是一个典型的本地文件系统，正如Linux经典哲学所说：<strong>一切皆文件</strong></p>
+<p>文件系统的管理单元就是<strong>文件</strong></p>
+<p>文件系统接口：文件系统很多种，比如说rootfs，sysfs，Ext2&#x2F;3&#x2F;4等等，但这些都遵循VFS（虚拟文件系统，是Linux内核的子系统之一）的统一抽象接口</p>
+<p>Linux文件系统的两大数据结构：<strong>Index Node</strong> &amp; <strong>Directory Entry</strong></p>
+<table>
+<thead>
+<tr>
+<th>Index Node</th>
+<th align="left">Directory Entry</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>记录文件元数据，如id、大小、权限、磁盘位置等</td>
+<td align="left">记录文件名、inode指针，层级关系（parent）等</td>
+</tr>
+<tr>
+<td>inode是一个文件的唯一标识，会被存储到磁盘上</td>
+<td align="left">dentry是内存结构，与inode的关系是N:1（hardlink的实现）</td>
+</tr>
+<tr>
+<td>inode的总数在 格式化文件系统时就固定了</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h3 id="key-value存储"><a href="#key-value存储" class="headerlink" title="key-value存储"></a>key-value存储</h3><blockquote>
+<p>世间一切皆<em><strong>key-value</strong></em>——key是你的身份证，value是你的内涵(￣︶￣*))</p>
+</blockquote>
+<p>常见使用方式：put(k,v)&amp;get(k)</p>
+<p>常见数据结构：LSM-Tree,某种程度上牺牲读性能，追求写入性能</p>
+<p>拳头产品：RocksDB</p>
+<p><img src="/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/3.png" alt="这是一张原理示意图"></p>
+<p>（左边是内存，右边是磁盘）</p>
+<p>左边内存里黄色的MemTable满了以后就会被刷到下面灰色的Immutable MemTable（不可变），之后过一段时间或者条件触发，它就会把这个东西的顺序写入到磁盘中的SSTable（有序的key-value集合）里面，当Level 0装满以后，数据就会被下刷到Level 1，再满就会被下刷到Level 2，最终如果要读取一个最新版本的key-value数据，它可能就需要合并多层的0，1，2或者更多层的里面的key-value数据来得到一个最新版本，它才能服务用户的get请求（<del>好复杂</del>）</p>
+<h3 id="分布式存储"><a href="#分布式存储" class="headerlink" title="分布式存储"></a>分布式存储</h3><h4 id="概览UwU"><a href="#概览UwU" class="headerlink" title="概览UwU"></a>概览UwU</h4><p>分布式存储 &#x3D; 在单机存储基础上实现了<em>分布式协议</em>，涉及大量网络交互</p>
+<ul>
+<li><h4 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h4></li>
+</ul>
+<p>HDFS堪称大数据时代的基石</p>
+<p>在HDFS诞生之前，市面的专用高级硬件很贵，同时数据存量很大，要求超高的吞吐，所以HDFS应运而生</p>
+<p>HDFS的特点正是解决了这几点：</p>
+<ul>
+<li>支持海量存储</li>
+<li>高容错性</li>
+<li>弱POSIX语义</li>
+<li>使用普遍x86服务器，性价比高</li>
+</ul>
+<blockquote>
+<p> 其实HDFS的原理可以理解为多个低配硬件协作存储，既保证了存储又降低了成本，性价比很高</p>
+</blockquote>
+<p>下面是一个HDFS架构图（具象一下基本原理）</p>
+<p><img src="/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/4.png" alt="111"></p>
+<p>Management Node就是分布式系统的管控面</p>
+<ul>
+<li><h4 id="Ceph"><a href="#Ceph" class="headerlink" title="Ceph"></a>Ceph</h4></li>
+</ul>
+<p> Ceph可是开源分布式存储系统里面的【万金油】</p>
+<ul>
+<li>而Ceph的核心特点便是：<br>一套系统支持对象接口、块接口、文件接口，但是一切皆对象</li>
+<li>数据写入采用主备复制模型</li>
+<li>数据分布模型（没错，又是平分，这次是数据）采用CRUSH算法（HASH+权重+随机抽签）</li>
+</ul>
+<p><img src="/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/5.png" alt="演示"></p>
+<hr>
+<h2 id="单机数据库"><a href="#单机数据库" class="headerlink" title="单机数据库"></a>单机数据库</h2><h3 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h3><p>单机数据库 &#x3D; 单个计算机节点上的数据库系统</p>
+<p>事务在单机内执行，也可以通过网络交互实现分布式事务</p>
+<h3 id="关系型数据库"><a href="#关系型数据库" class="headerlink" title="关系型数据库"></a>关系型数据库</h3><p>商业产品Pracle称王，开源产品 MySQL&amp;PostgreSQL</p>
+<h4 id="MySQL（小海豚logo）"><a href="#MySQL（小海豚logo）" class="headerlink" title="MySQL（小海豚logo）"></a>MySQL（小海豚logo）</h4><p>关系型数据库的通用组件：</p>
+<ul>
+<li>Query Engine——负责解析query，生成查询计划</li>
+<li>Txn Manager——负责事务并发管理</li>
+<li>Lock Manager——负责锁相关的策略</li>
+<li>Storage Engine——负责组织内存&#x2F;磁盘数据结构</li>
+<li>Replicatioin——负责主备同步</li>
+</ul>
+<h4 id="PostgreSQL（大象logo）"><a href="#PostgreSQL（大象logo）" class="headerlink" title="PostgreSQL（大象logo）"></a>PostgreSQL（大象logo）</h4><ul>
+<li>关键内存数据结构：B-Tree、B+-Tree、LRU List等</li>
+<li>关键磁盘数据结构：WriteAheadLog （RedoLog）、Page</li>
+</ul>
+<p><img src="/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/6.png" alt="演示"></p>
+<h3 id="非关系型数据库"><a href="#非关系型数据库" class="headerlink" title="非关系型数据库"></a>非关系型数据库</h3><blockquote>
+<p>MongoDB、Redis、Elasticsearch三足鼎立</p>
+</blockquote>
+<p>关系型数据库一般直接使用SQL交互，而非关系型数据库交互方式各不相同</p>
+<p>非关系型数据库的数据结构千奇百怪，没有关系约束后，schema相对灵活</p>
+<p>不管是否关系型数据库，大家都在尝试支持SQL（子集）和“事务”</p>
+<p><img src="/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/7.png" alt="演示"></p>
+<h3 id="Elasticsearch使用案例"><a href="#Elasticsearch使用案例" class="headerlink" title="Elasticsearch使用案例"></a>Elasticsearch使用案例</h3><p><img src="/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/8.png" alt="演示"></p>
+<p>跟RDBMS相比，ES天然能做【模糊搜索】，还能自动算出关联程度</p>
+<hr>
+<h2 id="从单机到分布式数据库"><a href="#从单机到分布式数据库" class="headerlink" title="从单机到分布式数据库"></a>从单机到分布式数据库</h2><p>单机数据库遇到了哪些问题 &amp; 挑战，需要我们引入分布式架构来解决？？</p>
+<p>答案是容量，弹性和性价比</p>
+<h3 id="解决容量问题"><a href="#解决容量问题" class="headerlink" title="解决容量问题"></a>解决容量问题</h3><p><img src="/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/9.png" alt="演示"></p>
+<h3 id="解决弹性问题"><a href="#解决弹性问题" class="headerlink" title="解决弹性问题"></a>解决弹性问题</h3><p><img src="/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/10.png" alt="演示"></p>
+<h3 id="其它要做的"><a href="#其它要做的" class="headerlink" title="其它要做的"></a>其它要做的</h3><p>除了解决容量以及弹性问题之外，还有一些问题等着我们去优化解决：</p>
+<ul>
+<li><p>单写vs多写</p>
+</li>
+<li><p>从磁盘弹性到内存弹性</p>
+</li>
+<li><p>分布式事务优化</p>
+<hr>
+</li>
+</ul>
+<h2 id="新技术演进"><a href="#新技术演进" class="headerlink" title="新技术演进"></a>新技术演进</h2><h3 id="概览-1"><a href="#概览-1" class="headerlink" title="概览"></a>概览</h3><table>
+<thead>
+<tr>
+<th align="center">新技术</th>
+<th align="center">例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">软件架构变更</td>
+<td align="center">Bypass OS kernel</td>
+</tr>
+<tr>
+<td align="center">AI增强</td>
+<td align="center">智能存储格式转换</td>
+</tr>
+<tr>
+<td align="center">新硬件革命</td>
+<td align="center">存储介质变更，计算单元变更，网络硬件变更</td>
+</tr>
+</tbody></table>
+<h3 id="SPDK"><a href="#SPDK" class="headerlink" title="SPDK"></a>SPDK</h3><blockquote>
+<p>Bypass OS kernel已经成为一种趋势</p>
+</blockquote>
+<p>SPDK（Storage Performance Development Kit）带来的三个优势：</p>
+<p>Kernel Space → User Space</p>
+<ul>
+<li>避免syscall带来的性能损耗，直接从用户态访问磁盘</li>
+</ul>
+<p>中断 → 轮询</p>
+<ul>
+<li>磁盘性能提高后，中断次数随之上升，不利于IO性能</li>
+<li>SPDK poller可以绑定特定的cpu核不断轮询，减少cs，提高性能</li>
+</ul>
+<p>无锁数据结构</p>
+<ul>
+<li>使用Lock-tree queue，降低并发时的同步开销</li>
+</ul>
+<h3 id="AI-Storage"><a href="#AI-Storage" class="headerlink" title="AI &amp; Storage"></a>AI &amp; Storage</h3><p>AI领域相关技术，如Machine Learning在很多领域：如推荐、风控、视觉领域证明了有效性</p>
+<p>在Storage领域，AI能给我们带来什么呢？</p>
+<p>逻辑上看到的数据组织格式有行存和列存（表里面有多个行和列），但是在经过AI决策之后，可以实现行列混存，更好适应动态性比较强的业务</p>
+<h3 id="高性能硬件"><a href="#高性能硬件" class="headerlink" title="高性能硬件"></a>高性能硬件</h3><p>1.RDMA网络</p>
+<ul>
+<li>传统的网络协议栈，需要基于多层网络协议处理数据包，存在用户态 &amp; 内核态的切换，足够通用但性能不是最佳</li>
+<li>RDMA是kernel bypass的流派，不经过传统的网络协议栈，可以把用户态虚拟内存映射给网卡，减少拷贝开销，减少cpu开销</li>
+</ul>
+<p>2.Persistent Memory</p>
+<p>在NVMe SSD和Main Memory间有一种全新的存储产品：Persistent Memory</p>
+<ul>
+<li>IO时延介于SSD和Memory之间，约百纳秒量级</li>
+<li>可以用作易失性内存（Memory mode），也可以用作持久化介质（app-direct）</li>
+</ul>
+<p>3.可编程交换机</p>
+<p>P4 Switch，配有编译器、计算单元、DRAM，可以在交换机层对网络包做计算逻辑，在数据库场景下，可以实现缓存一致性协议等</p>
+<p>4.CPU&#x2F;GPU&#x2F;DPU</p>
+<ul>
+<li><p>CPU：从multi-core走向many-core</p>
+</li>
+<li><p>GPU：强大的算力 &amp; 越来越大的量存空间</p>
+</li>
+<li><p>DPU：异构计算，减轻CPU的workload</p>
+<hr>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="存储系统"><a href="#存储系统" class="headerlink" title="存储系统"></a>存储系统</h3><ul>
+<li>块存储：存储软件栈里的底层系统，接口过于朴素</li>
+<li>文件存储：日常使用最广泛的存储系统，接口十分友好，实现五花八门</li>
+<li>对象存储： 共有云上的王牌产品，immutable语义加持</li>
+<li>key-value存储：形式最灵活，存在大量的开源&#x2F;黑盒产品</li>
+</ul>
+<h3 id="数据库系统"><a href="#数据库系统" class="headerlink" title="数据库系统"></a>数据库系统</h3><ul>
+<li>关系型数据库：基于关系和关系代数构建，一般支持事务和SQL访问，使用体验友好的存储产品</li>
+<li>非关系型数据库：结构灵活，访问方式灵活，针对不同场景有不同的针对性产品</li>
+</ul>
+<h3 id="分布式架构"><a href="#分布式架构" class="headerlink" title="分布式架构"></a>分布式架构</h3><ul>
+<li>数据分布策略：决定了数据怎么分布到集群里的多个物理节点，是否均匀，是否能做到高性能</li>
+<li>数据复制协议：影响IO路径的性能、机器故障场景的处理方式</li>
+<li>分布式事务算法：多个数据库节点协同保障一个事务的ACID特性的算法，通常基于2pc的思想设计</li>
+</ul>
+<blockquote>
+<p><em><strong>THE END~~</strong></em></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+        <div class="share-wrapper">
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com%2F2024%2F11%2F10%2F%25E5%25AD%2598%25E5%2582%25A8%25E4%25B8%258E%25E6%2595%25B0%25E6%258D%25AE%25E5%25BA%2593%2F" target="_blank" rel="noopener noreferrer" title="存储与数据库——1.认识存储与数据库">
+      <div class="share-icon icon icon-facebook">
+        
+      </div>
+    </a>
+  
+    <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fexample.com%2F2024%2F11%2F10%2F%25E5%25AD%2598%25E5%2582%25A8%25E4%25B8%258E%25E6%2595%25B0%25E6%258D%25AE%25E5%25BA%2593%2F&amp;text=%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E2%80%94%E2%80%941.%E8%AE%A4%E8%AF%86%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93&amp;via=http%3A%2F%2Fexample.com" target="_blank" rel="noopener noreferrer" title="存储与数据库——1.认识存储与数据库">
+      <div class="share-icon icon icon-twitter">
+        
+      </div>
+    </a>
+  
+    <a href="https://connect.qq.com/widget/shareqq/index.html?url=www.baidu.com&amp;title=%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E2%80%94%E2%80%941.%E8%AE%A4%E8%AF%86%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93&amp;desc=%E6%AD%A4%E6%96%87%E7%AB%A0%E4%BC%9A%E5%B8%A6%E4%BD%A0%E5%9F%BA%E6%9C%AC%E4%BA%86%E8%A7%A3%E5%AD%98%E5%82%A8%E5%92%8C%E6%95%B0%E6%8D%AE%E5%BA%93&amp;source=http%3A%2F%2Fexample.com" target="_blank" rel="noopener noreferrer" title="存储与数据库——1.认识存储与数据库">
+      <div class="share-icon icon icon-qq">
+        
+      </div>
+    </a>
+  
+    <a href="javascript:;"  title="存储与数据库——1.认识存储与数据库">
+      <div class="share-icon icon icon-weixin">
+        
+          <div id="share-weixin">
+            <div class="share-weixin-dom">
+              <div class="share-weixin-content">
+                <img id="share-weixin-banner"> 
+                <div id="share-weixin-title"></div>
+                <div id="share-weixin-desc"></div>
+              </div>
+              <div class="share-weixin-qrcode">
+                <div class="share-weixin-info">
+                  <div id="share-weixin-author"></div>
+                  <div id="share-weixin-theme">Powered By hexo-theme-reimu</div>
+                </div>
+                <img id="share-weixin-qr" >
+              </div>
+            </div>
+            <div class="share-weixin-canvas"></div>
+          </div>
+        
+      </div>
+    </a>
+  
+</div>
+      
+      
+        <a data-aos="zoom-in" href="/2024/11/10/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/#comments" class="article-comment-link">
+          <span class="post-comments-count valine-comment-count" data-xid="/2024/11/10/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="commentCount"></span>
+          留言
+        </a>
+      
+      
+      
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag" title="数据库">数据库</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+  <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+    
+      
+      <div class="article-nav-link-wrap left">
+        
+          
+          
+            <img data-src="/covers/cover10.webp" data-sizes="auto" alt="Go语言基本语法" class="lazyload">
+          
+        
+        <a href="/2024/11/25/Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" aria-label="前一篇: Go语言基本语法" title="前一篇: Go语言基本语法"></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">
+          
+            Go语言基本语法
+          
+        </h3>
+      </div>
+    
+    
+    
+    <div class="article-nav-link-wrap right">
+      
+        
+        
+          <img data-src="/covers/cover20.webp" data-sizes="auto" alt="计算机基础(1)——进制转换与表示，原码、反码、补码" class="lazyload">
+        
+      
+      <a href="/2024/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80(1)%E2%80%94%E2%80%94%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%A1%A8%E7%A4%BA%EF%BC%8C%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81/" aria-label="后一篇: 计算机基础(1)——进制转换与表示，原码、反码、补码"  title="后一篇: 计算机基础(1)——进制转换与表示，原码、反码、补码"></a>
+      <div class="article-nav-caption">后一篇</div>
+      <h3 class="article-nav-title">
+        
+          计算机基础(1)——进制转换与表示，原码、反码、补码
+        
+      </h3>
+    </div>
+    
+  </nav>
+
+
+</article>
+
+
+
+
+
+
+
+
+
+  <section id="comments" data-aos="fade-up">
+    <div class="comment-header">
+      
+      
+        
+      
+      <h2 class="comment-title">说些什么吧！</h2>
+      <div class="comment-selector">
+        <div class="comment-selector-wrap">
+            
+            <div class="selector-item" data-selector="valine">
+              <span>valine</span>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+    <div class="comment-content">
+      
+        <div class="comment valine-comment" data-aos="fade-up"
+          id="valine-comment">
+        </div>
+      
+    </div>
+  </section>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    
+    <div>
+      <span class="icon-copyright"></span>
+      
+      
+      
+        2020-2025
+      
+      <span class="footer-info-sep rotate"></span>
+      Luminous
+    </div>
+    
+      <div>
+        基于&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+    
+    
+      <div>
+        <span class="icon-brush"></span>
+        67k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        05:33
+      </div>
+    
+    
+    
+    
+    
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+    
+  </div>
+</footer>
+
+        
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+    
+      
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+  
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E2%80%94%E2%80%941-%E8%AE%A4%E8%AF%86%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.</span> <span class="toc-text">存储与数据库——1.认识存储与数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%98%E5%82%A8"><span class="toc-number">1.2.</span> <span class="toc-text">存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%8F%E5%85%B8%E6%A1%88%E4%BE%8B%E4%BB%8B%E7%BB%8D%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BA%A7%E7%94%9F"><span class="toc-number">1.2.1.</span> <span class="toc-text">经典案例介绍数据的产生</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%A7%88"><span class="toc-number">1.2.2.</span> <span class="toc-text">存储系统概览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%99%A8%E5%B1%82%E7%BA%A7%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.3.</span> <span class="toc-text">存储器层级结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%80%8E%E4%B9%88%E4%BB%8E%E5%BA%94%E7%94%A8%E5%88%B0%E5%AD%98%E5%82%A8%E4%BB%8B%E8%B4%A8"><span class="toc-number">1.2.4.</span> <span class="toc-text">数据怎么从应用到存储介质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RAID%E6%8A%80%E6%9C%AF"><span class="toc-number">1.2.5.</span> <span class="toc-text">RAID技术</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.3.</span> <span class="toc-text">数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%88%86%E7%B1%BB%E5%8F%8A%E7%89%B9%E7%82%B9"><span class="toc-number">1.3.1.</span> <span class="toc-text">数据库的分类及特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93-vs-%E7%BB%8F%E5%85%B8%E5%AD%98%E5%82%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">数据库 vs 经典存储</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%B5%81%E4%BA%A7%E5%93%81%E5%89%96%E6%9E%90"><span class="toc-number">1.4.</span> <span class="toc-text">主流产品剖析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E6%9C%BA%E5%AD%98%E5%82%A8"><span class="toc-number">1.4.1.</span> <span class="toc-text">单机存储</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E8%A7%88OwO"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">概览OwO</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#key-value%E5%AD%98%E5%82%A8"><span class="toc-number">1.4.2.</span> <span class="toc-text">key-value存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8"><span class="toc-number">1.4.3.</span> <span class="toc-text">分布式存储</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E8%A7%88UwU"><span class="toc-number">1.4.3.1.</span> <span class="toc-text">概览UwU</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HDFS"><span class="toc-number">1.4.3.2.</span> <span class="toc-text">HDFS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Ceph"><span class="toc-number">1.4.3.3.</span> <span class="toc-text">Ceph</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E6%9C%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.5.</span> <span class="toc-text">单机数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%A7%88"><span class="toc-number">1.5.1.</span> <span class="toc-text">概览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.5.2.</span> <span class="toc-text">关系型数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#MySQL%EF%BC%88%E5%B0%8F%E6%B5%B7%E8%B1%9Alogo%EF%BC%89"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">MySQL（小海豚logo）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PostgreSQL%EF%BC%88%E5%A4%A7%E8%B1%A1logo%EF%BC%89"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">PostgreSQL（大象logo）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.5.3.</span> <span class="toc-text">非关系型数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Elasticsearch%E4%BD%BF%E7%94%A8%E6%A1%88%E4%BE%8B"><span class="toc-number">1.5.4.</span> <span class="toc-text">Elasticsearch使用案例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E5%8D%95%E6%9C%BA%E5%88%B0%E5%88%86%E5%B8%83%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.6.</span> <span class="toc-text">从单机到分布式数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%AE%B9%E9%87%8F%E9%97%AE%E9%A2%98"><span class="toc-number">1.6.1.</span> <span class="toc-text">解决容量问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%BC%B9%E6%80%A7%E9%97%AE%E9%A2%98"><span class="toc-number">1.6.2.</span> <span class="toc-text">解决弹性问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E8%A6%81%E5%81%9A%E7%9A%84"><span class="toc-number">1.6.3.</span> <span class="toc-text">其它要做的</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E6%8A%80%E6%9C%AF%E6%BC%94%E8%BF%9B"><span class="toc-number">1.7.</span> <span class="toc-text">新技术演进</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%A7%88-1"><span class="toc-number">1.7.1.</span> <span class="toc-text">概览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SPDK"><span class="toc-number">1.7.2.</span> <span class="toc-text">SPDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AI-Storage"><span class="toc-number">1.7.3.</span> <span class="toc-text">AI &amp; Storage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E6%80%A7%E8%83%BD%E7%A1%AC%E4%BB%B6"><span class="toc-number">1.7.4.</span> <span class="toc-text">高性能硬件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.8.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.8.1.</span> <span class="toc-text">存储系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.8.2.</span> <span class="toc-text">数据库系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E6%9E%B6%E6%9E%84"><span class="toc-number">1.8.3.</span> <span class="toc-text">分布式架构</span></a></li></ol></li></ol></li></ol>
+  
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="Luminous" class="lazyload">
+  <div class="sidebar-author-name">Luminous</div>
+  <div class="sidebar-description">动漫宅&amp;技术宅</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div>
+    <div class="sidebar-state-number">12</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>分类</div>
+    <div class="sidebar-state-number">6</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>标签</div>
+    <div class="sidebar-state-number">8</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/Torchman005 itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
+    <div class="icon-bilibili sidebar-social-icon">
+      <a href=https://space.bilibili.com/356164519?spm_id_from=333.1007.0.0 itemprop="url" target="_blank" aria-label="bilibili" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
+    <div class="icon-stackoverflow sidebar-social-icon">
+      <a href=https://stackoverflow.com/users/30805314/luminous itemprop="url" target="_blank" aria-label="stackoverflow" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">首页</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">归档</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">关于</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">友链</div>
+      </div>
+    
+  
+</div>
+</div>
+      
+    
+  </div>
+  
+    
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+    
+  
+</nav>
+
+    </div>
+    
+      <div class="site-search">
+        <div class="reimu-popup popup">
+          <div class="reimu-search">
+            <div class="reimu-search-input-icon"></div>
+            <div id="reimu-search-input"></div>
+            <div class="popup-btn-close"></div>
+          </div>
+          <div class="reimu-results">
+            <div id="reimu-stats"></div>
+            <div id="reimu-hits"></div>
+            <div id="reimu-pagination" class="reimu-pagination"></div>
+          </div>
+          <img class="reimu-bg" src="/images/reimu.png"/>
+        </div>
+      </div>
+    
+    
+    
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+  
+<script src="/js/generator_search.js" defer></script>
+
+
+
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js" integrity="sha384-8LyaidD9GPxQQgLJO&#x2F;WRw&#x2F;O2h3BoNq&#x2F;ApI&#x2F;ecpvM6RsrCz2qP2ppBXUKihP4V&#x2F;2d" crossorigin="anonymous"></script>
+
+  <script>
+    window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'))
+  </script>
+
+
+
+  
+<script src="https://npm.webcache.cn/theme-shokax-pjax@0.0.3/dist/index.umd.js" integrity="sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE&#x2F;jMSCxD+jAPU55x&#x2F;jj3wlf" crossorigin="anonymous"></script>
+
+  
+<script src="/js/pjax.js"></script>
+
+
+
+
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+    
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "Luminous",
+          title: "存储与数据库——1.认识存储与数据库",
+          url: "http://example.com/2024/11/10/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/",
+          excerpt: "",
+          description: "此文章会带你基本了解存储和数据库",
+          stripContent: "存储与数据库——1.认识存储与数据库前言 本文是参考字节跳动存储与数据库课程而编写的笔记文   存储经典案例介绍数据的产生 有一天,李华要在QQ要在Hello Talk(一款可以与外国人交流锻炼语言能力的app)与老外交流.他注册的用户名为lihua,密码为123456,最后按下注册按钮,如此,数据便产生了,并且以极快的速度向app的后台服务器传输  我们可以把这个过程剖析过来看看：李华的注册操作产生了一条结构化的用户注册数据→数据产生→数据飞速传输到后端服务器→数据在数据库中存储持久化保存下来",
+          date: "Sun Nov 10 2024 15:54:03 GMT+0800",
+          updated: "Sat Oct 04 2025 17:34:41 GMT+0800",
+          cover: "/images/banner.webp",
+        };
+      </script>
+       
+    
+    
+      
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+        
+          
+<script src="https://npm.webcache.cn/@zumer/snapdom@1.9.9/dist/snapdom.min.js" integrity="sha384-taz9Bq0wPqLsuiB4ix4blTozt&#x2F;y84cjbMX5ZWkfPPjpVBme8M&#x2F;jWopanNBcdH&#x2F;qp" crossorigin="anonymous" defer data-pjax></script>
+
+          
+<script src="https://npm.webcache.cn/qrcode@1.5.1/build/qrcode.js" integrity="sha384-VT1EeewTCEXgndcPMQ0PzV+uVFYjxFIjmAA7s5gcMX9t4Dt5TD+OVQIn7NJWIXn7" crossorigin="anonymous" defer data-pjax></script>
+
+        
+      
+    
+    
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+      
+        
+
+
+
+
+
+
+
+
+<script data-pjax>
+  var loadScript = (src, integrity) => {
+    const script = document.createElement('script');
+    script.src = src;
+    if (integrity) script.integrity = integrity;
+    script.crossOrigin = 'anonymous';
+    return script;
+  };
+
+  var commentConfigKeys = ["valine"];
+  var commentConfig = {
+    
+    valine: {
+      enable: true,
+      load: () => {
+        const container = document.querySelector('.valine-comment');
+        if (!container) return;
+        container.style.display = 'block';
+
+        const script = loadScript(
+          'https://npm.webcache.cn/valine@1.5.1/dist/Valine.min.js',
+          'sha384-3ma91AExDeMAZ1rjTjaP8V2A2obQE+s5ltKRwYlwdpArz9xVbp0tF3b0VV2ACNPn'
+        );
+        script.onload = () => {
+          var GUEST_INFO = ['nick', 'mail', 'link'];
+          var guest_info = 'nick,mail,link'.split(',').filter((item) => {
+            return GUEST_INFO.indexOf(item) > -1
+          });
+          var recordIP = JSON.parse('true');
+          var highlight = JSON.parse('true');
+          var visitor = JSON.parse('false');
+          var serverURLs = undefined;
+
+          if (window.Valine) {
+            new Valine({
+              el: '.valine-comment',
+              appId: "FImzK7Zq31FxHsg4MvI8uSp4-gzGzoHsz",
+              appKey: "7yYoAw12c80oLHKYfmAOy5CU",
+              placeholder: "Just go go",
+              pageSize: '10',
+              avatar: 'mp',
+              lang: document.documentElement.lang || 'en',
+              recordIP: recordIP,
+              highlight: highlight,
+              visitor: visitor,
+              requiredFields: guest_info,
+              path: window.location.pathname,
+              serverURLs
+            });
+          }
+        };
+        document.head.appendChild(script);
+      }
+    },
+    
+    
+    
+    
+    
+  }
+  commentConfig.enable = commentConfigKeys.some(key => commentConfig[key].enable);
+
+  var defaultComment = '';
+  if (commentConfig.enable) {
+    // 1. 首先检查localStorage中是否有保存的评论类型
+    var savedCommentType = localStorage.getItem('commentType');
+    
+    // 2. 如果localStorage中有值且对应的评论系统可用，就使用它
+    if (savedCommentType) {
+      if (commentConfig[savedCommentType]?.enable) {
+        defaultComment = savedCommentType;
+      }
+    }
+    
+    // 3. 如果localStorage无效，检查配置的默认评论系统
+    if (!defaultComment) {
+      var configDefault = 'waline';
+      if (commentConfig[configDefault]?.enable) {
+        defaultComment = configDefault;
+      }
+    }
+    
+    // 4. 如果前两项都无效，按指定顺序找到第一个可用的评论系统
+    if (!defaultComment) {
+      defaultComment = commentConfigKeys.find(sys => commentConfig[sys].enable) || '';
+    }
+  }
+  function loadComments() {
+    if (!commentConfig.enable) return;
+    const loadedComments = {
+      valine: false,
+      waline: false,
+      twikoo: false,
+      gitalk: false,
+      giscus: false
+    };
+
+    // 隐藏所有评论容器
+    const hideAllComments = () => {
+      const commentContainers = document.querySelectorAll('.comment');
+      commentContainers.forEach(container => {
+        container.style.display = 'none';
+      });
+    };
+
+    // 按需加载评论系统
+    const loadCommentSystem = (type) => {
+      if (loadedComments[type]) {
+        // 如果已加载，只需显示对应容器
+        document.querySelector(`.${type}-comment`).style.display = 'block';
+        return;
+      }
+
+      // 根据类型加载对应的脚本
+      commentConfig[type]?.load();
+      loadedComments[type] = true;
+    };
+
+    // 评论组件选择器
+    const changeActiveCommentItems = (item) => {
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let i = 0; i < commentItems.length; i++) {
+        commentItems[i].classList.remove('active');
+      }
+      item.classList.add('active');
+
+      // 获取要加载的评论系统类型
+      const commentType = item.getAttribute('data-selector');
+
+      // 隐藏所有评论系统
+      hideAllComments();
+
+      // 加载选中的评论系统
+      loadCommentSystem(commentType);
+    };
+
+    const commentInit = () => {
+      // 评论组件选择器点击事件
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let item of commentItems) {
+        item.addEventListener('click', () => {
+          // 保存选择器状态
+          const commentType = item.getAttribute('data-selector');
+          window.localStorage.setItem('commentType', commentType);
+          // 切换选中状态
+          changeActiveCommentItems(item);
+        });
+      }
+
+      // 检查是否需要加载默认评论系统
+      if (defaultComment) {
+        const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
+        if (!defaultSelectorItem) return;
+        defaultSelectorItem.style.display = 'block';
+        defaultSelectorItem.classList.add('active');
+        loadCommentSystem(defaultComment);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', commentInit);
+    } else {
+      commentInit();
+    }
+  };
+  loadComments();
+</script>
+
+      
+    
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.10.0' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+
+
+
+  
+<script src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js" integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr+h5UfruuRL&#x2F;aORyw+5+HZoU6e" crossorigin="anonymous"></script>
+
+  
+
+
+
+  
+  <script>
+    if (window.matchMedia('(max-width: 959px)').matches) {
+      const meting = _$('meting-js');
+      if (meting) {
+        meting.setAttribute('fixed', 'true');
+        const aside = meting.parentNode?.parentNode;
+        if (aside?.tagName === 'ASIDE') {
+          meting.parentNode.removeChild(meting);
+          document.body.appendChild(meting);
+        }
+      }
+    }
+  </script>
+  
+<script src="https://npm.webcache.cn/meting@2.0.1/dist/Meting.min.js" integrity="sha384-ASVlpKF80A22OXTK3tfEjZm1EL6uFMKIC4p8+0maanw1S&#x2F;IyB+Y4JG+ZDU7GpKE8" crossorigin="anonymous"></script>
+
+
+
+
+    
+  </body>
+  </html>
+
