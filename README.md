@@ -2,6 +2,8 @@
 
 基于 Hexo 7 与 Reimu 主题的静态博客
 
+![image](https://github.com/Torchman005/Torchman005.github.io/blob/main/images/avatarHead.png)
+
 Reimu主题原作者站点传送门：[Reimu](https://d-sketon.github.io/)
 
 ## 项目概览
