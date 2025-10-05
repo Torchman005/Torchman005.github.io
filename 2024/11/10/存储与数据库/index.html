@@ -14,7 +14,7 @@
 
   
 
-  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)","en":"Copy successfully (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://example.com';window.REIMU_CONFIG.i18n_languages = ["en"];</script>
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)","en":"Copy successfully (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://luminous.blog';window.REIMU_CONFIG.i18n_languages = ["en"];</script>
   
   <title>
     存储与数据库——1.认识存储与数据库 |
@@ -38,26 +38,26 @@
     <meta name="description" content="此文章会带你基本了解存储和数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="存储与数据库——1.认识存储与数据库">
-<meta property="og:url" content="http://example.com/2024/11/10/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
+<meta property="og:url" content="http://luminous.blog/2024/11/10/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
 <meta property="og:site_name" content="Luminous&#39;s Tiny Home">
 <meta property="og:description" content="此文章会带你基本了解存储和数据库">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/1.png">
-<meta property="og:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/2.png">
-<meta property="og:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/3.png">
-<meta property="og:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/4.png">
-<meta property="og:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/5.png">
-<meta property="og:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/6.png">
-<meta property="og:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/7.png">
-<meta property="og:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/8.png">
-<meta property="og:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/9.png">
-<meta property="og:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/10.png">
+<meta property="og:image" content="http://luminous.blog/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/1.png">
+<meta property="og:image" content="http://luminous.blog/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/2.png">
+<meta property="og:image" content="http://luminous.blog/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/3.png">
+<meta property="og:image" content="http://luminous.blog/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/4.png">
+<meta property="og:image" content="http://luminous.blog/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/5.png">
+<meta property="og:image" content="http://luminous.blog/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/6.png">
+<meta property="og:image" content="http://luminous.blog/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/7.png">
+<meta property="og:image" content="http://luminous.blog/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/8.png">
+<meta property="og:image" content="http://luminous.blog/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/9.png">
+<meta property="og:image" content="http://luminous.blog/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/10.png">
 <meta property="article:published_time" content="2024-11-10T07:54:03.000Z">
 <meta property="article:modified_time" content="2025-10-04T09:34:41.877Z">
 <meta property="article:author" content="Luminous">
 <meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/1.png">
+<meta name="twitter:image" content="http://luminous.blog/assets/post_img/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/1.png">
   
   
     <link rel="alternate" href="/atom.xml" title="Luminous's Tiny Home" type="application/atom+xml">
@@ -754,19 +754,19 @@
       
         <div class="share-wrapper">
   
-    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com%2F2024%2F11%2F10%2F%25E5%25AD%2598%25E5%2582%25A8%25E4%25B8%258E%25E6%2595%25B0%25E6%258D%25AE%25E5%25BA%2593%2F" target="_blank" rel="noopener noreferrer" title="存储与数据库——1.认识存储与数据库">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fluminous.blog%2F2024%2F11%2F10%2F%25E5%25AD%2598%25E5%2582%25A8%25E4%25B8%258E%25E6%2595%25B0%25E6%258D%25AE%25E5%25BA%2593%2F" target="_blank" rel="noopener noreferrer" title="存储与数据库——1.认识存储与数据库">
       <div class="share-icon icon icon-facebook">
         
       </div>
     </a>
   
-    <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fexample.com%2F2024%2F11%2F10%2F%25E5%25AD%2598%25E5%2582%25A8%25E4%25B8%258E%25E6%2595%25B0%25E6%258D%25AE%25E5%25BA%2593%2F&amp;text=%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E2%80%94%E2%80%941.%E8%AE%A4%E8%AF%86%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93&amp;via=http%3A%2F%2Fexample.com" target="_blank" rel="noopener noreferrer" title="存储与数据库——1.认识存储与数据库">
+    <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fluminous.blog%2F2024%2F11%2F10%2F%25E5%25AD%2598%25E5%2582%25A8%25E4%25B8%258E%25E6%2595%25B0%25E6%258D%25AE%25E5%25BA%2593%2F&amp;text=%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E2%80%94%E2%80%941.%E8%AE%A4%E8%AF%86%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93&amp;via=http%3A%2F%2Fluminous.blog" target="_blank" rel="noopener noreferrer" title="存储与数据库——1.认识存储与数据库">
       <div class="share-icon icon icon-twitter">
         
       </div>
     </a>
   
-    <a href="https://connect.qq.com/widget/shareqq/index.html?url=www.baidu.com&amp;title=%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E2%80%94%E2%80%941.%E8%AE%A4%E8%AF%86%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93&amp;desc=%E6%AD%A4%E6%96%87%E7%AB%A0%E4%BC%9A%E5%B8%A6%E4%BD%A0%E5%9F%BA%E6%9C%AC%E4%BA%86%E8%A7%A3%E5%AD%98%E5%82%A8%E5%92%8C%E6%95%B0%E6%8D%AE%E5%BA%93&amp;source=http%3A%2F%2Fexample.com" target="_blank" rel="noopener noreferrer" title="存储与数据库——1.认识存储与数据库">
+    <a href="https://connect.qq.com/widget/shareqq/index.html?url=www.baidu.com&amp;title=%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E2%80%94%E2%80%941.%E8%AE%A4%E8%AF%86%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93&amp;desc=%E6%AD%A4%E6%96%87%E7%AB%A0%E4%BC%9A%E5%B8%A6%E4%BD%A0%E5%9F%BA%E6%9C%AC%E4%BA%86%E8%A7%A3%E5%AD%98%E5%82%A8%E5%92%8C%E6%95%B0%E6%8D%AE%E5%BA%93&amp;source=http%3A%2F%2Fluminous.blog" target="_blank" rel="noopener noreferrer" title="存储与数据库——1.认识存储与数据库">
       <div class="share-icon icon icon-qq">
         
       </div>
@@ -822,7 +822,7 @@
         
           
           
-            <img data-src="/covers/cover20.webp" data-sizes="auto" alt="Go语言基本语法" class="lazyload">
+            <img data-src="/covers/cover7.webp" data-sizes="auto" alt="Go语言基本语法" class="lazyload">
           
         
         <a href="/2024/11/25/Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" aria-label="前一篇: Go语言基本语法" title="前一篇: Go语言基本语法"></a>
@@ -840,7 +840,7 @@
       
         
         
-          <img data-src="/covers/cover7.webp" data-sizes="auto" alt="计算机基础(1)——进制转换与表示，原码、反码、补码" class="lazyload">
+          <img data-src="/covers/cover11.webp" data-sizes="auto" alt="计算机基础(1)——进制转换与表示，原码、反码、补码" class="lazyload">
         
       
       <a href="/2024/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80(1)%E2%80%94%E2%80%94%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%A1%A8%E7%A4%BA%EF%BC%8C%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81/" aria-label="后一篇: 计算机基础(1)——进制转换与表示，原码、反码、补码"  title="后一篇: 计算机基础(1)——进制转换与表示，原码、反码、补码"></a>
@@ -1151,7 +1151,7 @@
         window.REIMU_POST = {
           author: "Luminous",
           title: "存储与数据库——1.认识存储与数据库",
-          url: "http://example.com/2024/11/10/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/",
+          url: "http://luminous.blog/2024/11/10/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/",
           excerpt: "",
           description: "此文章会带你基本了解存储和数据库",
           stripContent: "存储与数据库——1.认识存储与数据库前言 本文是参考字节跳动存储与数据库课程而编写的笔记文   存储经典案例介绍数据的产生 有一天,李华要在QQ要在Hello Talk(一款可以与外国人交流锻炼语言能力的app)与老外交流.他注册的用户名为lihua,密码为123456,最后按下注册按钮,如此,数据便产生了,并且以极快的速度向app的后台服务器传输  我们可以把这个过程剖析过来看看：李华的注册操作产生了一条结构化的用户注册数据→数据产生→数据飞速传输到后端服务器→数据在数据库中存储持久化保存下来",

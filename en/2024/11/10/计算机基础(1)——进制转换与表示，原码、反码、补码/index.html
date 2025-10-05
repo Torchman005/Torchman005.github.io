@@ -14,7 +14,7 @@
 
   
 
-  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)","en":"Copy successfully (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://example.com';window.REIMU_CONFIG.i18n_languages = ["en"];</script>
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)","en":"Copy successfully (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://luminous.blog';window.REIMU_CONFIG.i18n_languages = ["en"];</script>
   
   <title>
     计算机基础(1)——进制转换与表示，原码、反码、补码 |
@@ -38,7 +38,7 @@
     <meta name="description" content="🥧本文汇总二、八、十、十六进制转换以及原码、反码、补码的概念">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机基础(1)——进制转换与表示，原码、反码、补码">
-<meta property="og:url" content="http://example.com/en/2024/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80(1)%E2%80%94%E2%80%94%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%A1%A8%E7%A4%BA%EF%BC%8C%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81/index.html">
+<meta property="og:url" content="http://luminous.blog/en/2024/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80(1)%E2%80%94%E2%80%94%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%A1%A8%E7%A4%BA%EF%BC%8C%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81/index.html">
 <meta property="og:site_name" content="Luminous&#39;s Tiny Home">
 <meta property="og:description" content="🥧本文汇总二、八、十、十六进制转换以及原码、反码、补码的概念">
 <meta property="og:locale" content="en_US">
@@ -556,19 +556,19 @@
       
         <div class="share-wrapper">
   
-    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fexample.com%2F2024%2F11%2F10%2F%25E8%25AE%25A1%25E7%25AE%2597%25E6%259C%25BA%25E5%259F%25BA%25E7%25A1%2580(1)%25E2%2580%2594%25E2%2580%2594%25E8%25BF%259B%25E5%2588%25B6%25E8%25BD%25AC%25E6%258D%25A2%25E4%25B8%258E%25E8%25A1%25A8%25E7%25A4%25BA%25EF%25BC%258C%25E5%258E%259F%25E7%25A0%2581%25E3%2580%2581%25E5%258F%258D%25E7%25A0%2581%25E3%2580%2581%25E8%25A1%25A5%25E7%25A0%2581%2F" target="_blank" rel="noopener noreferrer" title="计算机基础(1)——进制转换与表示，原码、反码、补码">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fluminous.blog%2F2024%2F11%2F10%2F%25E8%25AE%25A1%25E7%25AE%2597%25E6%259C%25BA%25E5%259F%25BA%25E7%25A1%2580(1)%25E2%2580%2594%25E2%2580%2594%25E8%25BF%259B%25E5%2588%25B6%25E8%25BD%25AC%25E6%258D%25A2%25E4%25B8%258E%25E8%25A1%25A8%25E7%25A4%25BA%25EF%25BC%258C%25E5%258E%259F%25E7%25A0%2581%25E3%2580%2581%25E5%258F%258D%25E7%25A0%2581%25E3%2580%2581%25E8%25A1%25A5%25E7%25A0%2581%2F" target="_blank" rel="noopener noreferrer" title="计算机基础(1)——进制转换与表示，原码、反码、补码">
       <div class="share-icon icon icon-facebook">
         
       </div>
     </a>
   
-    <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fexample.com%2F2024%2F11%2F10%2F%25E8%25AE%25A1%25E7%25AE%2597%25E6%259C%25BA%25E5%259F%25BA%25E7%25A1%2580(1)%25E2%2580%2594%25E2%2580%2594%25E8%25BF%259B%25E5%2588%25B6%25E8%25BD%25AC%25E6%258D%25A2%25E4%25B8%258E%25E8%25A1%25A8%25E7%25A4%25BA%25EF%25BC%258C%25E5%258E%259F%25E7%25A0%2581%25E3%2580%2581%25E5%258F%258D%25E7%25A0%2581%25E3%2580%2581%25E8%25A1%25A5%25E7%25A0%2581%2F&amp;text=%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80(1)%E2%80%94%E2%80%94%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%A1%A8%E7%A4%BA%EF%BC%8C%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81&amp;via=http%3A%2F%2Fexample.com" target="_blank" rel="noopener noreferrer" title="计算机基础(1)——进制转换与表示，原码、反码、补码">
+    <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fluminous.blog%2F2024%2F11%2F10%2F%25E8%25AE%25A1%25E7%25AE%2597%25E6%259C%25BA%25E5%259F%25BA%25E7%25A1%2580(1)%25E2%2580%2594%25E2%2580%2594%25E8%25BF%259B%25E5%2588%25B6%25E8%25BD%25AC%25E6%258D%25A2%25E4%25B8%258E%25E8%25A1%25A8%25E7%25A4%25BA%25EF%25BC%258C%25E5%258E%259F%25E7%25A0%2581%25E3%2580%2581%25E5%258F%258D%25E7%25A0%2581%25E3%2580%2581%25E8%25A1%25A5%25E7%25A0%2581%2F&amp;text=%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80(1)%E2%80%94%E2%80%94%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%A1%A8%E7%A4%BA%EF%BC%8C%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81&amp;via=http%3A%2F%2Fluminous.blog" target="_blank" rel="noopener noreferrer" title="计算机基础(1)——进制转换与表示，原码、反码、补码">
       <div class="share-icon icon icon-twitter">
         
       </div>
     </a>
   
-    <a href="https://connect.qq.com/widget/shareqq/index.html?url=www.baidu.com&amp;title=%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80(1)%E2%80%94%E2%80%94%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%A1%A8%E7%A4%BA%EF%BC%8C%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81&amp;desc=%F0%9F%A5%A7%E6%9C%AC%E6%96%87%E6%B1%87%E6%80%BB%E4%BA%8C%E3%80%81%E5%85%AB%E3%80%81%E5%8D%81%E3%80%81%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%BB%A5%E5%8F%8A%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81%E7%9A%84%E6%A6%82%E5%BF%B5&amp;source=http%3A%2F%2Fexample.com" target="_blank" rel="noopener noreferrer" title="计算机基础(1)——进制转换与表示，原码、反码、补码">
+    <a href="https://connect.qq.com/widget/shareqq/index.html?url=www.baidu.com&amp;title=%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80(1)%E2%80%94%E2%80%94%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%A1%A8%E7%A4%BA%EF%BC%8C%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81&amp;desc=%F0%9F%A5%A7%E6%9C%AC%E6%96%87%E6%B1%87%E6%80%BB%E4%BA%8C%E3%80%81%E5%85%AB%E3%80%81%E5%8D%81%E3%80%81%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%BB%A5%E5%8F%8A%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81%E7%9A%84%E6%A6%82%E5%BF%B5&amp;source=http%3A%2F%2Fluminous.blog" target="_blank" rel="noopener noreferrer" title="计算机基础(1)——进制转换与表示，原码、反码、补码">
       <div class="share-icon icon icon-qq">
         
       </div>
@@ -624,7 +624,7 @@
         
           
           
-            <img data-src="/covers/cover2.webp" data-sizes="auto" alt="存储与数据库——1.认识存储与数据库" class="lazyload">
+            <img data-src="/covers/cover22.webp" data-sizes="auto" alt="存储与数据库——1.认识存储与数据库" class="lazyload">
           
         
         <a href="/en/2024/11/10/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/" aria-label="Prev: 存储与数据库——1.认识存储与数据库" title="Prev: 存储与数据库——1.认识存储与数据库"></a>
@@ -642,7 +642,7 @@
       
         
         
-          <img data-src="/covers/cover3.webp" data-sizes="auto" alt="从0 → ∞ 成为 Minecraft JE腐竹" class="lazyload">
+          <img data-src="/covers/cover11.webp" data-sizes="auto" alt="从0 → ∞ 成为 Minecraft JE腐竹" class="lazyload">
         
       
       <a href="/en/2024/10/13/%E4%BB%8E0%20%E2%86%92%20%E2%88%9E%20%E6%88%90%E4%B8%BA%20Minecraft%20JE%E8%85%90%E7%AB%B9/" aria-label="Next: 从0 → ∞ 成为 Minecraft JE腐竹"  title="Next: 从0 → ∞ 成为 Minecraft JE腐竹"></a>
@@ -953,7 +953,7 @@
         window.REIMU_POST = {
           author: "Luminous",
           title: "计算机基础(1)——进制转换与表示，原码、反码、补码",
-          url: "http://example.com/2024/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80(1)%E2%80%94%E2%80%94%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%A1%A8%E7%A4%BA%EF%BC%8C%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81/",
+          url: "http://luminous.blog/2024/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80(1)%E2%80%94%E2%80%94%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E4%B8%8E%E8%A1%A8%E7%A4%BA%EF%BC%8C%E5%8E%9F%E7%A0%81%E3%80%81%E5%8F%8D%E7%A0%81%E3%80%81%E8%A1%A5%E7%A0%81/",
           excerpt: "",
           description: "🥧本文汇总二、八、十、十六进制转换以及原码、反码、补码的概念",
           stripContent: "计算机基础(1)——进制转换与表示，原码、反码、补码进制转换不同进制用来表示数字的符号   进制 符号    二进制 0  1   八进制 0  1  2  3  4  5  6  7   十进制 0  1  2  3  4  5  6  7  8  9  10   十六进制 0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F   几进制就是满几进一 其中十六进制的 A ~ F 在十进制代表的是10 ~ 15，因为要用一个符号代替，所以用了字母 任意进制",
