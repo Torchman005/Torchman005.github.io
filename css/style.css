@@ -420,6 +420,9 @@ body [data-aos='zoom-in'] {
 .icon-twitter:before {
   content: "\e62a";
 }
+.icon-youtube:before {
+  content: "\e62d";
+}
 .icon-bilibili:before {
   content: "\e603";
 }
@@ -3181,6 +3184,9 @@ pre .javascript .function {
 }
 [data-theme="dark"] .icon-github {
   color: #bc88ff;
+}
+.icon-youtube {
+  color: #f00;
 }
 .icon-bilibili {
   color: #00a1d6;

@@ -42,13 +42,13 @@
 <meta property="og:site_name" content="Luminous&#39; Tiny Home">
 <meta property="og:description" content="docker究竟该如何正确使用？">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="d:\itJinYu_toolkit\web\blog\source\assets\post_img\docker\1.png">
+<meta property="og:image" content="http://luminous.blog/images/posts/docker/1.png">
 <meta property="article:published_time" content="2025-08-15T07:54:03.000Z">
-<meta property="article:modified_time" content="2025-10-05T12:38:10.538Z">
+<meta property="article:modified_time" content="2025-10-05T13:46:11.158Z">
 <meta property="article:author" content="Luminous">
 <meta property="article:tag" content="开发工具">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="d:\itJinYu_toolkit\web\blog\source\assets\post_img\docker\1.png">
+<meta name="twitter:image" content="http://luminous.blog/images/posts/docker/1.png">
   
   
     <link rel="alternate" href="/atom.xml" title="Luminous' Tiny Home" type="application/atom+xml">
@@ -345,6 +345,10 @@
       <a href=https://github.com/Torchman005 itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
     </div>
   
+    <div class="icon-youtube sidebar-social-icon">
+      <a href=https://www.youtube.com/@LuminousZJ itemprop="url" target="_blank" aria-label="youtube" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
     <div class="icon-bilibili sidebar-social-icon">
       <a href=https://space.bilibili.com/356164519?spm_id_from=333.1007.0.0 itemprop="url" target="_blank" aria-label="bilibili" rel="noopener nofollow noreferrer"></a>
     </div>
@@ -489,7 +493,7 @@
 <p><strong>-d:分离模式</strong>，表示让容器在后台执行，容器启动以后日志不会打印到控制台</p>
 <p><strong>-p:端口映射</strong></p>
 <p>每一个容器都运行在一个独立的虚拟环境中，容器内的网络与宿主机的网络是隔离的，所以默认情况下不能从宿主机中访问到容器内的网络，比如我启动mysql容器但并没有做端口映射，在navicat中输入localhost，端口写3306并不能连接到mysql数据库。但如果我加上-p 3306:3306参数，表明将宿主机的3306端口(冒号前)转发到容器内的3306端口(冒号后)，这样访问宿主机3306端口也就相当于访问容器3306端口</p>
-<p><img src="D:\itJinYu_toolkit\web\blog\source\assets\post_img\docker\1.png" alt="示意图"></p>
+<p><img src="http://luminous.blog/images/posts/docker/1.png" alt="示意图"></p>
 <p><strong>-v:挂载卷</strong></p>
 <p>-v 宿主机目录:容器内目录(<strong>绑定挂载</strong>)，表示把宿主机与容器的文件目录进行绑定，两个文件夹修改是会互相影响的，这种目录被称为挂载卷。挂载卷可以实现数据的持久化保存，当我们删除容器以后，容器内的数据会一并删除，而当把容器内的数据挂载到宿主机上再删除容器，容器的数据还保存在宿主机上没被删除。</p>
 <blockquote>
@@ -673,7 +677,7 @@
         
           
           
-            <img data-src="/covers/cover23.webp" data-sizes="auto" alt="关于Nacos注册中心" class="lazyload">
+            <img data-src="/covers/cover21.webp" data-sizes="auto" alt="关于Nacos注册中心" class="lazyload">
           
         
         <a href="/en/2025/10/05/%E5%85%B3%E4%BA%8ENacos%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/" aria-label="Prev: 关于Nacos注册中心" title="Prev: 关于Nacos注册中心"></a>
@@ -691,7 +695,7 @@
       
         
         
-          <img data-src="/covers/cover1.webp" data-sizes="auto" alt="学习笔记——从零开始速通汇编(二)：汇编程序语句结构&amp;寻址方式" class="lazyload">
+          <img data-src="/covers/cover23.webp" data-sizes="auto" alt="学习笔记——从零开始速通汇编(二)：汇编程序语句结构&amp;寻址方式" class="lazyload">
         
       
       <a href="/en/2025/06/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%80%9F%E9%80%9A%E6%B1%87%E7%BC%96(%E4%B8%80)%EF%BC%9A%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F%E8%AF%AD%E5%8F%A5%E7%BB%93%E6%9E%84&%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F/" aria-label="Next: 学习笔记——从零开始速通汇编(二)：汇编程序语句结构&amp;寻址方式"  title="Next: 学习笔记——从零开始速通汇编(二)：汇编程序语句结构&amp;寻址方式"></a>
@@ -770,10 +774,10 @@
     
       <div>
         <span class="icon-brush"></span>
-        67k
+        67.6k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        05:34
+        05:37
       </div>
     
     
@@ -833,6 +837,10 @@
   
     <div class="icon-github sidebar-social-icon">
       <a href=https://github.com/Torchman005 itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
+    <div class="icon-youtube sidebar-social-icon">
+      <a href=https://www.youtube.com/@LuminousZJ itemprop="url" target="_blank" aria-label="youtube" rel="noopener nofollow noreferrer"></a>
     </div>
   
     <div class="icon-bilibili sidebar-social-icon">
@@ -1007,7 +1015,7 @@
           description: "docker究竟该如何正确使用？",
           stripContent: "docker基本使用与进阶一.前言在笔者大一学习开发知识的这段时间里，数据库、服务器等基本都是用docker进行容器化部署。随着需要部署的服务越来越多，笔者越发体会到docker的便利与强大（味大，无需多盐），感觉学习docker是很有必要的，于是特撰写此博文来对没有使用过docker的小白进行扫盲，并对docker的功能及命令进行汇总以便后期回顾，让小白快速掌握docker的基本用法。 二.docker简介 摘自百度百科：Docker是一组平台即服务（PaaS）的产品。它基于操作系统层级的虚拟",
           date: "Fri Aug 15 2025 15:54:03 GMT+0800",
-          updated: "Sun Oct 05 2025 20:38:10 GMT+0800",
+          updated: "Sun Oct 05 2025 21:46:11 GMT+0800",
           cover: "/images/banner.webp",
         };
       </script>

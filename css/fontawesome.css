@@ -146,6 +146,9 @@
 .icon-twitter:before {
   content: "\e61b";
 }
+.icon-youtube:before {
+  content: "\f167";
+}
 .icon-bilibili:before {
   content: "\e3d9";
 }
