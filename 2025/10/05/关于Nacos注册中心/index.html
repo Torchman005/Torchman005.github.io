@@ -35,17 +35,24 @@
 
   
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="关于Nacos注册中心在如今，微服务架构因其灵活性、高可用性等优点，已是后端开发者面向中大厂不可或缺的一项技术。而微服务架构管理服务器集群的核心，便是注册中心。Nacos作为阿里巴巴开发的一种功能强大的注册中心，其收到了广大开发者的推崇。这篇文章，将会从Nacos的背景、原理以及使用配置等方面进行讲述，展现Nacos的强大之处 背景在前言中笔者也提到过，Nacos是一个阿里巴巴开发的产品，现在也是">
+<meta property="og:type" content="article">
 <meta property="og:title" content="关于Nacos注册中心">
 <meta property="og:url" content="http://luminous.blog/2025/10/05/%E5%85%B3%E4%BA%8ENacos%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/index.html">
 <meta property="og:site_name" content="Luminous&#39; Tiny Home">
+<meta property="og:description" content="关于Nacos注册中心在如今，微服务架构因其灵活性、高可用性等优点，已是后端开发者面向中大厂不可或缺的一项技术。而微服务架构管理服务器集群的核心，便是注册中心。Nacos作为阿里巴巴开发的一种功能强大的注册中心，其收到了广大开发者的推崇。这篇文章，将会从Nacos的背景、原理以及使用配置等方面进行讲述，展现Nacos的强大之处 背景在前言中笔者也提到过，Nacos是一个阿里巴巴开发的产品，现在也是">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://luminous.blog/images/covers/nacos.png">
+<meta property="og:image" content="http://luminous.blog/images/covers/github-mark.png">
+<meta property="og:image" content="http://luminous.blog/images/posts/nacos/1.png">
+<meta property="og:image" content="http://luminous.blog/images/posts/nacos/2.png">
 <meta property="article:published_time" content="2025-10-05T12:24:55.000Z">
 <meta property="article:modified_time" content="2025-10-05T14:20:32.000Z">
 <meta property="article:author" content="Luminous">
 <meta property="article:tag" content="微服务架构">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://luminous.blog/images/covers/nacos.png">
   
   
     <link rel="alternate" href="/atom.xml" title="Luminous' Tiny Home" type="application/atom+xml">
@@ -319,7 +326,7 @@
           <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
   
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8ENacos%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83"><span class="toc-number">1.</span> <span class="toc-text">关于Nacos注册中心</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">安装</span></a></li></ol></li></ol>
   
 </div>
 </div>
@@ -453,7 +460,44 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
       
-        
+        <h1 id="关于Nacos注册中心"><a href="#关于Nacos注册中心" class="headerlink" title="关于Nacos注册中心"></a>关于Nacos注册中心</h1><p>在如今，微服务架构因其灵活性、高可用性等优点，已是后端开发者面向中大厂不可或缺的一项技术。而微服务架构管理服务器集群的核心，便是注册中心。Nacos作为阿里巴巴开发的一种功能强大的注册中心，其收到了广大开发者的推崇。这篇文章，将会从Nacos的背景、原理以及使用配置等方面进行讲述，展现Nacos的强大之处</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在前言中笔者也提到过，Nacos是一个阿里巴巴开发的产品，现在也是成为SpringCloud的一个组件(附<a target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud">SpringCloud官网链接</a>，感兴趣的可以去看一下)</p>
+<p>在Nacos出现之前，其实已经有一款注册中心产品名叫Eureka，相比于Eureka，Nacos的功能更加丰富(比如分布式配置)，能够满足更多的开发需要</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>Nacos官网：</p>
+<div class="post-link-card-wrap">
+    <div class="post-link-card">
+      <a href="https://nacos.io/" title="Nacos" rel="noopener nofollow noreferrer" target="_blank"></a>
+      <div class="post-link-card-cover-wrap"><img src="http://luminous.blog/images/covers/nacos.png" class="no-lightbox" title="Nacos" alt="Nacos"/></div>
+      <div class="post-link-card-item-wrap">
+        <div class="post-link-card-title">Nacos</div>
+        <div class="post-link-card-excerpt"><span class="icon-link"></span>https://nacos.io/</div>
+      </div>
+    </div>
+  </div>
+
+<p>Nacos GitHub仓库：</p>
+<div class="post-link-card-wrap">
+    <div class="post-link-card">
+      <a href="https://github.com/alibaba/nacos" title="Nacos-GitHub" rel="noopener nofollow noreferrer" target="_blank"></a>
+      <div class="post-link-card-cover-wrap"><img src="http://luminous.blog/images/covers/github-mark.png" class="no-lightbox" title="Nacos-GitHub" alt="Nacos-GitHub"/></div>
+      <div class="post-link-card-item-wrap">
+        <div class="post-link-card-title">Nacos-GitHub</div>
+        <div class="post-link-card-excerpt"><span class="icon-link"></span>https://github.com/alibaba/nacos</div>
+      </div>
+    </div>
+  </div>
+
+<p>下载完压缩包后解压，解压后文件目录如下：</p>
+<p><img src="http://luminous.blog/images/posts/nacos/1.png" alt="目录"></p>
+<p>其中nacos的配置文件在.\conf\application.properties</p>
+<p><img src="http://luminous.blog/images/posts/nacos/2.png" alt="配置文件"></p>
+<p>配置文件中可以修改端口等一些设置，可以自行配置</p>
+<p>nacos服务启动脚本位于 .\bin\startup.cmd，windows双击即可启动，或者使用cmd命令：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startup.<span class="built_in">cmd</span> -m standalone</span><br></pre></td></tr></table></figure>
+
+<p>-m代表模式(model)</p>
+<p>standalone表示单击启动模式</p>
+
       
     </div>
     <footer class="article-footer">
@@ -536,7 +580,7 @@
       
         
         
-          <img data-src="/covers/cover3.webp" data-sizes="auto" alt="docker基本使用与进阶" class="lazyload">
+          <img data-src="/covers/cover22.webp" data-sizes="auto" alt="docker基本使用与进阶" class="lazyload">
         
       
       <a href="/2025/08/15/docker%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E8%BF%9B%E9%98%B6/" aria-label="后一篇: docker基本使用与进阶"  title="后一篇: docker基本使用与进阶"></a>
@@ -615,10 +659,10 @@
     
       <div>
         <span class="icon-brush"></span>
-        67.6k
+        68.3k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        05:37
+        05:40
       </div>
     
     
@@ -651,7 +695,7 @@
         <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
   
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8ENacos%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83"><span class="toc-number">1.</span> <span class="toc-text">关于Nacos注册中心</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">安装</span></a></li></ol></li></ol>
   
 </div>
 </div>
@@ -854,7 +898,7 @@
           url: "http://luminous.blog/2025/10/05/%E5%85%B3%E4%BA%8ENacos%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/",
           excerpt: "",
           description: "",
-          stripContent: "",
+          stripContent: "关于Nacos注册中心在如今，微服务架构因其灵活性、高可用性等优点，已是后端开发者面向中大厂不可或缺的一项技术。而微服务架构管理服务器集群的核心，便是注册中心。Nacos作为阿里巴巴开发的一种功能强大的注册中心，其收到了广大开发者的推崇。这篇文章，将会从Nacos的背景、原理以及使用配置等方面进行讲述，展现Nacos的强大之处 背景在前言中笔者也提到过，Nacos是一个阿里巴巴开发的产品，现在也是成为SpringCloud的一个组件(附SpringCloud官网链接，感兴趣的可以去看一下) 在N",
           date: "Sun Oct 05 2025 20:24:55 GMT+0800",
           updated: "Sun Oct 05 2025 22:20:32 GMT+0800",
           cover: "/images/banner.webp",
