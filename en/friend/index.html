@@ -61,6 +61,12 @@
   <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
   
   
+    
+      
+<link rel="stylesheet" href="https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.css" integrity="sha384-vltfZtesCdl6NYVcFVcjEaIi5RpNvZe9t7fXvq8twVtcoy+Ub9QgnxUYJmwOhYCK" crossorigin="anonymous">
+
+    
+  
   
   
     
@@ -458,11 +464,11 @@
             </li>
           
             <li>
-              <a href="/en/2025/06/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%80%9F%E9%80%9A%E6%B1%87%E7%BC%96(%E4%B8%80)%EF%BC%9A%E9%80%9A%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8/" title="学习笔记——从零开始速通汇编(一)：寄存器">学习笔记——从零开始速通汇编(一)：寄存器</a>
+              <a href="/en/2025/06/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%80%9F%E9%80%9A%E6%B1%87%E7%BC%96(%E5%9B%9B)%EF%BC%9A%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E4%B8%8E%E7%A7%BB%E4%BD%8D%E6%93%8D%E4%BD%9C%E7%B1%BB%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" title="学习笔记——从零开始速通汇编(四)：逻辑运算与移位操作类指令系统">学习笔记——从零开始速通汇编(四)：逻辑运算与移位操作类指令系统</a>
             </li>
           
             <li>
-              <a href="/en/2025/06/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%80%9F%E9%80%9A%E6%B1%87%E7%BC%96(%E4%B8%89)%EF%BC%9A%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E7%B1%BB&%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%B1%BB%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" title="学习笔记——从零开始速通汇编(三)：数据传送类&amp;算术运算类指令系统">学习笔记——从零开始速通汇编(三)：数据传送类&amp;算术运算类指令系统</a>
+              <a href="/en/2025/06/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%80%9F%E9%80%9A%E6%B1%87%E7%BC%96(%E4%B8%80)%EF%BC%9A%E9%80%9A%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8/" title="学习笔记——从零开始速通汇编(一)：寄存器">学习笔记——从零开始速通汇编(一)：寄存器</a>
             </li>
           
         </ul>
@@ -579,14 +585,19 @@
 </div>
       
       
+      
         <a data-aos="zoom-in" href="/en/friend/index.html#comments" class="article-comment-link">
-          <span class="post-comments-count valine-comment-count" data-xid="/en/friend/" itemprop="commentCount"></span>
+          <span class="post-comments-count waline-comment-count" data-path="/en/friend/index.html" itemprop="commentCount"></span>
           Comments
         </a>
       
       
       
       
+        <span data-aos="zoom-in" class="article-visitor-link">
+          <span class="waline-pageview-count" data-path="/en/friend/">0</span>
+          <em class="post-meta-item-text">Readings</em>
+        </span>
       
       
 
@@ -614,8 +625,8 @@
       <div class="comment-selector">
         <div class="comment-selector-wrap">
             
-            <div class="selector-item" data-selector="valine">
-              <span>valine</span>
+            <div class="selector-item" data-selector="waline">
+              <span>waline</span>
             </div>
             
         </div>
@@ -623,8 +634,8 @@
     </div>
     <div class="comment-content">
       
-        <div class="comment valine-comment" data-aos="fade-up"
-          id="valine-comment">
+        <div class="comment waline-comment" data-aos="fade-up"
+          id="waline-comment">
         </div>
       
     </div>
@@ -947,52 +958,40 @@
     return script;
   };
 
-  var commentConfigKeys = ["valine"];
+  var commentConfigKeys = ["waline"];
   var commentConfig = {
     
-    valine: {
+    
+    waline: {
       enable: true,
-      load: () => {
-        const container = document.querySelector('.valine-comment');
+      load: async () => {
+        const container = document.querySelector('.waline-comment');
         if (!container) return;
         container.style.display = 'block';
 
-        const script = loadScript(
-          'https://npm.webcache.cn/valine@1.5.1/dist/Valine.min.js',
-          'sha384-3ma91AExDeMAZ1rjTjaP8V2A2obQE+s5ltKRwYlwdpArz9xVbp0tF3b0VV2ACNPn'
-        );
-        script.onload = () => {
-          var GUEST_INFO = ['nick', 'mail', 'link'];
-          var guest_info = 'nick,mail,link'.split(',').filter((item) => {
-            return GUEST_INFO.indexOf(item) > -1
-          });
-          var recordIP = JSON.parse('true');
-          var highlight = JSON.parse('true');
-          var visitor = JSON.parse('false');
-          var serverURLs = undefined;
+        let walineInit;
+        const walineCdn = 'https://npm.webcache.cn/@waline/client@2.15.8/dist/waline.mjs';
+        const walineIntegrity = 'sha384-9sbqJjrfGjbkI6/PI4nU/MvBfEmkkPC4YK9I4zBeMIf1CVCZdCMH/KinBEAZII/5';
 
-          if (window.Valine) {
-            new Valine({
-              el: '.valine-comment',
-              appId: "FImzK7Zq31FxHsg4MvI8uSp4-gzGzoHsz",
-              appKey: "7yYoAw12c80oLHKYfmAOy5CU",
-              placeholder: "Just go go",
-              pageSize: '10',
-              avatar: 'mp',
-              lang: document.documentElement.lang || 'en',
-              recordIP: recordIP,
-              highlight: highlight,
-              visitor: visitor,
-              requiredFields: guest_info,
-              path: window.location.pathname,
-              serverURLs
-            });
-          }
-        };
-        document.head.appendChild(script);
+        const module = await safeImport(walineCdn, walineIntegrity);
+        walineInit = module.init;
+
+        window.walineInstance = walineInit({
+          el: '.waline-comment',
+          serverURL: 'https://blog-waline-9f6kfq9ge-torchmans-projects.vercel.app/',
+          lang: document.documentElement.lang || 'en',
+          locale: {},
+          emoji: ["https://unpkg.com/@waline/emojis@1.2.0/weibo","https://unpkg.com/@waline/emojis@1.2.0/alus","https://unpkg.com/@waline/emojis@1.2.0/bilibili","https://unpkg.com/@waline/emojis@1.2.0/qq","https://unpkg.com/@waline/emojis@1.2.0/tieba","https://unpkg.com/@waline/emojis@1.2.0/tw-emoji"],
+          meta: ["nick","mail","link"],
+          requiredMeta: ["nick","mail"],
+          wordLimit: JSON.parse('0'),
+          comment: true,
+          pageSize: JSON.parse('10'),
+          dark: 'html[data-theme="dark"]',
+          pageview: JSON.parse('true'),
+        });
       }
     },
-    
     
     
     
