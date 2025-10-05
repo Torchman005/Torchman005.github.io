@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Luminous&#39;s Tiny Home</title>
+  <title>Luminous&#39; Tiny Home</title>
   <icon>http://luminous.blog/icon.png</icon>
   <subtitle>分享技术、动漫的个人小空间</subtitle>
   <link href="http://luminous.blog/atom.xml" rel="self"/>
