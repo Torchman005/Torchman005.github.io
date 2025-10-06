@@ -37,9 +37,9 @@
     <category term="微服务" scheme="http://luminous.blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="java" scheme="http://luminous.blog/tags/java/"/>
-    
     <category term="微服务架构" scheme="http://luminous.blog/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84/"/>
+    
+    <category term="java" scheme="http://luminous.blog/tags/java/"/>
     
   </entry>
   
