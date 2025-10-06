@@ -40,9 +40,9 @@
   --highlight-aqua: #479d9d;
   --highlight-blue: #1973b8;
   --highlight-purple: #7135ac;
-  --cursor-default: url("../images/cursor/Normal.png"), auto;
-  --cursor-pointer: url("../images/cursor/Link.png"), pointer;
-  --cursor-text: url("../images/cursor/Text.png"), text;
+  --cursor-default: url("../images/cursor/reimu-cursor-default.png"), auto;
+  --cursor-pointer: url("../images/cursor/reimu-cursor-pointer.png"), pointer;
+  --cursor-text: url("../images/cursor/reimu-cursor-text.png"), text;
   --footer-icon: url("../images/taichi.png");
   --sponsor-icon: url("../images/taichi.png");
   --top-icon: url("../images/taichi.png");
