@@ -40,9 +40,9 @@
   --highlight-aqua: #479d9d;
   --highlight-blue: #1973b8;
   --highlight-purple: #7135ac;
-  --cursor-default: url("../images/cursor/reimu-cursor-default.png"), auto;
-  --cursor-pointer: url("../images/cursor/reimu-cursor-pointer.png"), pointer;
-  --cursor-text: url("../images/cursor/reimu-cursor-text.png"), text;
+  --cursor-default: url("../images/cursor/Normal.png"), auto;
+  --cursor-pointer: url("../images/cursor/Link.png"), pointer;
+  --cursor-text: url("../images/cursor/Text.png"), text;
   --footer-icon: url("../images/taichi.png");
   --sponsor-icon: url("../images/taichi.png");
   --top-icon: url("../images/taichi.png");
@@ -282,195 +282,207 @@ body [data-aos='zoom-in'] {
 .wl-content dt {
   font-weight: bold;
 }
-@font-face {
-  font-family: "iconfont";
-  src: url("//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2") format('woff2');
-  font-display: swap;
+:root {
+  --font-icon: "Font Awesome 7 Free", "Font Awesome 7 Brands", "Font Awesome 6 Free", "Font Awesome 6 Brands", "Font Awesome 5 Free", "Font Awesome 5 Brands", "FontAwesome";
 }
 .archives-tag-list-link:before {
-  font-family: "iconfont";
-  content: "\e622";
+  font-family: var(--font-icon);
+  content: "\f02b";
 }
 .archives-category-list-link:before {
-  font-family: "iconfont";
-  content: "\e604";
+  font-family: var(--font-icon);
+  content: "\f02e";
 }
 .article-date-link:before {
-  font-family: "iconfont";
-  content: "\e606";
+  font-family: var(--font-icon);
+  content: "\f017";
+  font-weight: 900;
 }
 .article-category-link:before {
-  font-family: "iconfont";
-  content: "\e604";
+  font-family: var(--font-icon);
+  content: "\f02e";
+  font-weight: 900;
 }
 .article-tag-list-link:before {
-  font-family: "iconfont";
-  content: "\e622";
+  font-family: var(--font-icon);
+  content: "\f02b";
 }
 .article-comment-link:before {
-  font-family: "iconfont";
-  content: "\e608";
+  font-family: var(--font-icon);
+  content: "\f075";
+  font-weight: 900;
 }
 .icon-copyright:before {
-  font-family: "iconfont";
-  content: "\e60a";
+  font-family: var(--font-icon);
+  content: "\f1f9";
 }
 .icon-brush:before {
-  font-family: "iconfont";
-  content: "\e618";
+  font-family: var(--font-icon);
+  content: "\f1fc";
 }
 .icon-coffee:before {
-  font-family: "iconfont";
-  content: "\e607";
+  font-family: var(--font-icon);
+  content: "\f0f4";
 }
 .icon-eye:before {
-  font-family: "iconfont";
-  content: "\e60f";
+  font-family: var(--font-icon);
+  content: "\f06e";
+  font-weight: 900;
 }
 .icon-user:before {
-  font-family: "iconfont";
-  content: "\e628";
+  font-family: var(--font-icon);
+  content: "\f007";
+  font-weight: 900;
 }
 #main-nav-toggle:before {
-  font-family: "iconfont";
-  content: "\e62f";
+  font-family: var(--font-icon);
+  content: "\f0c9";
 }
 #nav-rss-link:before {
-  font-family: "iconfont";
-  content: "\e61f";
+  font-family: var(--font-icon);
+  content: "\f09e";
 }
 #nav-search-btn:before {
-  font-family: "iconfont";
-  content: "\e631";
+  font-family: var(--font-icon);
+  content: "\f002";
 }
 #nav-sun-btn:before {
-  font-family: "iconfont";
-  content: "\e621";
+  font-family: var(--font-icon);
+  content: "\f185";
+  font-weight: 900;
 }
 #nav-moon-btn:before {
-  font-family: "iconfont";
-  content: "\e617";
+  font-family: var(--font-icon);
+  content: "\f186";
+  font-weight: 900;
 }
 #nav-circle-half-stroke-btn:before {
-  font-family: "iconfont";
-  content: "\e641";
+  font-family: var(--font-icon);
+  content: "\f042";
 }
 #nav-language-btn:before {
-  font-family: "iconfont";
-  content: "\e642";
+  font-family: var(--font-icon);
+  content: "\f1ab";
 }
 .icon-copy:before {
-  font-family: "iconfont";
-  content: "\e60c";
+  font-family: var(--font-icon);
+  content: "\f0c5";
 }
 .icon-chevron-down:before {
-  font-family: "iconfont";
-  content: "\e609";
+  font-family: var(--font-icon);
+  content: "\f078";
 }
 .icon-check:before {
-  font-family: "iconfont";
-  content: "\e636";
+  font-family: var(--font-icon);
+  content: "\f00c";
 }
 .icon-times:before {
-  font-family: "iconfont";
-  content: "\e637";
+  font-family: var(--font-icon);
+  content: "\f00d";
 }
 .icon-calendar:before {
-  font-family: "iconfont";
-  content: "\e605";
+  font-family: var(--font-icon);
+  content: "\f133";
+  font-weight: 900;
 }
 .icon-calendar-plus:before {
-  font-family: "iconfont";
-  content: "\e648";
+  font-family: var(--font-icon);
+  content: "\f271";
+  font-weight: 900;
 }
 .icon-pencil:before {
-  font-family: "iconfont";
-  content: "\e61b";
+  font-family: var(--font-icon);
+  content: "\f5ad";
 }
 .icon-clock:before {
-  font-family: "iconfont";
-  content: "\e613";
+  font-family: var(--font-icon);
+  content: "\f252";
+  font-weight: 900;
 }
 .post-sticky:before {
-  font-family: "iconfont";
-  content: "\e627";
+  font-family: var(--font-icon);
+  content: "\f164";
+  font-weight: 900;
 }
 .popup-btn-close:before {
-  font-family: "iconfont";
-  content: "\e626";
+  font-family: var(--font-icon);
+  content: "\f057";
+  font-weight: 900;
 }
 .reimu-search-input-icon:before {
-  font-family: "iconfont";
-  content: "\e631";
+  font-family: var(--font-icon);
+  content: "\f002";
 }
 .ais-pagination--item__previous a:before {
-  font-family: "iconfont";
-  content: "\e601";
+  font-family: var(--font-icon);
+  content: "\f104";
 }
 .ais-pagination--item__next a:before {
-  font-family: "iconfont";
-  content: "\e630";
+  font-family: var(--font-icon);
+  content: "\f105";
 }
 .icon-github:before {
-  content: "\e619";
+  content: "\f09b";
 }
 .icon-facebook:before {
-  content: "\e60e";
+  content: "\f09a";
 }
 .icon-twitter:before {
-  content: "\e62a";
+  content: "\e61b";
 }
 .icon-youtube:before {
-  content: "\e62d";
+  content: "\f167";
 }
 .icon-bilibili:before {
-  content: "\e603";
+  content: "\e3d9";
 }
 .icon-stackoverflow:before {
-  content: "\e620";
+  content: "\f16c";
 }
 .sidebar-toc-btn:before {
-  font-family: "iconfont";
-  content: "\e633";
+  font-family: var(--font-icon);
+  content: "\f0e8";
 }
 .sidebar-common-btn:before {
-  font-family: "iconfont";
-  content: "\e632";
+  font-family: var(--font-icon);
+  content: "\e3af";
 }
 .sidebar-top .arrow-up:before {
-  font-family: "iconfont";
-  content: "\e634";
+  font-family: var(--font-icon);
+  content: "\f062";
 }
 .icon-link:before {
-  font-family: "iconfont";
-  content: "\e639";
+  font-family: var(--font-icon);
+  content: "\f0c1";
 }
 .icon-globe:before {
-  font-family: "iconfont";
-  content: "\e638";
+  font-family: var(--font-icon);
+  content: "\f0ac";
+  font-weight: 900;
 }
 .icon-creative-commons:before {
-  font-family: "iconfont";
-  content: "\e63a";
+  font-family: var(--font-icon);
+  content: "\f25e";
 }
 .icon-taichi:before {
-  font-family: "iconfont";
-  content: "\e62b";
+  font-family: var(--font-icon);
+  content: "\f6ad";
 }
 .icon-weixin:before {
-  font-family: "iconfont";
-  content: "\e640";
+  font-family: var(--font-icon);
+  content: "\f1d7";
 }
 .icon-qq:before {
-  font-family: "iconfont";
-  content: "\e63e";
+  font-family: var(--font-icon);
+  content: "\f1d6";
 }
 .icon-image:before {
-  font-family: "iconfont";
-  content: "\e63f";
+  font-family: var(--font-icon);
+  content: "\f03e";
+  font-weight: 900;
 }
 .icon {
-  font-family: "iconfont";
+  font-family: var(--font-icon);
 }
 html,
 body,
@@ -1063,7 +1075,7 @@ button {
 .article-entry h4:before,
 .article-entry h5:before,
 .article-entry h6:before {
-  font-family: "iconfont";
+  font-family: var(--font-icon);
   font-weight: normal;
 }
 .article-entry h1 a,
@@ -1072,7 +1084,7 @@ button {
 .article-entry h4 a,
 .article-entry h5 a,
 .article-entry h6 a {
-  font-family: "iconfont";
+  font-family: var(--font-icon);
   opacity: 0.5;
   margin-right: 4px;
   transition: 0.3s;
@@ -1107,8 +1119,8 @@ button {
 .article-entry .post-link-card a,
 .article-entry .friend-item-wrap a,
 .article-entry a.article-gallery-item)::after {
-  font-family: "iconfont";
-  content: "\e639";
+  font-family: var(--font-icon);
+  content: "\f0c1";
   font-size: 0.5em;
   margin: 0 0.5em;
   vertical-align: middle;
@@ -1120,8 +1132,8 @@ button {
 .article-entry h4 a,
 .article-entry h5 a,
 .article-entry h6 a) code::after {
-  font-family: "iconfont";
-  content: "\e639";
+  font-family: var(--font-icon);
+  content: "\f0c1";
   font-size: 0.5em;
   margin: 0 0.5em;
   vertical-align: middle;
@@ -2687,7 +2699,7 @@ pre .javascript .function {
   height: 48px;
   background-color: var(--color-wrap);
   border-radius: 50%;
-  font-family: "iconfont";
+  font-family: font-icon;
   box-shadow: var(--shadow-card-hover);
   z-index: 999;
 }
@@ -3171,7 +3183,7 @@ pre .javascript .function {
   align-items: center;
   width: 36px;
   height: 25px;
-  font: 20px "iconfont";
+  font: 20px var(--font-icon);
   transition: transform 0.2s;
   will-change: transform;
 }

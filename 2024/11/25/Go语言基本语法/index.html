@@ -14,7 +14,7 @@
 
   
 
-  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)","en":"Copy successfully (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://luminous.blog';window.REIMU_CONFIG.i18n_languages = ["en"];</script>
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)","en":"Copy successfully (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://luminous.blog';window.REIMU_CONFIG.i18n_languages = ["en"];</script>
   
   <title>
     Go语言基本语法 |
@@ -27,7 +27,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
   
   
-    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.0.0/css/regular.min.css" integrity="sha384-PmxfVzUpFiyj5ZqzN3upnv7G4x9YAlMQar&#x2F;qCBLEYSaWr&#x2F;DUQ9f&#x2F;8ITCT0aN7byC" crossorigin="anonymous">
+<link rel="stylesheet" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.0.0/css/solid.min.css" integrity="sha384-HMy1VqP4zke4zzaS+hmFgbW3QXDYD+qtueW3unq30MTgdOnarIgANSya8s5qKRh5" crossorigin="anonymous">
+
+    <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.0.0/css/brands.min.css" integrity="sha384-IzIkDWjFFaoFz413tu2x9R4cMiJ3EGuxOf&#x2F;7Q8X0LFhqz9fU5zT2go7BgenYdKgN" crossorigin="anonymous">
+<link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.0.0/css/v5-font-face.min.css" integrity="sha384-691KBFHHuy2pnDTyR36VZ90jy7dXWBfC5D1nzy5rkDlqQQ&#x2F;vRs&#x2F;nmmK++LBfAp&#x2F;C" crossorigin="anonymous">
+<link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.0.0/css/v4-font-face.min.css" integrity="sha384-7c0mz5ReY2wCEDKNNEdrKdbtS&#x2F;6+5dEgNsz&#x2F;dU3e9m7xldAdTFwNTAuX+s4sJHJl" crossorigin="anonymous">
   
   
     
@@ -143,36 +149,44 @@
     
       
         <span class="main-nav-link-wrap">
-          <div class="main-nav-icon icon rotate">
+          <div class="main-nav-icon icon ">
              
-              &#xe62b;
+              
+                &#xf015;
+              
              
           </div>
           <a class="main-nav-link" href="/">首页</a>
         </span>
       
         <span class="main-nav-link-wrap">
-          <div class="main-nav-icon icon rotate">
+          <div class="main-nav-icon icon ">
              
-              &#xe62b;
+              
+                &#xf187;
+              
              
           </div>
           <a class="main-nav-link" href="/archives">归档</a>
         </span>
       
         <span class="main-nav-link-wrap">
-          <div class="main-nav-icon icon rotate">
+          <div class="main-nav-icon icon ">
              
-              &#xe62b;
+              
+                &#xf007;
+              
              
           </div>
           <a class="main-nav-link" href="/about">关于</a>
         </span>
       
         <span class="main-nav-link-wrap">
-          <div class="main-nav-icon icon rotate">
+          <div class="main-nav-icon icon ">
              
-              &#xe62b;
+              
+                &#xf2b5;
+              
              
           </div>
           <a class="main-nav-link" href="/friend">友链</a>
@@ -367,9 +381,11 @@
     
       <div class="sidebar-menu-link-wrap">
         <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
-        <div class="sidebar-menu-icon icon rotate">
+        <div class="sidebar-menu-icon icon ">
           
-            &#xe62b;
+            
+              &#xf015;
+            
           
         </div>
         <div class="sidebar-menu-link">首页</div>
@@ -377,9 +393,11 @@
     
       <div class="sidebar-menu-link-wrap">
         <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
-        <div class="sidebar-menu-icon icon rotate">
+        <div class="sidebar-menu-icon icon ">
           
-            &#xe62b;
+            
+              &#xf187;
+            
           
         </div>
         <div class="sidebar-menu-link">归档</div>
@@ -387,9 +405,11 @@
     
       <div class="sidebar-menu-link-wrap">
         <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
-        <div class="sidebar-menu-icon icon rotate">
+        <div class="sidebar-menu-icon icon ">
           
-            &#xe62b;
+            
+              &#xf007;
+            
           
         </div>
         <div class="sidebar-menu-link">关于</div>
@@ -397,9 +417,11 @@
     
       <div class="sidebar-menu-link-wrap">
         <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
-        <div class="sidebar-menu-icon icon rotate">
+        <div class="sidebar-menu-icon icon ">
           
-            &#xe62b;
+            
+              &#xf2b5;
+            
           
         </div>
         <div class="sidebar-menu-link">友链</div>
@@ -616,7 +638,7 @@
         
           
           
-            <img data-src="/covers/cover22.webp" data-sizes="auto" alt="Minecraft模组编写教程" class="lazyload">
+            <img data-src="/covers/cover7.webp" data-sizes="auto" alt="Minecraft模组编写教程" class="lazyload">
           
         
         <a href="/2025/01/13/Minecraft%E6%A8%A1%E7%BB%84%E7%BC%96%E5%86%99%E6%95%99%E7%A8%8B/" aria-label="前一篇: Minecraft模组编写教程" title="前一篇: Minecraft模组编写教程"></a>
@@ -634,7 +656,7 @@
       
         
         
-          <img data-src="/covers/cover15.webp" data-sizes="auto" alt="存储与数据库——1.认识存储与数据库" class="lazyload">
+          <img data-src="/covers/cover7.webp" data-sizes="auto" alt="存储与数据库——1.认识存储与数据库" class="lazyload">
         
       
       <a href="/2024/11/10/%E5%AD%98%E5%82%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%BA%93/" aria-label="后一篇: 存储与数据库——1.认识存储与数据库"  title="后一篇: 存储与数据库——1.认识存储与数据库"></a>
@@ -796,9 +818,11 @@
     
       <div class="sidebar-menu-link-wrap">
         <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
-        <div class="sidebar-menu-icon icon rotate">
+        <div class="sidebar-menu-icon icon ">
           
-            &#xe62b;
+            
+              &#xf015;
+            
           
         </div>
         <div class="sidebar-menu-link">首页</div>
@@ -806,9 +830,11 @@
     
       <div class="sidebar-menu-link-wrap">
         <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
-        <div class="sidebar-menu-icon icon rotate">
+        <div class="sidebar-menu-icon icon ">
           
-            &#xe62b;
+            
+              &#xf187;
+            
           
         </div>
         <div class="sidebar-menu-link">归档</div>
@@ -816,9 +842,11 @@
     
       <div class="sidebar-menu-link-wrap">
         <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
-        <div class="sidebar-menu-icon icon rotate">
+        <div class="sidebar-menu-icon icon ">
           
-            &#xe62b;
+            
+              &#xf007;
+            
           
         </div>
         <div class="sidebar-menu-link">关于</div>
@@ -826,9 +854,11 @@
     
       <div class="sidebar-menu-link-wrap">
         <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
-        <div class="sidebar-menu-icon icon rotate">
+        <div class="sidebar-menu-icon icon ">
           
-            &#xe62b;
+            
+              &#xf2b5;
+            
           
         </div>
         <div class="sidebar-menu-link">友链</div>

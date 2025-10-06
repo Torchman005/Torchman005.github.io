@@ -14,7 +14,7 @@
 
   
 
-  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)","en":"Copy successfully (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://luminous.blog';window.REIMU_CONFIG.i18n_languages = ["en"];</script>
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)","en":"Copy successfully (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://luminous.blog';window.REIMU_CONFIG.i18n_languages = ["en"];</script>
   
   <title>
     关于Nacos注册中心 |
@@ -27,7 +27,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
   
   
-    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.0.0/css/regular.min.css" integrity="sha384-PmxfVzUpFiyj5ZqzN3upnv7G4x9YAlMQar&#x2F;qCBLEYSaWr&#x2F;DUQ9f&#x2F;8ITCT0aN7byC" crossorigin="anonymous">
+<link rel="stylesheet" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.0.0/css/solid.min.css" integrity="sha384-HMy1VqP4zke4zzaS+hmFgbW3QXDYD+qtueW3unq30MTgdOnarIgANSya8s5qKRh5" crossorigin="anonymous">
+
+    <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.0.0/css/brands.min.css" integrity="sha384-IzIkDWjFFaoFz413tu2x9R4cMiJ3EGuxOf&#x2F;7Q8X0LFhqz9fU5zT2go7BgenYdKgN" crossorigin="anonymous">
+<link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.0.0/css/v5-font-face.min.css" integrity="sha384-691KBFHHuy2pnDTyR36VZ90jy7dXWBfC5D1nzy5rkDlqQQ&#x2F;vRs&#x2F;nmmK++LBfAp&#x2F;C" crossorigin="anonymous">
+<link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.0.0/css/v4-font-face.min.css" integrity="sha384-7c0mz5ReY2wCEDKNNEdrKdbtS&#x2F;6+5dEgNsz&#x2F;dU3e9m7xldAdTFwNTAuX+s4sJHJl" crossorigin="anonymous">
   
   
     
@@ -149,36 +155,44 @@
     
       
         <span class="main-nav-link-wrap">
-          <div class="main-nav-icon icon rotate">
+          <div class="main-nav-icon icon ">
              
-              &#xe62b;
+              
+                &#xf015;
+              
              
           </div>
           <a class="main-nav-link" href="/en/">Home</a>
         </span>
       
         <span class="main-nav-link-wrap">
-          <div class="main-nav-icon icon rotate">
+          <div class="main-nav-icon icon ">
              
-              &#xe62b;
+              
+                &#xf187;
+              
              
           </div>
           <a class="main-nav-link" href="/en/archives">Archives</a>
         </span>
       
         <span class="main-nav-link-wrap">
-          <div class="main-nav-icon icon rotate">
+          <div class="main-nav-icon icon ">
              
-              &#xe62b;
+              
+                &#xf007;
+              
              
           </div>
           <a class="main-nav-link" href="/en/about">About</a>
         </span>
       
         <span class="main-nav-link-wrap">
-          <div class="main-nav-icon icon rotate">
+          <div class="main-nav-icon icon ">
              
-              &#xe62b;
+              
+                &#xf2b5;
+              
              
           </div>
           <a class="main-nav-link" href="/en/friend">Friend</a>
@@ -373,9 +387,11 @@
     
       <div class="sidebar-menu-link-wrap">
         <a class="sidebar-menu-link-dummy" href="/en/" aria-label="Home"></a>
-        <div class="sidebar-menu-icon icon rotate">
+        <div class="sidebar-menu-icon icon ">
           
-            &#xe62b;
+            
+              &#xf015;
+            
           
         </div>
         <div class="sidebar-menu-link">Home</div>
@@ -383,9 +399,11 @@
     
       <div class="sidebar-menu-link-wrap">
         <a class="sidebar-menu-link-dummy" href="/en/archives" aria-label="Archives"></a>
-        <div class="sidebar-menu-icon icon rotate">
+        <div class="sidebar-menu-icon icon ">
           
-            &#xe62b;
+            
+              &#xf187;
+            
           
         </div>
         <div class="sidebar-menu-link">Archives</div>
@@ -393,9 +411,11 @@
     
       <div class="sidebar-menu-link-wrap">
         <a class="sidebar-menu-link-dummy" href="/en/about" aria-label="About"></a>
-        <div class="sidebar-menu-icon icon rotate">
+        <div class="sidebar-menu-icon icon ">
           
-            &#xe62b;
+            
+              &#xf007;
+            
           
         </div>
         <div class="sidebar-menu-link">About</div>
@@ -403,9 +423,11 @@
     
       <div class="sidebar-menu-link-wrap">
         <a class="sidebar-menu-link-dummy" href="/en/friend" aria-label="Friend"></a>
-        <div class="sidebar-menu-icon icon rotate">
+        <div class="sidebar-menu-icon icon ">
           
-            &#xe62b;
+            
+              &#xf2b5;
+            
           
         </div>
         <div class="sidebar-menu-link">Friend</div>
@@ -580,7 +602,7 @@
       
         
         
-          <img data-src="/covers/cover20.webp" data-sizes="auto" alt="docker基本使用与进阶" class="lazyload">
+          <img data-src="/covers/cover10.webp" data-sizes="auto" alt="docker基本使用与进阶" class="lazyload">
         
       
       <a href="/en/2025/08/15/docker%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E8%BF%9B%E9%98%B6/" aria-label="Next: docker基本使用与进阶"  title="Next: docker基本使用与进阶"></a>
@@ -742,9 +764,11 @@
     
       <div class="sidebar-menu-link-wrap">
         <a class="sidebar-menu-link-dummy" href="/en/" aria-label="Home"></a>
-        <div class="sidebar-menu-icon icon rotate">
+        <div class="sidebar-menu-icon icon ">
           
-            &#xe62b;
+            
+              &#xf015;
+            
           
         </div>
         <div class="sidebar-menu-link">Home</div>
@@ -752,9 +776,11 @@
     
       <div class="sidebar-menu-link-wrap">
         <a class="sidebar-menu-link-dummy" href="/en/archives" aria-label="Archives"></a>
-        <div class="sidebar-menu-icon icon rotate">
+        <div class="sidebar-menu-icon icon ">
           
-            &#xe62b;
+            
+              &#xf187;
+            
           
         </div>
         <div class="sidebar-menu-link">Archives</div>
@@ -762,9 +788,11 @@
     
       <div class="sidebar-menu-link-wrap">
         <a class="sidebar-menu-link-dummy" href="/en/about" aria-label="About"></a>
-        <div class="sidebar-menu-icon icon rotate">
+        <div class="sidebar-menu-icon icon ">
           
-            &#xe62b;
+            
+              &#xf007;
+            
           
         </div>
         <div class="sidebar-menu-link">About</div>
@@ -772,9 +800,11 @@
     
       <div class="sidebar-menu-link-wrap">
         <a class="sidebar-menu-link-dummy" href="/en/friend" aria-label="Friend"></a>
-        <div class="sidebar-menu-icon icon rotate">
+        <div class="sidebar-menu-icon icon ">
           
-            &#xe62b;
+            
+              &#xf2b5;
+            
           
         </div>
         <div class="sidebar-menu-link">Friend</div>
