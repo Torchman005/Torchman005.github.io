@@ -41,17 +41,22 @@
 
   
   
-    <meta name="description" content="关于Nacos注册中心在如今，微服务架构因其灵活性、高可用性等优点，已是后端开发者面向中大厂不可或缺的一项技术。而微服务架构管理服务器集群的核心，便是注册中心。Nacos作为阿里巴巴开发的一种功能强大的注册中心，其收到了广大开发者的推崇。这篇文章，将会从Nacos的背景、原理以及使用配置等方面进行讲述，展现Nacos的强大之处 背景在前言中笔者也提到过，Nacos是一个阿里巴巴开发的产品，现在也是">
+    <meta name="description" content="在如今，微服务架构因其灵活性、高可用性等优点，已是后端开发者面向中大厂不可或缺的一项技术。而微服务架构管理服务器集群的核心，便是注册中心。Nacos作为阿里巴巴开发的一种功能强大的注册中心，其收到了广大开发者的推崇。这篇文章，将会从Nacos的背景、安装、使用配置等方面进行讲述，让你领略Nacos的强大之处 背景在前言中笔者也提到过，Nacos是一个阿里巴巴开发的产品，现在也是成为SpringCl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于Nacos注册中心">
 <meta property="og:url" content="http://luminous.blog/2025/10/05/%E5%85%B3%E4%BA%8ENacos%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/index.html">
 <meta property="og:site_name" content="Luminous&#39; Tiny Home">
-<meta property="og:description" content="关于Nacos注册中心在如今，微服务架构因其灵活性、高可用性等优点，已是后端开发者面向中大厂不可或缺的一项技术。而微服务架构管理服务器集群的核心，便是注册中心。Nacos作为阿里巴巴开发的一种功能强大的注册中心，其收到了广大开发者的推崇。这篇文章，将会从Nacos的背景、原理以及使用配置等方面进行讲述，展现Nacos的强大之处 背景在前言中笔者也提到过，Nacos是一个阿里巴巴开发的产品，现在也是">
+<meta property="og:description" content="在如今，微服务架构因其灵活性、高可用性等优点，已是后端开发者面向中大厂不可或缺的一项技术。而微服务架构管理服务器集群的核心，便是注册中心。Nacos作为阿里巴巴开发的一种功能强大的注册中心，其收到了广大开发者的推崇。这篇文章，将会从Nacos的背景、安装、使用配置等方面进行讲述，让你领略Nacos的强大之处 背景在前言中笔者也提到过，Nacos是一个阿里巴巴开发的产品，现在也是成为SpringCl">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://luminous.blog/images/covers/nacos.png">
 <meta property="og:image" content="http://luminous.blog/images/covers/github-mark.png">
 <meta property="og:image" content="http://luminous.blog/images/posts/nacos/1.png">
 <meta property="og:image" content="http://luminous.blog/images/posts/nacos/2.png">
+<meta property="og:image" content="http://luminous.blog/images/covers/springboot.png">
+<meta property="og:image" content="http://luminous.blog/images/posts/nacos/3.png">
+<meta property="og:image" content="http://luminous.blog/images/posts/nacos/4.png">
+<meta property="og:image" content="http://luminous.blog/images/posts/nacos/5.png">
+<meta property="og:image" content="http://luminous.blog/images/posts/nacos/6.png">
 <meta property="article:published_time" content="2025-10-05T12:24:55.000Z">
 <meta property="article:modified_time" content="2025-10-05T14:20:32.000Z">
 <meta property="article:author" content="Luminous">
@@ -323,7 +328,7 @@
           <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
   
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8ENacos%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83"><span class="toc-number">1.</span> <span class="toc-text">关于Nacos注册中心</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">安装</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%84%9A%E6%89%8B%E6%9E%B6%E7%94%9F%E6%88%90%E5%8F%8A%E4%BE%9D%E8%B5%96%E5%BC%95%E5%85%A5"><span class="toc-number">3.1.</span> <span class="toc-text">脚手架生成及依赖引入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-spring%E5%AE%98%E7%BD%91%E7%94%9F%E6%88%90-%E6%8E%A8%E8%8D%90"><span class="toc-number">3.1.1.</span> <span class="toc-text">1.spring官网生成(推荐)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-idea%E7%94%9F%E6%88%90"><span class="toc-number">3.1.2.</span> <span class="toc-text">2.idea生成</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9nacos%E8%BF%9B%E8%A1%8C%E9%85%8D%E7%BD%AE"><span class="toc-number">3.2.</span> <span class="toc-text">对nacos进行配置</span></a></li></ol></li></ol>
   
 </div>
 </div>
@@ -465,9 +470,9 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
       
-        <h1 id="关于Nacos注册中心"><a href="#关于Nacos注册中心" class="headerlink" title="关于Nacos注册中心"></a>关于Nacos注册中心</h1><p>在如今，微服务架构因其灵活性、高可用性等优点，已是后端开发者面向中大厂不可或缺的一项技术。而微服务架构管理服务器集群的核心，便是注册中心。Nacos作为阿里巴巴开发的一种功能强大的注册中心，其收到了广大开发者的推崇。这篇文章，将会从Nacos的背景、原理以及使用配置等方面进行讲述，展现Nacos的强大之处</p>
+        <p>在如今，微服务架构因其灵活性、高可用性等优点，已是后端开发者面向中大厂不可或缺的一项技术。而微服务架构管理服务器集群的核心，便是注册中心。Nacos作为阿里巴巴开发的一种功能强大的注册中心，其收到了广大开发者的推崇。这篇文章，将会从Nacos的背景、安装、使用配置等方面进行讲述，让你领略Nacos的强大之处</p>
 <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在前言中笔者也提到过，Nacos是一个阿里巴巴开发的产品，现在也是成为SpringCloud的一个组件(附<a target="_blank" rel="noopener" href="https://spring.io/projects/spring-cloud">SpringCloud官网链接</a>，感兴趣的可以去看一下)</p>
-<p>在Nacos出现之前，其实已经有一款注册中心产品名叫Eureka，相比于Eureka，Nacos的功能更加丰富(比如分布式配置)，能够满足更多的开发需要</p>
+<p>在Nacos出现之前，其实已经有另外一款很火的注册中心产品名叫Eureka，相比于Eureka，Nacos的功能更加丰富(比如分布式配置)，能够满足更多的开发需要</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>Nacos官网：</p>
 <div class="post-link-card-wrap">
     <div class="post-link-card">
@@ -496,12 +501,52 @@
 <p><img src="http://luminous.blog/images/posts/nacos/1.png" alt="目录"></p>
 <p>其中nacos的配置文件在.\conf\application.properties</p>
 <p><img src="http://luminous.blog/images/posts/nacos/2.png" alt="配置文件"></p>
-<p>配置文件中可以修改端口等一些设置，可以自行配置</p>
+<p>nacos默认端口8848，配置文件中可以修改端口等一些设置，可以自行配置</p>
 <p>nacos服务启动脚本位于 .\bin\startup.cmd，windows双击即可启动，或者使用cmd命令：</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">startup.<span class="built_in">cmd</span> -m standalone</span><br></pre></td></tr></table></figure>
 
 <p>-m代表模式(model)</p>
 <p>standalone表示单击启动模式</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="脚手架生成及依赖引入"><a href="#脚手架生成及依赖引入" class="headerlink" title="脚手架生成及依赖引入"></a>脚手架生成及依赖引入</h3><p>微服务各框架之间其中一个相同点在于都具备注册中心的服务发现(ServiceDiscovery)和服务注册(ServiceRegistry)，接下来让我们在<strong>springboot脚手架</strong>中引入依赖，这里有两种方式生成脚手架：</p>
+<h4 id="1-spring官网生成-推荐"><a href="#1-spring官网生成-推荐" class="headerlink" title="1.spring官网生成(推荐)"></a>1.spring官网生成(推荐)</h4><p>SpringBoot脚手架生成：</p>
+<p>springboot推荐使用3.2.x版本，此版本与springcloud兼容性很好</p>
+<div class="post-link-card-wrap">
+    <div class="post-link-card">
+      <a href="https://start.spring.io/" title="SpringInitializr" rel="noopener nofollow noreferrer" target="_blank"></a>
+      <div class="post-link-card-cover-wrap"><img src="http://luminous.blog/images/covers/springboot.png" class="no-lightbox" title="SpringInitializr" alt="SpringInitializr"/></div>
+      <div class="post-link-card-item-wrap">
+        <div class="post-link-card-title">SpringInitializr</div>
+        <div class="post-link-card-excerpt"><span class="icon-link"></span>https://start.spring.io/</div>
+      </div>
+    </div>
+  </div>
+
+<p>父工程脚手架生成示例：</p>
+<p><img src="http://luminous.blog/images/posts/nacos/3.png" alt="脚手架"></p>
+<p>然后点击页面下方GENERATE生成</p>
+<h4 id="2-idea生成"><a href="#2-idea生成" class="headerlink" title="2.idea生成"></a>2.idea生成</h4><p>直接上图</p>
+<p>先新建工程</p>
+<p><img src="http://luminous.blog/images/posts/nacos/4.png" alt="先新建工程"></p>
+<p>填写项目信息</p>
+<p><img src="http://luminous.blog/images/posts/nacos/5.png" alt="填写项目信息"></p>
+<p>选择依赖</p>
+<p><img src="http://luminous.blog/images/posts/nacos/6.png" alt="选择依赖"></p>
+<p>然后点击create创建</p>
+<p>因为spring官方没有在脚手架提供nacos依赖，所以我们得在子工程中手动引入。创建子工程，什么依赖都不用引入，然后在父工程的pom.xml的dependencies节点中中引入：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-alibaba-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.5.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">type</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">scope</span>&gt;</span>import<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在子工程的pom.xml中加入（引入nacos之前要记得把eureka依赖注释掉）：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-discovery<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2023.0.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>依赖引入完成</p>
+<p><strong>启动naocs</strong></p>
+<blockquote>
+<p>注：可能在启动nacos的时候会出现一些问题导致无法启动，这大概率是Nacos 开启了认证功能，但没有配置 token.secret.key，此时如果你的电脑装有python环境，可以运行： py -c “import os, base64; print(base64.b64encode(os.urandom(32)).decode())”  。然后在nacos配置文件中填入密钥</p>
+</blockquote>
+<h3 id="对nacos进行配置"><a href="#对nacos进行配置" class="headerlink" title="对nacos进行配置"></a>对nacos进行配置</h3><p>在子工程的application.yml文件中加入以下配置：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">	<span class="attr">cloud:</span></span><br><span class="line">    	<span class="attr">nacos:</span></span><br><span class="line">      		<span class="attr">server-addr:</span> <span class="string">localhost:8848</span></span><br></pre></td></tr></table></figure>
+
+<p>此时便完成了对nacos进行注册</p>
 
       
     </div>
@@ -661,10 +706,10 @@
     
       <div>
         <span class="icon-brush"></span>
-        68.3k
+        69.5k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        05:40
+        05:46
       </div>
     
     
@@ -697,7 +742,7 @@
         <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
   
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B3%E4%BA%8ENacos%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83"><span class="toc-number">1.</span> <span class="toc-text">关于Nacos注册中心</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">安装</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%84%9A%E6%89%8B%E6%9E%B6%E7%94%9F%E6%88%90%E5%8F%8A%E4%BE%9D%E8%B5%96%E5%BC%95%E5%85%A5"><span class="toc-number">3.1.</span> <span class="toc-text">脚手架生成及依赖引入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-spring%E5%AE%98%E7%BD%91%E7%94%9F%E6%88%90-%E6%8E%A8%E8%8D%90"><span class="toc-number">3.1.1.</span> <span class="toc-text">1.spring官网生成(推荐)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-idea%E7%94%9F%E6%88%90"><span class="toc-number">3.1.2.</span> <span class="toc-text">2.idea生成</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9nacos%E8%BF%9B%E8%A1%8C%E9%85%8D%E7%BD%AE"><span class="toc-number">3.2.</span> <span class="toc-text">对nacos进行配置</span></a></li></ol></li></ol>
   
 </div>
 </div>
@@ -908,7 +953,7 @@
           url: "http://luminous.blog/2025/10/05/%E5%85%B3%E4%BA%8ENacos%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/",
           excerpt: "",
           description: "",
-          stripContent: "关于Nacos注册中心在如今，微服务架构因其灵活性、高可用性等优点，已是后端开发者面向中大厂不可或缺的一项技术。而微服务架构管理服务器集群的核心，便是注册中心。Nacos作为阿里巴巴开发的一种功能强大的注册中心，其收到了广大开发者的推崇。这篇文章，将会从Nacos的背景、原理以及使用配置等方面进行讲述，展现Nacos的强大之处 背景在前言中笔者也提到过，Nacos是一个阿里巴巴开发的产品，现在也是成为SpringCloud的一个组件(附SpringCloud官网链接，感兴趣的可以去看一下) 在N",
+          stripContent: "在如今，微服务架构因其灵活性、高可用性等优点，已是后端开发者面向中大厂不可或缺的一项技术。而微服务架构管理服务器集群的核心，便是注册中心。Nacos作为阿里巴巴开发的一种功能强大的注册中心，其收到了广大开发者的推崇。这篇文章，将会从Nacos的背景、安装、使用配置等方面进行讲述，让你领略Nacos的强大之处 背景在前言中笔者也提到过，Nacos是一个阿里巴巴开发的产品，现在也是成为SpringCloud的一个组件(附SpringCloud官网链接，感兴趣的可以去看一下) 在Nacos出现之前，其",
           date: "Sun Oct 05 2025 20:24:55 GMT+0800",
           updated: "Sun Oct 05 2025 22:20:32 GMT+0800",
           cover: "http://luminous.blog/covers/cover3.webp",
