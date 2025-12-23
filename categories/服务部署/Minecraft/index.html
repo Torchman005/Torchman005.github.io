@@ -1,6 +1,6 @@
 
   <!DOCTYPE html>
-  <html lang="en"  
+  <html lang="zh-CN"  
     
       data-theme-mode="auto"
     
@@ -17,7 +17,7 @@
   <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)","en":"Copy successfully (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://luminous.blog';window.REIMU_CONFIG.i18n_languages = ["en"];</script>
   
   <title>
-    Minecraft模组编写教程 |
+    目录: Minecraft |
     
     Luminous&#39; Tiny Home
   </title>
@@ -41,19 +41,17 @@
 
   
   
-    <meta name="description" content="从零开始教你编写属于自己的mc模组（需一定的编程基础）">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Minecraft模组编写教程">
-<meta property="og:url" content="http://luminous.blog/en/2025/01/13/Minecraft%E6%A8%A1%E7%BB%84%E7%BC%96%E5%86%99%E6%95%99%E7%A8%8B/index.html">
+    <meta name="description" content="动漫宅&amp;技术宅">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Luminous&#39; Tiny Home">
+<meta property="og:url" content="http://luminous.blog/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/Minecraft/index.html">
 <meta property="og:site_name" content="Luminous&#39; Tiny Home">
-<meta property="og:description" content="从零开始教你编写属于自己的mc模组（需一定的编程基础）">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-01-13T08:57:44.000Z">
-<meta property="article:modified_time" content="2025-12-23T06:37:36.049Z">
+<meta property="og:description" content="动漫宅&amp;技术宅">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://luminous.blog/images/banner.webp">
 <meta property="article:author" content="Luminous">
-<meta property="article:tag" content="Minecraft">
-<meta property="article:tag" content="neoforge">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://luminous.blog/images/banner.webp">
   
   
     <link rel="alternate" href="/atom.xml" title="Luminous' Tiny Home" type="application/atom+xml">
@@ -68,9 +66,7 @@
   
   
     
-      
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@waline/client@2.15.8/dist/waline.css" integrity="sha384-vltfZtesCdl6NYVcFVcjEaIi5RpNvZe9t7fXvq8twVtcoy+Ub9QgnxUYJmwOhYCK" crossorigin="anonymous">
-
+      <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://cdn.jsdelivr.net/npm/@waline/client@2.15.8/dist/waline.css" integrity="sha384-vltfZtesCdl6NYVcFVcjEaIi5RpNvZe9t7fXvq8twVtcoy+Ub9QgnxUYJmwOhYCK" crossorigin="anonymous">
     
   
   
@@ -106,7 +102,7 @@
       
         
       
-      <div class="loading-word">Loading...</div>
+      <div class="loading-word">(∠・ω&lt; )⌒☆</div>
     </div>
   </div>
   </div>
@@ -157,7 +153,7 @@
               
              
           </div>
-          <a class="main-nav-link" href="/en/">Home</a>
+          <a class="main-nav-link" href="/">首页</a>
         </span>
       
         <span class="main-nav-link-wrap">
@@ -168,7 +164,7 @@
               
              
           </div>
-          <a class="main-nav-link" href="/en/archives">Archives</a>
+          <a class="main-nav-link" href="/archives">归档</a>
         </span>
       
         <span class="main-nav-link-wrap">
@@ -179,7 +175,7 @@
               
              
           </div>
-          <a class="main-nav-link" href="/en/about">About</a>
+          <a class="main-nav-link" href="/about">关于</a>
         </span>
       
         <span class="main-nav-link-wrap">
@@ -190,7 +186,7 @@
               
              
           </div>
-          <a class="main-nav-link" href="/en/friend">Friend</a>
+          <a class="main-nav-link" href="/friend">友链</a>
         </span>
       
     
@@ -198,10 +194,10 @@
   </nav>
   <nav id="sub-nav" aria-label="Secondary navigation">
     
-      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed" aria-label="RSS Feed" target="_blank"></a>
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
     
     
-      <a id="nav-search-btn" class="nav-icon popup-trigger" title="Search" aria-label="Search"></a>
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索" aria-label="搜索"></a>
     
   </nav>
   
@@ -210,13 +206,13 @@
       <div class="custom-dropdown">
         <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
           <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
-          <span id="selected-lang">English</span>
+          <span id="selected-lang">简体中文</span>
         </div>
         <ul class="select-items" id="select-items" role="listbox" aria-label="Languages">
           
-            <li data-value="zh-CN" role="option" aria-selected="false">简体中文</li>
+            <li data-value="zh-CN" role="option" class="selected" aria-selected="true">简体中文</li>
           
-            <li data-value="en" role="option" class="selected" aria-selected="true">English</li>
+            <li data-value="en" role="option" aria-selected="false">English</li>
           
         </ul>
       </div>
@@ -236,9 +232,9 @@
           item.addEventListener("click", () => {
             const langMap = {};
             
-              langMap['zh-CN'] = '/2025/01/13/Minecraft模组编写教程/';
+              langMap['zh-CN'] = '/categories/服务部署/Minecraft/';
             
-              langMap['en'] = '/en/2025/01/13/Minecraft模组编写教程/';
+              langMap['en'] = '/en/categories/服务部署/Minecraft/';
             
             selectedLang.textContent = item.textContent;
             selectItems.classList.remove("show");
@@ -262,8 +258,23 @@
 </div>
 <header id="header" aria-label="Site header">
   
-    <picture></picture>
-    <img  fetchpriority="high" src="http://luminous.blog/covers/specific/mc1.webp" alt="Minecraft模组编写教程">
+    
+      <picture>
+        
+          
+            <source media="(max-width: 479px)" srcset="/images/banner-600w.webp">
+          
+            <source media="(max-width: 799px)" srcset="/images/banner-800w.webp">
+          
+            <source media="(min-width: 800px)" srcset="/images/banner.webp">
+          
+          <img  fetchpriority="high" src="/images/banner.webp" alt="">
+        
+      </picture>
+      
+        <img alt="" style="visibility: hidden;">
+      
+    
   
   <div id="header-outer">
     <div id="header-title">
@@ -271,13 +282,15 @@
         
         
           <span id="logo">
-            <h1 data-aos="slide-up">Minecraft模组编写教程</h1>
+            <h1 data-aos="slide-up">分类</h1>
           </span>
         
       
       
         
         <h2 id="subtitle-wrap" data-aos="slide-down">
+          
+            <span id="subtitle">Minecraft</span>
           
         </h2>
       
@@ -288,7 +301,7 @@
         <div id="content" aria-label="Page content" class="sidebar-left"  >
           <aside id="sidebar" aria-label="Sidebar">
   
-  <div class="sidebar-wrapper-container sticky">
+  <div class="sidebar-wrapper-container ">
   
     
     
@@ -314,30 +327,22 @@
   <div class="sidebar-wrapper">
     <div class="sidebar-wrap" data-aos="fade-up">
       
-        
-          <div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
-<div class="sidebar-toc-wrapper toc-div-class" >
-  
-    
-  
-</div>
-</div>
-          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+        <div class="sidebar-author">
   <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="Luminous" class="lazyload">
   <div class="sidebar-author-name">Luminous</div>
   <div class="sidebar-description">动漫宅&amp;技术宅</div>
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>Post</div>
+    <div>文章</div>
     <div class="sidebar-state-number">17</div>
   </div>
   <div class="sidebar-state-category">
-    <div>Category</div>
+    <div>分类</div>
     <div class="sidebar-state-number">11</div>
   </div>
   <div class="sidebar-state-tag">
-    <div>Tag</div>
+    <div>标签</div>
     <div class="sidebar-state-number">15</div>
   </div>
 </div>
@@ -364,7 +369,7 @@
   
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/en/" aria-label="Home"></a>
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -372,11 +377,11 @@
             
           
         </div>
-        <div class="sidebar-menu-link">Home</div>
+        <div class="sidebar-menu-link">首页</div>
       </div>
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/en/archives" aria-label="Archives"></a>
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -384,11 +389,11 @@
             
           
         </div>
-        <div class="sidebar-menu-link">Archives</div>
+        <div class="sidebar-menu-link">归档</div>
       </div>
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/en/about" aria-label="About"></a>
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -396,11 +401,11 @@
             
           
         </div>
-        <div class="sidebar-menu-link">About</div>
+        <div class="sidebar-menu-link">关于</div>
       </div>
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/en/friend" aria-label="Friend"></a>
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -408,26 +413,91 @@
             
           
         </div>
-        <div class="sidebar-menu-link">Friend</div>
+        <div class="sidebar-menu-link">友链</div>
       </div>
     
   
 </div>
-</div>
-        
+
       
-      
-        
-          <div class="sidebar-btn-wrapper" style="position:static">
-            <div class="sidebar-toc-btn current"></div>
-            <div class="sidebar-common-btn"></div>
-          </div>
-        
       
     </div>
   </div>
   
   <div class="sidebar-widget">
+  
+    
+      
+  <div class="widget-wrapper">
+    <div class="widget-wrap" data-aos="fade-up">
+      <h3 class="widget-title">标签云</h3>
+      <div class="widget tagcloud">
+        <a href="/tags/Assembly/" style="font-size: 20px;">Assembly</a> <a href="/tags/Feign/" style="font-size: 10px;">Feign</a> <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/Minecraft/" style="font-size: 13.33px;">Minecraft</a> <a href="/tags/compose/" style="font-size: 10px;">compose</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/java/" style="font-size: 16.67px;">java</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/nacos/" style="font-size: 10px;">nacos</a> <a href="/tags/neoforge/" style="font-size: 10px;">neoforge</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/%E5%AD%98%E5%82%A8/" style="font-size: 13.33px;">存储</a> <a href="/tags/%E6%A9%99%E6%9E%9C%E5%B7%A5%E4%BD%9C%E5%AE%A4%E5%85%A8%E6%A0%88%E7%BB%84/" style="font-size: 10px;">橙果工作室全栈组</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">计算机基础</a>
+      </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrapper">
+    <div class="widget-wrap" data-aos="fade-up">
+      <h3 class="widget-title">分类</h3>
+      <div class="widget">
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" title="微服务">微服务</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/" title="容器技术">容器技术</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E6%95%B0%E6%8D%AE%E5%BA%93/" title="数据库">数据库</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" title="数据库">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/" title="服务部署">服务部署</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/Minecraft/" title="Minecraft">Minecraft</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A1%86%E6%9E%B6/" title="框架">框架</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A1%86%E6%9E%B6/Minecraft/" title="Minecraft">Minecraft</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" title="编程语言">编程语言</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" title="计算机基础">计算机基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/" title="项目">项目</a><span class="category-list-count">1</span></li></ul>
+      </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrapper">
+    <div class="widget-wrap" data-aos="fade-up">
+      <h3 class="widget-title">归档</h3>
+      <div class="widget">
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/12/">十二月 2025</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/11/">十一月 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/10/">十月 2025</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">八月 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">六月 2025</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a><span class="archive-list-count">1</span></li></ul>
+      </div>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrapper">
+    <div class="widget-wrap" data-aos="fade-up">
+      <h3 class="widget-title">最新文章</h3>
+      <div class="widget">
+        <ul>
+          
+          
+            <li>
+              <a href="/2025/12/21/compose-%E7%94%A8kotlin%E4%BC%98%E9%9B%85%E5%9C%B0%E7%BC%96%E5%86%99UI/" title="compose-用kotlin优雅地编写UI">compose-用kotlin优雅地编写UI</a>
+            </li>
+          
+            <li>
+              <a href="/2025/12/21/elasticsearch%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E6%80%BB%E7%BB%93/" title="elasticsearch实现搜索功能过程中的总结">elasticsearch实现搜索功能过程中的总结</a>
+            </li>
+          
+            <li>
+              <a href="/2025/11/09/%E5%85%A8%E6%A0%88%E7%BB%84%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E6%80%BB%E8%A7%88/" title="全栈组学习路线总览">全栈组学习路线总览</a>
+            </li>
+          
+            <li>
+              <a href="/2025/10/12/%E5%9F%BA%E4%BA%8EFeign%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/" title="基于Feign远程调用">基于Feign远程调用</a>
+            </li>
+          
+            <li>
+              <a href="/2025/10/05/%E5%85%B3%E4%BA%8ENacos%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/" title="关于Nacos注册中心">关于Nacos注册中心</a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+    
   
   </div>
   
@@ -435,175 +505,153 @@
   
 </aside>
 
-          <section id="main" aria-label="Main content"><article id="post-Minecraft模组编写教程" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-inner" data-aos="fade-up">
-    <div class="article-meta">
-      <div class="article-date">
-  <span class="article-date-link icon-calendar" data-aos="zoom-in">
-    <time datetime="2025-01-13T08:57:44.000Z" itemprop="datePublished">2025-01-13</time>
-    <time style="display: none;" id="post-update-time">2025-12-23</time>
-  </span>
+          <section id="main" aria-label="Main content">
+<div class="archives-outer-wrap" data-aos="fade-up">
+  
+    <div class="tag-wrap">
+  
+    <div class="archives-tag-list-item" data-aos="zoom-in">
+      <a class="archives-tag-list-link" href="/tags/Golang/">Golang</a>
+    </div>
+  
+    <div class="archives-tag-list-item" data-aos="zoom-in">
+      <a class="archives-tag-list-link" href="/tags/Minecraft/">Minecraft</a>
+    </div>
+  
+    <div class="archives-tag-list-item" data-aos="zoom-in">
+      <a class="archives-tag-list-link" href="/tags/neoforge/">neoforge</a>
+    </div>
+  
+    <div class="archives-tag-list-item" data-aos="zoom-in">
+      <a class="archives-tag-list-link" href="/tags/docker/">docker</a>
+    </div>
+  
+    <div class="archives-tag-list-item" data-aos="zoom-in">
+      <a class="archives-tag-list-link" href="/tags/compose/">compose</a>
+    </div>
+  
+    <div class="archives-tag-list-item" data-aos="zoom-in">
+      <a class="archives-tag-list-link" href="/tags/kotlin/">kotlin</a>
+    </div>
+  
+    <div class="archives-tag-list-item" data-aos="zoom-in">
+      <a class="archives-tag-list-link" href="/tags/elasticsearch/">elasticsearch</a>
+    </div>
+  
+    <div class="archives-tag-list-item" data-aos="zoom-in">
+      <a class="archives-tag-list-link" href="/tags/%E5%AD%98%E5%82%A8/">存储</a>
+    </div>
+  
+    <div class="archives-tag-list-item" data-aos="zoom-in">
+      <a class="archives-tag-list-link" href="/tags/%E6%A9%99%E6%9E%9C%E5%B7%A5%E4%BD%9C%E5%AE%A4%E5%85%A8%E6%A0%88%E7%BB%84/">橙果工作室全栈组</a>
+    </div>
+  
+    <div class="archives-tag-list-item" data-aos="zoom-in">
+      <a class="archives-tag-list-link" href="/tags/Feign/">Feign</a>
+    </div>
+  
+    <div class="archives-tag-list-item" data-aos="zoom-in">
+      <a class="archives-tag-list-link" href="/tags/java/">java</a>
+    </div>
+  
+    <div class="archives-tag-list-item" data-aos="zoom-in">
+      <a class="archives-tag-list-link" href="/tags/nacos/">nacos</a>
+    </div>
+  
+    <div class="archives-tag-list-item" data-aos="zoom-in">
+      <a class="archives-tag-list-link" href="/tags/socket/">socket</a>
+    </div>
+  
+    <div class="archives-tag-list-item" data-aos="zoom-in">
+      <a class="archives-tag-list-link" href="/tags/Assembly/">Assembly</a>
+    </div>
+  
+    <div class="archives-tag-list-item" data-aos="zoom-in">
+      <a class="archives-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>
+    </div>
   
 </div>
-
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/en/categories/%E6%A1%86%E6%9E%B6/" title="框架">框架</a><a class="article-category-link" href="/en/categories/%E6%A1%86%E6%9E%B6/Minecraft/" title="Minecraft">Minecraft</a>
-  </div>
-
-
+<div class="category-wrap">
+  
+    <div class="archives-category-list-item" data-aos="zoom-in">
+      <a class="archives-category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
     </div>
-    
-    <div class="hr-line"></div>
-    
-
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-      
-        
-      
+  
+    <div class="archives-category-list-item" data-aos="zoom-in">
+      <a class="archives-category-list-link" href="/categories/%E6%A1%86%E6%9E%B6/">框架</a>
     </div>
-    <footer class="article-footer">
+  
+    <div class="archives-category-list-item" data-aos="zoom-in">
+      <a class="archives-category-list-link" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a>
+    </div>
+  
+    <div class="archives-category-list-item" data-aos="zoom-in">
+      <a class="archives-category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/">服务部署</a>
+    </div>
+  
+    <div class="archives-category-list-item" data-aos="zoom-in">
+      <a class="archives-category-list-link" href="/categories/%E6%A1%86%E6%9E%B6/Minecraft/">Minecraft</a>
+    </div>
+  
+    <div class="archives-category-list-item" data-aos="zoom-in">
+      <a class="archives-category-list-link" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/">容器技术</a>
+    </div>
+  
+    <div class="archives-category-list-item" data-aos="zoom-in">
+      <a class="archives-category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>
+    </div>
+  
+    <div class="archives-category-list-item" data-aos="zoom-in">
+      <a class="archives-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    </div>
+  
+    <div class="archives-category-list-item" data-aos="zoom-in">
+      <a class="archives-category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/Minecraft/">Minecraft</a>
+    </div>
+  
+    <div class="archives-category-list-item" data-aos="zoom-in">
+      <a class="archives-category-list-link" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+    </div>
+  
+    <div class="archives-category-list-item" data-aos="zoom-in">
+      <a class="archives-category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>
+    </div>
+  
+</div>
+  
+  
+    
+    
+    
       
       
-      
-        <div class="share-wrapper">
-  
-    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fluminous.blog%2F2025%2F01%2F13%2FMinecraft%25E6%25A8%25A1%25E7%25BB%2584%25E7%25BC%2596%25E5%2586%2599%25E6%2595%2599%25E7%25A8%258B%2F" target="_blank" rel="noopener noreferrer" title="Minecraft模组编写教程">
-      <div class="share-icon icon icon-facebook">
         
-      </div>
-    </a>
-  
-    <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fluminous.blog%2F2025%2F01%2F13%2FMinecraft%25E6%25A8%25A1%25E7%25BB%2584%25E7%25BC%2596%25E5%2586%2599%25E6%2595%2599%25E7%25A8%258B%2F&amp;text=Minecraft%E6%A8%A1%E7%BB%84%E7%BC%96%E5%86%99%E6%95%99%E7%A8%8B&amp;via=http%3A%2F%2Fluminous.blog" target="_blank" rel="noopener noreferrer" title="Minecraft模组编写教程">
-      <div class="share-icon icon icon-twitter">
         
-      </div>
-    </a>
-  
-    <a href="https://connect.qq.com/widget/shareqq/index.html?url=www.baidu.com&amp;title=Minecraft%E6%A8%A1%E7%BB%84%E7%BC%96%E5%86%99%E6%95%99%E7%A8%8B&amp;desc=%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%95%99%E4%BD%A0%E7%BC%96%E5%86%99%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84mc%E6%A8%A1%E7%BB%84%EF%BC%88%E9%9C%80%E4%B8%80%E5%AE%9A%E7%9A%84%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%EF%BC%89&amp;source=http%3A%2F%2Fluminous.blog" target="_blank" rel="noopener noreferrer" title="Minecraft模组编写教程">
-      <div class="share-icon icon icon-qq">
-        
-      </div>
-    </a>
-  
-    <a href="javascript:;"  title="Minecraft模组编写教程">
-      <div class="share-icon icon icon-weixin">
-        
-          <div id="share-weixin">
-            <div class="share-weixin-dom">
-              <div class="share-weixin-content">
-                <img id="share-weixin-banner"> 
-                <div id="share-weixin-title"></div>
-                <div id="share-weixin-desc"></div>
-              </div>
-              <div class="share-weixin-qrcode">
-                <div class="share-weixin-info">
-                  <div id="share-weixin-author"></div>
-                  <div id="share-weixin-theme">Powered By hexo-theme-reimu</div>
-                </div>
-                <img id="share-weixin-qr" >
-              </div>
-            </div>
-            <div class="share-weixin-canvas"></div>
+        <section class="archives-wrap" data-aos="fade-up">
+          <div class="archive-year-wrap">
+            <a href="/archives/2024" class="archive-year">2024</a>
           </div>
-        
-      </div>
-    </a>
-  
-</div>
-      
-      
-      
-        <a data-aos="zoom-in" href="/en/2025/01/13/Minecraft%E6%A8%A1%E7%BB%84%E7%BC%96%E5%86%99%E6%95%99%E7%A8%8B/#comments" class="article-comment-link">
-          <span class="post-comments-count waline-comment-count" data-path="/en/2025/01/13/Minecraft%E6%A8%A1%E7%BB%84%E7%BC%96%E5%86%99%E6%95%99%E7%A8%8B/" itemprop="commentCount"></span>
-          Comments
-        </a>
-      
-      
-      
-      
-        <span data-aos="zoom-in" class="article-visitor-link">
-          <span class="waline-pageview-count" data-path="/en/2025/01/13/Minecraft%E6%A8%A1%E7%BB%84%E7%BC%96%E5%86%99%E6%95%99%E7%A8%8B/">0</span>
-          <em class="post-meta-item-text">Readings</em>
-        </span>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/en/tags/Minecraft/" rel="tag" title="Minecraft">Minecraft</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/en/tags/neoforge/" rel="tag" title="neoforge">neoforge</a></li></ul>
-
-
-    </footer>
+          <ul>
+            
+            <li class="archive-article">
+  <div class="archive-article-date">
+    <span>
+      <time class="dt-published" datetime="2024-10-12T16:00:00.000Z" itemprop="datePublished">10-13</time>
+    </span>
   </div>
   
-  <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
-    
-      
-      <div class="article-nav-link-wrap left">
-        
-          <img data-src="http://luminous.blog/covers/cover12.webp" data-sizes="auto" alt="java:基于socket通信技术实现的简单聊天室" class="lazyload">
-        
-        <a href="/en/2025/06/02/%E5%9F%BA%E4%BA%8Esocket%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E5%8D%95%E8%81%8A%E5%A4%A9%E5%AE%A4/" aria-label="Prev: java:基于socket通信技术实现的简单聊天室" title="Prev: java:基于socket通信技术实现的简单聊天室"></a>
-        <div class="article-nav-caption">Prev</div>
-        <h3 class="article-nav-title">
-          
-            java:基于socket通信技术实现的简单聊天室
-          
-        </h3>
-      </div>
-    
-    
-    
-    <div class="article-nav-link-wrap right">
-      
-        <img data-src="http://luminous.blog/covers/cover11.webp" data-sizes="auto" alt="Go语言基本语法" class="lazyload">
-      
-      <a href="/en/2024/11/25/Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" aria-label="Next: Go语言基本语法"  title="Next: Go语言基本语法"></a>
-      <div class="article-nav-caption">Next</div>
-      <h3 class="article-nav-title">
-        
-          Go语言基本语法
-        
-      </h3>
-    </div>
-    
-  </nav>
+    <a class="archive-article-title" href="/2024/10/13/%E4%BB%8E0%20%E2%86%92%20%E2%88%9E%20%E6%88%90%E4%B8%BA%20Minecraft%20JE%E8%85%90%E7%AB%B9/">从0 → ∞ 成为 Minecraft JE腐竹</a>
+  
+</li>
 
-
-</article>
-
-
-
-
-
-
-
-
-
-  <section id="comments" data-aos="fade-up">
-    <div class="comment-header">
-      
-      
-        
-      
-      <h2 class="comment-title">Leave a comment</h2>
-      <div class="comment-selector">
-        <div class="comment-selector-wrap">
             
-            <div class="selector-item" data-selector="waline">
-              <span>waline</span>
-            </div>
             
-        </div>
-      </div>
-    </div>
-    <div class="comment-content">
-      
-        <div class="comment waline-comment" data-aos="fade-up"
-          id="waline-comment">
-        </div>
-      
-    </div>
-  </section>
+          </ul>
+        </section>
+    
+  
+  </div>
+
 
 
 </section>
@@ -626,7 +674,7 @@
     </div>
     
       <div>
-        Powered by&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        基于&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
         Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
       </div>
     
@@ -645,10 +693,10 @@
     
       <div>
         <span class="icon-eye"></span>
-        <span id="busuanzi_container_site_pv">Number of visits&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
         &nbsp;|&nbsp;
         <span class="icon-user"></span>
-        <span id="busuanzi_container_site_uv">Number of visitors&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
       </div>
     
   </div>
@@ -665,30 +713,22 @@
       <nav id="mobile-nav" aria-label="Mobile navigation">
   <div class="sidebar-wrap">
     
-      
-        <div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
-<div class="sidebar-toc-wrapper toc-div-class" >
-  
-    
-  
-</div>
-</div>
-        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+      <div class="sidebar-author">
   <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="Luminous" class="lazyload">
   <div class="sidebar-author-name">Luminous</div>
   <div class="sidebar-description">动漫宅&amp;技术宅</div>
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>Post</div>
+    <div>文章</div>
     <div class="sidebar-state-number">17</div>
   </div>
   <div class="sidebar-state-category">
-    <div>Category</div>
+    <div>分类</div>
     <div class="sidebar-state-number">11</div>
   </div>
   <div class="sidebar-state-tag">
-    <div>Tag</div>
+    <div>标签</div>
     <div class="sidebar-state-number">15</div>
   </div>
 </div>
@@ -715,7 +755,7 @@
   
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/en/" aria-label="Home"></a>
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -723,11 +763,11 @@
             
           
         </div>
-        <div class="sidebar-menu-link">Home</div>
+        <div class="sidebar-menu-link">首页</div>
       </div>
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/en/archives" aria-label="Archives"></a>
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -735,11 +775,11 @@
             
           
         </div>
-        <div class="sidebar-menu-link">Archives</div>
+        <div class="sidebar-menu-link">归档</div>
       </div>
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/en/about" aria-label="About"></a>
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -747,11 +787,11 @@
             
           
         </div>
-        <div class="sidebar-menu-link">About</div>
+        <div class="sidebar-menu-link">关于</div>
       </div>
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/en/friend" aria-label="Friend"></a>
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -759,22 +799,14 @@
             
           
         </div>
-        <div class="sidebar-menu-link">Friend</div>
+        <div class="sidebar-menu-link">友链</div>
       </div>
     
   
 </div>
-</div>
-      
+
     
   </div>
-  
-    
-      <div class="sidebar-btn-wrapper">
-        <div class="sidebar-toc-btn current"></div>
-        <div class="sidebar-common-btn"></div>
-      </div>
-    
   
 </nav>
 
@@ -870,230 +902,11 @@
 
 <div id="lazy-script">
   <div>
-    
-      
-      
-      <script data-pjax>
-        window.REIMU_POST = {
-          author: "Luminous",
-          title: "Minecraft模组编写教程",
-          url: "http://luminous.blog/2025/01/13/Minecraft%E6%A8%A1%E7%BB%84%E7%BC%96%E5%86%99%E6%95%99%E7%A8%8B/",
-          excerpt: "",
-          description: "从零开始教你编写属于自己的mc模组（需一定的编程基础）",
-          stripContent: "",
-          date: "Mon Jan 13 2025 16:57:44 GMT+0800",
-          updated: "Tue Dec 23 2025 14:37:36 GMT+0800",
-          cover: "http://luminous.blog/covers/specific/mc1.webp",
-        };
-      </script>
        
     
     
       
-        
-<script src="/js/insert_highlight.js" data-pjax></script>
-
-        
-          
-<script src="https://npm.webcache.cn/@zumer/snapdom@1.9.9/dist/snapdom.min.js" integrity="sha384-taz9Bq0wPqLsuiB4ix4blTozt&#x2F;y84cjbMX5ZWkfPPjpVBme8M&#x2F;jWopanNBcdH&#x2F;qp" crossorigin="anonymous" defer data-pjax></script>
-
-          
-<script src="https://npm.webcache.cn/qrcode@1.5.1/build/qrcode.js" integrity="sha384-VT1EeewTCEXgndcPMQ0PzV+uVFYjxFIjmAA7s5gcMX9t4Dt5TD+OVQIn7NJWIXn7" crossorigin="anonymous" defer data-pjax></script>
-
-        
-      
     
-    
-      <script type="module" data-pjax>
-        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
-        const initPswp = (gallery, children) => {
-          if (_$$(`${gallery} ${children}`).length > 0) {
-            new PhotoSwipeLightbox({
-              gallery,
-              children,
-              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
-            }).init();
-          }
-        }
-        const pswp = () => {
-          initPswp('.article-entry', 'a.article-gallery-item');
-          initPswp('.article-gallery', 'a.article-gallery-item');
-          window.lightboxStatus = 'done';
-          window.removeEventListener('lightbox:ready', pswp);
-        }
-        if(window.lightboxStatus === 'ready') {
-          pswp()
-        } else {
-          window.addEventListener('lightbox:ready', pswp);
-        }
-      </script>
-      
-        
-
-
-
-
-
-
-
-
-<script data-pjax>
-  var loadScript = (src, integrity) => {
-    const script = document.createElement('script');
-    script.src = src;
-    if (integrity) script.integrity = integrity;
-    script.crossOrigin = 'anonymous';
-    return script;
-  };
-
-  var commentConfigKeys = ["waline"];
-  var commentConfig = {
-    
-    
-    waline: {
-      enable: true,
-      load: async () => {
-        const container = document.querySelector('.waline-comment');
-        if (!container) return;
-        container.style.display = 'block';
-
-        let walineInit;
-        const walineCdn = 'https://cdn.jsdelivr.net/npm/@waline/client@2.15.8/dist/waline.mjs';
-        const walineIntegrity = 'sha384-9sbqJjrfGjbkI6/PI4nU/MvBfEmkkPC4YK9I4zBeMIf1CVCZdCMH/KinBEAZII/5';
-
-        const module = await safeImport(walineCdn, walineIntegrity);
-        walineInit = module.init;
-
-        window.walineInstance = walineInit({
-          el: '.waline-comment',
-          serverURL: 'https://blog-waline-9f6kfq9ge-torchmans-projects.vercel.app/',
-          lang: document.documentElement.lang || 'en',
-          locale: {},
-          emoji: ["https://unpkg.com/@waline/emojis@1.2.0/weibo","https://unpkg.com/@waline/emojis@1.2.0/alus","https://unpkg.com/@waline/emojis@1.2.0/bilibili","https://unpkg.com/@waline/emojis@1.2.0/qq","https://unpkg.com/@waline/emojis@1.2.0/tieba","https://unpkg.com/@waline/emojis@1.2.0/tw-emoji"],
-          meta: ["nick","mail","link"],
-          requiredMeta: ["nick","mail"],
-          wordLimit: JSON.parse('0'),
-          comment: true,
-          pageSize: JSON.parse('10'),
-          dark: 'html[data-theme="dark"]',
-          pageview: JSON.parse('true'),
-        });
-      }
-    },
-    
-    
-    
-    
-  }
-  commentConfig.enable = commentConfigKeys.some(key => commentConfig[key].enable);
-
-  var defaultComment = '';
-  if (commentConfig.enable) {
-    // 1. 首先检查localStorage中是否有保存的评论类型
-    var savedCommentType = localStorage.getItem('commentType');
-    
-    // 2. 如果localStorage中有值且对应的评论系统可用，就使用它
-    if (savedCommentType) {
-      if (commentConfig[savedCommentType]?.enable) {
-        defaultComment = savedCommentType;
-      }
-    }
-    
-    // 3. 如果localStorage无效，检查配置的默认评论系统
-    if (!defaultComment) {
-      var configDefault = 'waline';
-      if (commentConfig[configDefault]?.enable) {
-        defaultComment = configDefault;
-      }
-    }
-    
-    // 4. 如果前两项都无效，按指定顺序找到第一个可用的评论系统
-    if (!defaultComment) {
-      defaultComment = commentConfigKeys.find(sys => commentConfig[sys].enable) || '';
-    }
-  }
-  function loadComments() {
-    if (!commentConfig.enable) return;
-    const loadedComments = {
-      valine: false,
-      waline: false,
-      twikoo: false,
-      gitalk: false,
-      giscus: false
-    };
-
-    // 隐藏所有评论容器
-    const hideAllComments = () => {
-      const commentContainers = document.querySelectorAll('.comment');
-      commentContainers.forEach(container => {
-        container.style.display = 'none';
-      });
-    };
-
-    // 按需加载评论系统
-    const loadCommentSystem = (type) => {
-      if (loadedComments[type]) {
-        // 如果已加载，只需显示对应容器
-        document.querySelector(`.${type}-comment`).style.display = 'block';
-        return;
-      }
-
-      // 根据类型加载对应的脚本
-      commentConfig[type]?.load();
-      loadedComments[type] = true;
-    };
-
-    // 评论组件选择器
-    const changeActiveCommentItems = (item) => {
-      const commentItems = document.querySelectorAll('.selector-item');
-      for (let i = 0; i < commentItems.length; i++) {
-        commentItems[i].classList.remove('active');
-      }
-      item.classList.add('active');
-
-      // 获取要加载的评论系统类型
-      const commentType = item.getAttribute('data-selector');
-
-      // 隐藏所有评论系统
-      hideAllComments();
-
-      // 加载选中的评论系统
-      loadCommentSystem(commentType);
-    };
-
-    const commentInit = () => {
-      // 评论组件选择器点击事件
-      const commentItems = document.querySelectorAll('.selector-item');
-      for (let item of commentItems) {
-        item.addEventListener('click', () => {
-          // 保存选择器状态
-          const commentType = item.getAttribute('data-selector');
-          window.localStorage.setItem('commentType', commentType);
-          // 切换选中状态
-          changeActiveCommentItems(item);
-        });
-      }
-
-      // 检查是否需要加载默认评论系统
-      if (defaultComment) {
-        const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
-        if (!defaultSelectorItem) return;
-        defaultSelectorItem.style.display = 'block';
-        defaultSelectorItem.classList.add('active');
-        loadCommentSystem(defaultComment);
-      }
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', commentInit);
-    } else {
-      commentInit();
-    }
-  };
-  loadComments();
-</script>
-
-      
     
   </div>
 </div>
