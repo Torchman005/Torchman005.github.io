@@ -1,6 +1,6 @@
 
   <!DOCTYPE html>
-  <html lang="zh-CN"  
+  <html lang="en"  
     
       data-theme-mode="auto"
     
@@ -17,7 +17,7 @@
   <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)","en":"Copy successfully (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://luminous.blog';window.REIMU_CONFIG.i18n_languages = ["en"];</script>
   
   <title>
-    目录: 服务部署 |
+    Category: 分布式搜索引擎 |
     
     Luminous&#39; Tiny Home
   </title>
@@ -44,10 +44,10 @@
     <meta name="description" content="动漫宅&amp;技术宅">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Luminous&#39; Tiny Home">
-<meta property="og:url" content="http://luminous.blog/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/index.html">
+<meta property="og:url" content="http://luminous.blog/en/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/index.html">
 <meta property="og:site_name" content="Luminous&#39; Tiny Home">
 <meta property="og:description" content="动漫宅&amp;技术宅">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://luminous.blog/images/banner.webp">
 <meta property="article:author" content="Luminous">
 <meta name="twitter:card" content="summary">
@@ -102,7 +102,7 @@
       
         
       
-      <div class="loading-word">(∠・ω&lt; )⌒☆</div>
+      <div class="loading-word">Loading...</div>
     </div>
   </div>
   </div>
@@ -153,7 +153,7 @@
               
              
           </div>
-          <a class="main-nav-link" href="/">首页</a>
+          <a class="main-nav-link" href="/en/">Home</a>
         </span>
       
         <span class="main-nav-link-wrap">
@@ -164,7 +164,7 @@
               
              
           </div>
-          <a class="main-nav-link" href="/archives">归档</a>
+          <a class="main-nav-link" href="/en/archives">Archives</a>
         </span>
       
         <span class="main-nav-link-wrap">
@@ -175,7 +175,7 @@
               
              
           </div>
-          <a class="main-nav-link" href="/about">关于</a>
+          <a class="main-nav-link" href="/en/about">About</a>
         </span>
       
         <span class="main-nav-link-wrap">
@@ -186,7 +186,7 @@
               
              
           </div>
-          <a class="main-nav-link" href="/friend">友链</a>
+          <a class="main-nav-link" href="/en/friend">Friend</a>
         </span>
       
     
@@ -194,10 +194,10 @@
   </nav>
   <nav id="sub-nav" aria-label="Secondary navigation">
     
-      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed" aria-label="RSS Feed" target="_blank"></a>
     
     
-      <a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索" aria-label="搜索"></a>
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="Search" aria-label="Search"></a>
     
   </nav>
   
@@ -206,13 +206,13 @@
       <div class="custom-dropdown">
         <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
           <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
-          <span id="selected-lang">简体中文</span>
+          <span id="selected-lang">English</span>
         </div>
         <ul class="select-items" id="select-items" role="listbox" aria-label="Languages">
           
-            <li data-value="zh-CN" role="option" class="selected" aria-selected="true">简体中文</li>
+            <li data-value="zh-CN" role="option" aria-selected="false">简体中文</li>
           
-            <li data-value="en" role="option" aria-selected="false">English</li>
+            <li data-value="en" role="option" class="selected" aria-selected="true">English</li>
           
         </ul>
       </div>
@@ -232,9 +232,9 @@
           item.addEventListener("click", () => {
             const langMap = {};
             
-              langMap['zh-CN'] = '/categories/服务部署/';
+              langMap['zh-CN'] = '/categories/微服务/分布式搜索引擎/';
             
-              langMap['en'] = '/en/categories/服务部署/';
+              langMap['en'] = '/en/categories/微服务/分布式搜索引擎/';
             
             selectedLang.textContent = item.textContent;
             selectItems.classList.remove("show");
@@ -282,7 +282,7 @@
         
         
           <span id="logo">
-            <h1 data-aos="slide-up">分类</h1>
+            <h1 data-aos="slide-up">Categories</h1>
           </span>
         
       
@@ -290,7 +290,7 @@
         
         <h2 id="subtitle-wrap" data-aos="slide-down">
           
-            <span id="subtitle">服务部署</span>
+            <span id="subtitle">分布式搜索引擎</span>
           
         </h2>
       
@@ -334,15 +334,15 @@
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div>
+    <div>Post</div>
     <div class="sidebar-state-number">17</div>
   </div>
   <div class="sidebar-state-category">
-    <div>分类</div>
-    <div class="sidebar-state-number">11</div>
+    <div>Category</div>
+    <div class="sidebar-state-number">9</div>
   </div>
   <div class="sidebar-state-tag">
-    <div>标签</div>
+    <div>Tag</div>
     <div class="sidebar-state-number">15</div>
   </div>
 </div>
@@ -369,7 +369,7 @@
   
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <a class="sidebar-menu-link-dummy" href="/en/" aria-label="Home"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -377,11 +377,11 @@
             
           
         </div>
-        <div class="sidebar-menu-link">首页</div>
+        <div class="sidebar-menu-link">Home</div>
       </div>
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <a class="sidebar-menu-link-dummy" href="/en/archives" aria-label="Archives"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -389,11 +389,11 @@
             
           
         </div>
-        <div class="sidebar-menu-link">归档</div>
+        <div class="sidebar-menu-link">Archives</div>
       </div>
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <a class="sidebar-menu-link-dummy" href="/en/about" aria-label="About"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -401,11 +401,11 @@
             
           
         </div>
-        <div class="sidebar-menu-link">关于</div>
+        <div class="sidebar-menu-link">About</div>
       </div>
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <a class="sidebar-menu-link-dummy" href="/en/friend" aria-label="Friend"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -413,7 +413,7 @@
             
           
         </div>
-        <div class="sidebar-menu-link">友链</div>
+        <div class="sidebar-menu-link">Friend</div>
       </div>
     
   
@@ -430,9 +430,9 @@
       
   <div class="widget-wrapper">
     <div class="widget-wrap" data-aos="fade-up">
-      <h3 class="widget-title">标签云</h3>
+      <h3 class="widget-title">Tag Cloud</h3>
       <div class="widget tagcloud">
-        <a href="/tags/Assembly/" style="font-size: 20px;">Assembly</a> <a href="/tags/Feign/" style="font-size: 10px;">Feign</a> <a href="/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/tags/Minecraft/" style="font-size: 13.33px;">Minecraft</a> <a href="/tags/compose/" style="font-size: 10px;">compose</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/tags/java/" style="font-size: 16.67px;">java</a> <a href="/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/tags/nacos/" style="font-size: 10px;">nacos</a> <a href="/tags/neoforge/" style="font-size: 10px;">neoforge</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/%E5%AD%98%E5%82%A8/" style="font-size: 13.33px;">存储</a> <a href="/tags/%E6%A9%99%E6%9E%9C%E5%B7%A5%E4%BD%9C%E5%AE%A4%E5%85%A8%E6%A0%88%E7%BB%84/" style="font-size: 10px;">橙果工作室全栈组</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">计算机基础</a>
+        <a href="/en/tags/Assembly/" style="font-size: 20px;">Assembly</a> <a href="/en/tags/Feign/" style="font-size: 10px;">Feign</a> <a href="/en/tags/Golang/" style="font-size: 10px;">Golang</a> <a href="/en/tags/Minecraft/" style="font-size: 13.33px;">Minecraft</a> <a href="/en/tags/compose/" style="font-size: 10px;">compose</a> <a href="/en/tags/docker/" style="font-size: 10px;">docker</a> <a href="/en/tags/elasticsearch/" style="font-size: 10px;">elasticsearch</a> <a href="/en/tags/java/" style="font-size: 16.67px;">java</a> <a href="/en/tags/kotlin/" style="font-size: 10px;">kotlin</a> <a href="/en/tags/nacos/" style="font-size: 10px;">nacos</a> <a href="/en/tags/neoforge/" style="font-size: 10px;">neoforge</a> <a href="/en/tags/socket/" style="font-size: 10px;">socket</a> <a href="/en/tags/%E5%AD%98%E5%82%A8/" style="font-size: 13.33px;">存储</a> <a href="/en/tags/%E6%A9%99%E6%9E%9C%E5%B7%A5%E4%BD%9C%E5%AE%A4%E5%85%A8%E6%A0%88%E7%BB%84/" style="font-size: 10px;">橙果工作室全栈组</a> <a href="/en/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">计算机基础</a>
       </div>
     </div>
   </div>
@@ -442,9 +442,9 @@
       
   <div class="widget-wrapper">
     <div class="widget-wrap" data-aos="fade-up">
-      <h3 class="widget-title">分类</h3>
+      <h3 class="widget-title">Categories</h3>
       <div class="widget">
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" title="微服务">微服务</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/" title="容器技术">容器技术</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E6%95%B0%E6%8D%AE%E5%BA%93/" title="数据库">数据库</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" title="数据库">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/" title="服务部署">服务部署</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/Minecraft/" title="Minecraft">Minecraft</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A1%86%E6%9E%B6/" title="框架">框架</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%A1%86%E6%9E%B6/Minecraft/" title="Minecraft">Minecraft</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" title="编程语言">编程语言</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" title="计算机基础">计算机基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/" title="项目">项目</a><span class="category-list-count">1</span></li></ul>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/en/categories/Minecraft/" title="Minecraft">Minecraft</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/en/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" title="微服务">微服务</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/en/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/" title="分布式搜索引擎">分布式搜索引擎</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/en/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/" title="容器技术">容器技术</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/en/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" title="数据库">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/en/categories/%E6%A1%86%E6%9E%B6/" title="框架">框架</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/en/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" title="编程语言">编程语言</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/en/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" title="计算机基础">计算机基础</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/en/categories/%E9%A1%B9%E7%9B%AE/" title="项目">项目</a><span class="category-list-count">1</span></li></ul>
       </div>
     </div>
   </div>
@@ -454,9 +454,9 @@
       
   <div class="widget-wrapper">
     <div class="widget-wrap" data-aos="fade-up">
-      <h3 class="widget-title">归档</h3>
+      <h3 class="widget-title">Archives</h3>
       <div class="widget">
-        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/12/">十二月 2025</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/11/">十一月 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/10/">十月 2025</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/08/">八月 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">六月 2025</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/01/">一月 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">十一月 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a><span class="archive-list-count">1</span></li></ul>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/en/archives/2025/12/">December 2025</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/en/archives/2025/11/">November 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/en/archives/2025/10/">October 2025</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/en/archives/2025/08/">August 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/en/archives/2025/06/">June 2025</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/en/archives/2025/01/">January 2025</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/en/archives/2024/11/">November 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/en/archives/2024/10/">October 2024</a><span class="archive-list-count">1</span></li></ul>
       </div>
     </div>
   </div>
@@ -466,29 +466,29 @@
       
   <div class="widget-wrapper">
     <div class="widget-wrap" data-aos="fade-up">
-      <h3 class="widget-title">最新文章</h3>
+      <h3 class="widget-title">Recent Posts</h3>
       <div class="widget">
         <ul>
           
           
             <li>
-              <a href="/2025/12/21/compose-%E7%94%A8kotlin%E4%BC%98%E9%9B%85%E5%9C%B0%E7%BC%96%E5%86%99UI/" title="compose-用kotlin优雅地编写UI">compose-用kotlin优雅地编写UI</a>
+              <a href="/en/2025/12/21/compose-%E7%94%A8kotlin%E4%BC%98%E9%9B%85%E5%9C%B0%E7%BC%96%E5%86%99UI/" title="compose-用kotlin优雅地编写UI">compose-用kotlin优雅地编写UI</a>
             </li>
           
             <li>
-              <a href="/2025/12/21/elasticsearch%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E6%80%BB%E7%BB%93/" title="elasticsearch实现搜索功能过程中的总结">elasticsearch实现搜索功能过程中的总结</a>
+              <a href="/en/2025/12/21/elasticsearch%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E6%80%BB%E7%BB%93/" title="elasticsearch实现搜索功能过程中的总结">elasticsearch实现搜索功能过程中的总结</a>
             </li>
           
             <li>
-              <a href="/2025/11/09/%E5%85%A8%E6%A0%88%E7%BB%84%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E6%80%BB%E8%A7%88/" title="全栈组学习路线总览">全栈组学习路线总览</a>
+              <a href="/en/2025/11/09/%E5%85%A8%E6%A0%88%E7%BB%84%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E6%80%BB%E8%A7%88/" title="全栈组学习路线总览">全栈组学习路线总览</a>
             </li>
           
             <li>
-              <a href="/2025/10/12/%E5%9F%BA%E4%BA%8EFeign%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/" title="基于Feign远程调用">基于Feign远程调用</a>
+              <a href="/en/2025/10/12/%E5%9F%BA%E4%BA%8EFeign%E8%BF%9C%E7%A8%8B%E8%B0%83%E7%94%A8/" title="基于Feign远程调用">基于Feign远程调用</a>
             </li>
           
             <li>
-              <a href="/2025/10/05/%E5%85%B3%E4%BA%8ENacos%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/" title="关于Nacos注册中心">关于Nacos注册中心</a>
+              <a href="/en/2025/10/05/%E5%85%B3%E4%BA%8ENacos%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83/" title="关于Nacos注册中心">关于Nacos注册中心</a>
             </li>
           
         </ul>
@@ -511,110 +511,102 @@
     <div class="tag-wrap">
   
     <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/Golang/">Golang</a>
+      <a class="archives-tag-list-link" href="/en/tags/Minecraft/">Minecraft</a>
     </div>
   
     <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/Minecraft/">Minecraft</a>
+      <a class="archives-tag-list-link" href="/en/tags/neoforge/">neoforge</a>
     </div>
   
     <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/neoforge/">neoforge</a>
+      <a class="archives-tag-list-link" href="/en/tags/compose/">compose</a>
     </div>
   
     <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/docker/">docker</a>
+      <a class="archives-tag-list-link" href="/en/tags/kotlin/">kotlin</a>
     </div>
   
     <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/compose/">compose</a>
+      <a class="archives-tag-list-link" href="/en/tags/elasticsearch/">elasticsearch</a>
     </div>
   
     <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/kotlin/">kotlin</a>
+      <a class="archives-tag-list-link" href="/en/tags/%E5%AD%98%E5%82%A8/">存储</a>
     </div>
   
     <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/elasticsearch/">elasticsearch</a>
+      <a class="archives-tag-list-link" href="/en/tags/Golang/">Golang</a>
     </div>
   
     <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/%E5%AD%98%E5%82%A8/">存储</a>
+      <a class="archives-tag-list-link" href="/en/tags/docker/">docker</a>
     </div>
   
     <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/%E6%A9%99%E6%9E%9C%E5%B7%A5%E4%BD%9C%E5%AE%A4%E5%85%A8%E6%A0%88%E7%BB%84/">橙果工作室全栈组</a>
+      <a class="archives-tag-list-link" href="/en/tags/%E6%A9%99%E6%9E%9C%E5%B7%A5%E4%BD%9C%E5%AE%A4%E5%85%A8%E6%A0%88%E7%BB%84/">橙果工作室全栈组</a>
     </div>
   
     <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/Feign/">Feign</a>
+      <a class="archives-tag-list-link" href="/en/tags/Feign/">Feign</a>
     </div>
   
     <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/java/">java</a>
+      <a class="archives-tag-list-link" href="/en/tags/java/">java</a>
     </div>
   
     <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/nacos/">nacos</a>
+      <a class="archives-tag-list-link" href="/en/tags/nacos/">nacos</a>
     </div>
   
     <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/socket/">socket</a>
+      <a class="archives-tag-list-link" href="/en/tags/socket/">socket</a>
     </div>
   
     <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/Assembly/">Assembly</a>
+      <a class="archives-tag-list-link" href="/en/tags/Assembly/">Assembly</a>
     </div>
   
     <div class="archives-tag-list-item" data-aos="zoom-in">
-      <a class="archives-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>
+      <a class="archives-tag-list-link" href="/en/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>
     </div>
   
 </div>
 <div class="category-wrap">
   
     <div class="archives-category-list-item" data-aos="zoom-in">
-      <a class="archives-category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
+      <a class="archives-category-list-link" href="/en/categories/Minecraft/">Minecraft</a>
     </div>
   
     <div class="archives-category-list-item" data-aos="zoom-in">
-      <a class="archives-category-list-link" href="/categories/%E6%A1%86%E6%9E%B6/">框架</a>
+      <a class="archives-category-list-link" href="/en/categories/%E6%A1%86%E6%9E%B6/">框架</a>
     </div>
   
     <div class="archives-category-list-item" data-aos="zoom-in">
-      <a class="archives-category-list-link" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a>
+      <a class="archives-category-list-link" href="/en/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a>
     </div>
   
     <div class="archives-category-list-item" data-aos="zoom-in">
-      <a class="archives-category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/">服务部署</a>
+      <a class="archives-category-list-link" href="/en/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">编程语言</a>
     </div>
   
     <div class="archives-category-list-item" data-aos="zoom-in">
-      <a class="archives-category-list-link" href="/categories/%E6%A1%86%E6%9E%B6/Minecraft/">Minecraft</a>
+      <a class="archives-category-list-link" href="/en/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%88%86%E5%B8%83%E5%BC%8F%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/">分布式搜索引擎</a>
     </div>
   
     <div class="archives-category-list-item" data-aos="zoom-in">
-      <a class="archives-category-list-link" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/">容器技术</a>
+      <a class="archives-category-list-link" href="/en/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
     </div>
   
     <div class="archives-category-list-item" data-aos="zoom-in">
-      <a class="archives-category-list-link" href="/categories/%E9%A1%B9%E7%9B%AE/">项目</a>
+      <a class="archives-category-list-link" href="/en/categories/%E9%A1%B9%E7%9B%AE/">项目</a>
     </div>
   
     <div class="archives-category-list-item" data-aos="zoom-in">
-      <a class="archives-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+      <a class="archives-category-list-link" href="/en/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/">容器技术</a>
     </div>
   
     <div class="archives-category-list-item" data-aos="zoom-in">
-      <a class="archives-category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2/Minecraft/">Minecraft</a>
-    </div>
-  
-    <div class="archives-category-list-item" data-aos="zoom-in">
-      <a class="archives-category-list-link" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
-    </div>
-  
-    <div class="archives-category-list-item" data-aos="zoom-in">
-      <a class="archives-category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>
+      <a class="archives-category-list-link" href="/en/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">计算机基础</a>
     </div>
   
 </div>
@@ -629,18 +621,18 @@
         
         <section class="archives-wrap" data-aos="fade-up">
           <div class="archive-year-wrap">
-            <a href="/archives/2024" class="archive-year">2024</a>
+            <a href="/en/archives/2025" class="archive-year">2025</a>
           </div>
           <ul>
             
             <li class="archive-article">
   <div class="archive-article-date">
     <span>
-      <time class="dt-published" datetime="2024-10-12T16:00:00.000Z" itemprop="datePublished">10-13</time>
+      <time class="dt-published" datetime="2025-12-21T14:41:44.000Z" itemprop="datePublished">12-21</time>
     </span>
   </div>
   
-    <a class="archive-article-title" href="/2024/10/13/%E4%BB%8E0%20%E2%86%92%20%E2%88%9E%20%E6%88%90%E4%B8%BA%20Minecraft%20JE%E8%85%90%E7%AB%B9/">从0 → ∞ 成为 Minecraft JE腐竹</a>
+    <a class="archive-article-title" href="/en/2025/12/21/elasticsearch%E5%AE%9E%E7%8E%B0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E6%80%BB%E7%BB%93/">elasticsearch实现搜索功能过程中的总结</a>
   
 </li>
 
@@ -667,14 +659,14 @@
       
       
       
-        2020-2025
+        2020-2026
       
       <span class="footer-info-sep rotate"></span>
       Luminous
     </div>
     
       <div>
-        基于&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Powered by&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
         Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
       </div>
     
@@ -693,10 +685,10 @@
     
       <div>
         <span class="icon-eye"></span>
-        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        <span id="busuanzi_container_site_pv">Number of visits&nbsp;<span id="busuanzi_value_site_pv"></span></span>
         &nbsp;|&nbsp;
         <span class="icon-user"></span>
-        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+        <span id="busuanzi_container_site_uv">Number of visitors&nbsp;<span id="busuanzi_value_site_uv"></span></span>
       </div>
     
   </div>
@@ -720,15 +712,15 @@
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div>
+    <div>Post</div>
     <div class="sidebar-state-number">17</div>
   </div>
   <div class="sidebar-state-category">
-    <div>分类</div>
-    <div class="sidebar-state-number">11</div>
+    <div>Category</div>
+    <div class="sidebar-state-number">9</div>
   </div>
   <div class="sidebar-state-tag">
-    <div>标签</div>
+    <div>Tag</div>
     <div class="sidebar-state-number">15</div>
   </div>
 </div>
@@ -755,7 +747,7 @@
   
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <a class="sidebar-menu-link-dummy" href="/en/" aria-label="Home"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -763,11 +755,11 @@
             
           
         </div>
-        <div class="sidebar-menu-link">首页</div>
+        <div class="sidebar-menu-link">Home</div>
       </div>
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <a class="sidebar-menu-link-dummy" href="/en/archives" aria-label="Archives"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -775,11 +767,11 @@
             
           
         </div>
-        <div class="sidebar-menu-link">归档</div>
+        <div class="sidebar-menu-link">Archives</div>
       </div>
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <a class="sidebar-menu-link-dummy" href="/en/about" aria-label="About"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -787,11 +779,11 @@
             
           
         </div>
-        <div class="sidebar-menu-link">关于</div>
+        <div class="sidebar-menu-link">About</div>
       </div>
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <a class="sidebar-menu-link-dummy" href="/en/friend" aria-label="Friend"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -799,7 +791,7 @@
             
           
         </div>
-        <div class="sidebar-menu-link">友链</div>
+        <div class="sidebar-menu-link">Friend</div>
       </div>
     
   
