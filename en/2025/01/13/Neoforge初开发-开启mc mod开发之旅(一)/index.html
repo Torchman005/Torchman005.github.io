@@ -1,6 +1,6 @@
 
   <!DOCTYPE html>
-  <html lang="zh-CN"  
+  <html lang="en"  
     
       data-theme-mode="auto"
     
@@ -17,7 +17,7 @@
   <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)","en":"Copy successfully (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://luminous.blog';window.REIMU_CONFIG.i18n_languages = ["en"];</script>
   
   <title>
-    Neoforge初开发-开启mc mod开发之旅 |
+    Neoforge初开发-开启mc mod开发之旅(一) |
     
     Luminous&#39; Tiny Home
   </title>
@@ -43,16 +43,21 @@
   
     <meta name="description" content="记录了mc neoforge开发初体验">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Neoforge初开发-开启mc mod开发之旅">
-<meta property="og:url" content="http://luminous.blog/2025/01/13/Neoforge%E5%88%9D%E5%BC%80%E5%8F%91-%E5%BC%80%E5%90%AFmc%20mod%E5%BC%80%E5%8F%91%E4%B9%8B%E6%97%85/index.html">
+<meta property="og:title" content="Neoforge初开发-开启mc mod开发之旅(一)">
+<meta property="og:url" content="http://luminous.blog/en/2025/01/13/Neoforge%E5%88%9D%E5%BC%80%E5%8F%91-%E5%BC%80%E5%90%AFmc%20mod%E5%BC%80%E5%8F%91%E4%B9%8B%E6%97%85(%E4%B8%80)/index.html">
 <meta property="og:site_name" content="Luminous&#39; Tiny Home">
 <meta property="og:description" content="记录了mc neoforge开发初体验">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://luminous.blog/images/covers/neoforged.png">
 <meta property="og:image" content="http://luminous.blog/images/covers/neoforged.png">
 <meta property="og:image" content="http://luminous.blog/images/posts/mod%E5%BC%80%E5%8F%91/1.png">
+<meta property="og:image" content="http://luminous.blog/images/posts/mod%E5%BC%80%E5%8F%91/2.png">
+<meta property="og:image" content="http://luminous.blog/images/posts/mod%E5%BC%80%E5%8F%91/3.png">
+<meta property="og:image" content="http://luminous.blog/images/posts/mod%E5%BC%80%E5%8F%91/4.png">
+<meta property="og:image" content="http://luminous.blog/images/posts/mod%E5%BC%80%E5%8F%91/5.png">
+<meta property="og:image" content="http://luminous.blog/images/posts/mod%E5%BC%80%E5%8F%91/6.png">
 <meta property="article:published_time" content="2025-01-13T08:57:44.000Z">
-<meta property="article:modified_time" content="2026-01-05T14:18:57.970Z">
+<meta property="article:modified_time" content="2026-01-07T09:45:54.494Z">
 <meta property="article:author" content="Luminous">
 <meta property="article:tag" content="Minecraft">
 <meta property="article:tag" content="neoforge">
@@ -110,7 +115,7 @@
       
         
       
-      <div class="loading-word">(∠・ω&lt; )⌒☆</div>
+      <div class="loading-word">Loading...</div>
     </div>
   </div>
   </div>
@@ -161,7 +166,7 @@
               
              
           </div>
-          <a class="main-nav-link" href="/">首页</a>
+          <a class="main-nav-link" href="/en/">Home</a>
         </span>
       
         <span class="main-nav-link-wrap">
@@ -172,7 +177,7 @@
               
              
           </div>
-          <a class="main-nav-link" href="/archives">归档</a>
+          <a class="main-nav-link" href="/en/archives">Archives</a>
         </span>
       
         <span class="main-nav-link-wrap">
@@ -183,7 +188,7 @@
               
              
           </div>
-          <a class="main-nav-link" href="/about">关于</a>
+          <a class="main-nav-link" href="/en/about">About</a>
         </span>
       
         <span class="main-nav-link-wrap">
@@ -194,7 +199,7 @@
               
              
           </div>
-          <a class="main-nav-link" href="/friend">友链</a>
+          <a class="main-nav-link" href="/en/friend">Friend</a>
         </span>
       
     
@@ -202,10 +207,10 @@
   </nav>
   <nav id="sub-nav" aria-label="Secondary navigation">
     
-      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅" aria-label="RSS 订阅" target="_blank"></a>
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed" aria-label="RSS Feed" target="_blank"></a>
     
     
-      <a id="nav-search-btn" class="nav-icon popup-trigger" title="搜索" aria-label="搜索"></a>
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="Search" aria-label="Search"></a>
     
   </nav>
   
@@ -214,13 +219,13 @@
       <div class="custom-dropdown">
         <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
           <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
-          <span id="selected-lang">简体中文</span>
+          <span id="selected-lang">English</span>
         </div>
         <ul class="select-items" id="select-items" role="listbox" aria-label="Languages">
           
-            <li data-value="zh-CN" role="option" class="selected" aria-selected="true">简体中文</li>
+            <li data-value="zh-CN" role="option" aria-selected="false">简体中文</li>
           
-            <li data-value="en" role="option" aria-selected="false">English</li>
+            <li data-value="en" role="option" class="selected" aria-selected="true">English</li>
           
         </ul>
       </div>
@@ -240,9 +245,9 @@
           item.addEventListener("click", () => {
             const langMap = {};
             
-              langMap['zh-CN'] = '/2025/01/13/Neoforge初开发-开启mc mod开发之旅/';
+              langMap['zh-CN'] = '/2025/01/13/Neoforge初开发-开启mc mod开发之旅(一)/';
             
-              langMap['en'] = '/en/2025/01/13/Neoforge初开发-开启mc mod开发之旅/';
+              langMap['en'] = '/en/2025/01/13/Neoforge初开发-开启mc mod开发之旅(一)/';
             
             selectedLang.textContent = item.textContent;
             selectItems.classList.remove("show");
@@ -267,7 +272,7 @@
 <header id="header" aria-label="Site header">
   
     <picture></picture>
-    <img  fetchpriority="high" src="http://luminous.blog/covers/specific/mc1.webp" alt="Neoforge初开发-开启mc mod开发之旅">
+    <img  fetchpriority="high" src="http://luminous.blog/covers/specific/mc1.webp" alt="Neoforge初开发-开启mc mod开发之旅(一)">
   
   <div id="header-outer">
     <div id="header-title">
@@ -275,7 +280,7 @@
         
         
           <span id="logo">
-            <h1 data-aos="slide-up">Neoforge初开发-开启mc mod开发之旅</h1>
+            <h1 data-aos="slide-up">Neoforge初开发-开启mc mod开发之旅(一)</h1>
           </span>
         
       
@@ -319,10 +324,10 @@
     <div class="sidebar-wrap" data-aos="fade-up">
       
         
-          <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
   
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Emod%E6%96%87%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">关于mod文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BAmod%E6%97%B6%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">构建mod时要注意的一些问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="toc-number">3.</span> <span class="toc-text">版本控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-number">3.1.</span> <span class="toc-text">游戏版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9C%E7%AE%80%E5%8C%96%E2%80%9D%E8%AF%AD%E4%B9%89%E5%8C%96%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-number">3.2.</span> <span class="toc-text">“简化”语义化版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9C%E6%89%A9%E5%B1%95%E2%80%9D%E8%AF%AD%E4%B9%89%E5%8C%96%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-number">3.3.</span> <span class="toc-text">“扩展”语义化版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Alpha-Beta-Release-Alpha%E3%80%81Beta%E3%80%81%E6%AD%A3%E5%BC%8F%E7%89%88"><span class="toc-number">3.4.</span> <span class="toc-text">Alpha, Beta, Release Alpha、Beta、正式版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mod-jar%E5%8C%85%E5%91%BD%E5%90%8D"><span class="toc-number">3.5.</span> <span class="toc-text">Mod jar包命名</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Emod%E6%96%87%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">关于mod文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BAmod%E6%97%B6%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">构建mod时要注意的一些问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="toc-number">3.</span> <span class="toc-text">版本控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-number">3.1.</span> <span class="toc-text">游戏版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9C%E7%AE%80%E5%8C%96%E2%80%9D%E8%AF%AD%E4%B9%89%E5%8C%96%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-number">3.2.</span> <span class="toc-text">“简化”语义化版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9C%E6%89%A9%E5%B1%95%E2%80%9D%E8%AF%AD%E4%B9%89%E5%8C%96%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-number">3.3.</span> <span class="toc-text">“扩展”语义化版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Alpha-Beta-Release-Alpha%E3%80%81Beta%E3%80%81%E6%AD%A3%E5%BC%8F%E7%89%88"><span class="toc-number">3.4.</span> <span class="toc-text">Alpha, Beta, Release Alpha、Beta、正式版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mod-jar%E5%8C%85%E5%91%BD%E5%90%8D"><span class="toc-number">3.5.</span> <span class="toc-text">Mod jar包命名</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B"><span class="toc-number">4.</span> <span class="toc-text">开始</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mod%E7%B1%BB"><span class="toc-number">4.1.</span> <span class="toc-text">mod类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gradle-properties"><span class="toc-number">4.2.</span> <span class="toc-text">gradle.properties</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vanilla%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="toc-number">4.3.</span> <span class="toc-text">Vanilla源代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%B8%B8%E6%88%8F"><span class="toc-number">5.</span> <span class="toc-text">启动游戏</span></a></li></ol>
   
 </div>
 </div>
@@ -333,15 +338,15 @@
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div>
+    <div>Post</div>
     <div class="sidebar-state-number">17</div>
   </div>
   <div class="sidebar-state-category">
-    <div>分类</div>
+    <div>Category</div>
     <div class="sidebar-state-number">9</div>
   </div>
   <div class="sidebar-state-tag">
-    <div>标签</div>
+    <div>Tag</div>
     <div class="sidebar-state-number">15</div>
   </div>
 </div>
@@ -368,7 +373,7 @@
   
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <a class="sidebar-menu-link-dummy" href="/en/" aria-label="Home"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -376,11 +381,11 @@
             
           
         </div>
-        <div class="sidebar-menu-link">首页</div>
+        <div class="sidebar-menu-link">Home</div>
       </div>
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <a class="sidebar-menu-link-dummy" href="/en/archives" aria-label="Archives"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -388,11 +393,11 @@
             
           
         </div>
-        <div class="sidebar-menu-link">归档</div>
+        <div class="sidebar-menu-link">Archives</div>
       </div>
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <a class="sidebar-menu-link-dummy" href="/en/about" aria-label="About"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -400,11 +405,11 @@
             
           
         </div>
-        <div class="sidebar-menu-link">关于</div>
+        <div class="sidebar-menu-link">About</div>
       </div>
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <a class="sidebar-menu-link-dummy" href="/en/friend" aria-label="Friend"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -412,7 +417,7 @@
             
           
         </div>
-        <div class="sidebar-menu-link">友链</div>
+        <div class="sidebar-menu-link">Friend</div>
       </div>
     
   
@@ -439,20 +444,20 @@
   
 </aside>
 
-          <section id="main" aria-label="Main content"><article id="post-Neoforge初开发-开启mc mod开发之旅" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+          <section id="main" aria-label="Main content"><article id="post-Neoforge初开发-开启mc mod开发之旅(一)" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-inner" data-aos="fade-up">
     <div class="article-meta">
       <div class="article-date">
   <span class="article-date-link icon-calendar" data-aos="zoom-in">
     <time datetime="2025-01-13T08:57:44.000Z" itemprop="datePublished">2025-01-13</time>
-    <time style="display: none;" id="post-update-time">2026-01-05</time>
+    <time style="display: none;" id="post-update-time">2026-01-07</time>
   </span>
   
 </div>
 
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Minecraft/" title="Minecraft">Minecraft</a>
+    <a class="article-category-link" href="/en/categories/Minecraft/" title="Minecraft">Minecraft</a>
   </div>
 
 
@@ -498,10 +503,10 @@
 <p>创建项目后要交给idea来进行项目的初始化，期间要占用的时间估计会很长，期间可能还会有多次的构建失败的情况，在这种情况下只能一直保持魔法上网或者换maven国内镜像源</p>
 <h2 id="关于mod文件"><a href="#关于mod文件" class="headerlink" title="关于mod文件"></a>关于mod文件</h2><p>官方文档中有关一些mod文件的说明十分详细，比如有关gradle.properties中就包含了模组各种常用属性比如mod的版本和id，gradle会把这些文件中的值读取出来内联到其他位置，这样只需要在这里改动配置，其他地方就会自动应用（说实话这个设计确实方便），而且大多数的属性在官方文档里都给出了解释，这里不过多赘述</p>
 <h2 id="构建mod时要注意的一些问题"><a href="#构建mod时要注意的一些问题" class="headerlink" title="构建mod时要注意的一些问题"></a>构建mod时要注意的一些问题</h2><p>这里官方文档开头便建议你注意使用恰当的包结构和一些类的命名规范，这会使你的项目有更强的可维护性（<strong>在一个项目中可读性是很重要的</strong>）。</p>
-<p>一个常规的包结构应由顶级域名、子域名和modid构成，例如:<strong>com.example.modid</strong>.一个包结构目录内不允许出现同名的类或文件，否则游戏启动时就会崩溃。正确的做法是将同名的类放到不同的包目录下，这样便不会出现游戏崩溃的问题。</p>
-<p>在顶级包之下还要创建子包来对类加以区分，比如方块可以放在<strong>block</strong>包下，实体可以放在<strong>entity</strong>包下；或者还可以通过逻辑来区分，比如你要加个拆解台，你就可以把拆解台的方块类，菜单类和有关的一些物品放到这个名为拆解台的包中</p>
-<p>类的命名规范也有讲究。如果你创建的类是一个方块，就在这个类的后面加上一个”<strong>Block</strong>“（比如我要加个幸运方块，那这个类就是LuckyBlock）；同样地，如果你要加的是一个物品，那就在类名后加上”Item”；如果是菜单，则加上”Menu”</p>
-<h2 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h2><h3 id="游戏版本号"><a href="#游戏版本号" class="headerlink" title="游戏版本号"></a>游戏版本号</h3><p>每个neoforge mod的jar包名称除了模组名以外，还包含了游戏以及mod版本号等信息。Minecraft自1.0发布以来，版本号<strong>1</strong>一直沿用了下来，期间命名规则改变频繁，曾出现过 a1.1(Alpha 1.1)、b1.7.3(Beta 1.7.3)甚至infdev版本等，这些版本都没有遵循一个很清晰的版本号规则，但有一点值得肯定的是，这种情况不会轻易发生改变——起码在之前这是个毋庸置疑的观点…但就在几天前，mojang官方官宣了新的版本命名规则，他们决定采用年份+编号的方式，以年份为首段，后面为此年发布的第几个重要版本（其实有点像快照的版本命名方式），而第一个要以此命名规则面世的版本为26.1，之后会是26.2，然后是26.3…27年就是27.1，27.2…即便对版本命名突如其来的改变有点爷青结的感觉，但这种命名确实更清晰更合理了些，毕竟总是要做出一些改变</p>
+<p>一个常规的包结构应由顶级域名、子域名和modid构成，例如:<code>com.example.modid</code>.一个包结构目录内不允许出现同名的类或文件，否则游戏启动时就会崩溃。正确的做法是将同名的类放到不同的包目录下，这样便不会出现游戏崩溃的问题。</p>
+<p>在顶级包之下还要创建子包来对类加以区分，比如方块可以放在<code>block</code>包下，实体可以放在<code>entity</code>包下；或者还可以通过逻辑来区分，比如你要加个拆解台，你就可以把拆解台的方块类，菜单类和有关的一些物品放到这个名为拆解台的包中</p>
+<p>类的命名规范也有讲究。如果你创建的类是一个方块，就在这个类的后面加上一个”<code>Block</code>“（比如我要加个幸运方块，那这个类就是<code>LuckyBlock</code>）；同样地，如果你要加的是一个物品，那就在类名后加上”<code>Item</code>“；如果是菜单，则加上”<code>Menu</code>“</p>
+<h2 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h2><h3 id="游戏版本号"><a href="#游戏版本号" class="headerlink" title="游戏版本号"></a>游戏版本号</h3><p>每个neoforge mod的jar包名称除了模组名以外，还包含了游戏以及mod版本号等信息。Minecraft自1.0发布以来，版本号<strong>1</strong>一直沿用了下来，期间命名规则改变频繁，曾出现过 <code>a1.1(Alpha 1.1)</code>、<code>b1.7.3(Beta 1.7.3)</code>甚至<code>infdev</code>版本等，这些版本都没有遵循一个很清晰的版本号规则，但有一点值得肯定的是，这种情况不会轻易发生改变——起码在之前这是个毋庸置疑的观点…但就在几天前，mojang官方官宣了新的版本命名规则，他们决定采用年份+编号的方式，以年份为首段，后面为此年发布的第几个重要版本（其实有点像快照的版本命名方式），而第一个要以此命名规则面世的版本为<code>26.1</code>，之后会是<code>26.2</code>，然后是<code>26.3</code>…27年就是<code>27.1</code>，<code>27.2</code>…即便对版本命名突如其来的改变有点爷青结的感觉，但这种命名确实更清晰更合理了些，毕竟总是要做出一些改变</p>
 <p>Neoforge mod也有一套专门的版本命名规则，一般地，如果还是测试版本（开发版本），则版本号为0.x.x，直到正式版发布则升到1.x.x(实际上大部分开发项目都会采用这种形式)。次版本号负责发布新功能，补丁版本号负责错误修复（但是这条规则经常在实践中被忽略…）</p>
 <h3 id="“简化”语义化版本号"><a href="#“简化”语义化版本号" class="headerlink" title="“简化”语义化版本号"></a>“简化”语义化版本号</h3><p>这样的语义化版本控制还可以进行“简化”，旨在只使用主版本号+次版本号来对小型模组进行版本控制，这些模组织添加少量简单的对象，因此很少需要更新（除非要兼容新版本的Minecraft），通常只停留在1.0版本</p>
 <h3 id="“扩展”语义化版本号"><a href="#“扩展”语义化版本号" class="headerlink" title="“扩展”语义化版本号"></a>“扩展”语义化版本号</h3><p>有了“简化”的方式，理应还有“扩展”。“扩展”语义化版本号，或“四部分”语义化版本号，由四个数字组成（例如 <code>1.0.0.0</code> ）。根据模组的不同，格式可以是 <code>major.api.minor.patch</code> ，或 <code>major.minor.patch.hotfix</code> ，或者完全不同的格式——这没有一个统一的标准</p>
@@ -509,6 +514,26 @@
 <p>对于 <code>major.minor.patch.hotfix</code> ，补丁级别被分为两部分。这是 <a target="_blank" rel="noopener" href="https://www.curseforge.com/minecraft/mc-mods/create">Create</a> mod 所采用的方法，其最后使用此命名方式的版本为 0.5.1j（撰写本文时）。请注意，Create 使用字母而不是第四位数字来表示热修复补丁，这样可以保持与常规语义化版本控制的兼容性</p>
 <h3 id="Alpha-Beta-Release-Alpha、Beta、正式版"><a href="#Alpha-Beta-Release-Alpha、Beta、正式版" class="headerlink" title="Alpha, Beta, Release Alpha、Beta、正式版"></a>Alpha, Beta, Release Alpha、Beta、正式版</h3><p>与 Minecraft 本身一样，模组制作通常采用软件工程中常见的经典 <code>alpha</code> &#x2F; <code>beta</code> &#x2F; <code>release</code> 阶段，其中 <code>alpha</code> 表示不稳定&#x2F;实验版本（有时也称为 <code>experimental</code> 或 <code>snapshot</code> ）， <code>beta</code> 表示半稳定版本， <code>release</code> 表示稳定版本（有时称为 <code>stable</code> 而不是 <code>release</code> ）</p>
 <h3 id="Mod-jar包命名"><a href="#Mod-jar包命名" class="headerlink" title="Mod jar包命名"></a>Mod jar包命名</h3><p>一个完整的mod jar包命名应该包括mod名称、mod加载器、Minecraft版本号以及mod版本号。就拿jei来说，<code>jei-neoforge-1.20.2-16.0.0.28</code> 、 <code>jei-1.20.2-neoforge-16.0.0.28</code> 或 <code>jei-1.20.2-16.0.0.28-neoforge</code> 都是有效的写法。对于其他模组加载器，则需要将 <code>neoforge</code> 替换为 <code>forge</code> 、 <code>fabric</code> 、 <code>quilt</code> 或您正在使用的其他模组加载器（例如，与 NeoForge 一起使用的加载器）</p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>讲了这么多代码之外的事情，虽然我尽力用自己的话来解释了一遍这些命名或是注意事项，但可能对某些人来说还是有些难懂。不用担心，下面也该正式进入写代码的环节了</p>
+<p>打开你的<strong>idea</strong>（java编程常用的IDE，如果没有，请尝试去网络上了解并下载。也可以使用其他IDE，但这里我个人还是推荐idea，毕竟idea的许多功能简化了我们的java开发），并在idea中打开你生成的脚手架（或者在idea中安装minecraft development插件，然后直接在i新建一个neoforge项目）。初次打开项目idea会自动初始化gradle，第一次时间稍微有点长（并非稍微），期间也有可能多次报错，大多数这样的情况就需要你换个网络环境或者换个魔法节点然后再试一次，实在不行就多次尝试（反正我就是重复了很多次才终于下完所有东西的），初次构建好了之后，后面再打开项目就会很快了</p>
+<p>构建好以后项目文件目录大致是这个样子（<strong>block、entity、item包是我后来加的</strong>，所以刚开始没有.PS:当时我写的mod名为Something Simple）</p>
+<p><img src="http://luminous.blog/images/posts/mod%E5%BC%80%E5%8F%91/2.png"></p>
+<h3 id="mod类"><a href="#mod类" class="headerlink" title="mod类"></a>mod类</h3><p>没有什么问题的话，我们打开类名为你mod id的那个类，你会看到脚手架已为你自动生成了一百多行代码，现在先不用管它们都是什么意思，你只要知道代码第40行的那个<code>MODID</code>十分重要，并且它的值也有不少限制（这也是我为什么不推荐github直接拉取的原因之一，因为你需要给示例代码改动很多地方，而直接生成就不需要），<code>MODID</code>的值中不能出现大写字母、数字、空格，符号只有” _ “可以出现，所以你需要保证你的<code>MODID</code>只有小写字母和” _ “组成，而且还要注意的一点是你的<code>MODID</code>在游戏中不允许重复，否则可能会使游戏崩溃，<code>MODID</code>作为你mod的唯一标识出现，你需要给它组合出一个不易重复、独特的字符串。除此之外，有许多示例代码现在还不需要，为了简化学习，我删掉了一部分示例代码，这是我改动以后的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The value here should match an entry in the META-INF/neoforge.mods.toml file</span></span><br><span class="line"><span class="meta">@Mod(Somthing_simple.MODID)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Somthing_simple</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Define mod id in a common place for everything to reference</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">MODID</span> <span class="operator">=</span> <span class="string">&quot;somthing_simple&quot;</span>;</span><br><span class="line">    <span class="comment">// Directly reference a slf4j logger</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">LOGGER</span> <span class="operator">=</span> LogUtils.getLogger();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// The constructor for the mod class is the first code that is run when your mod is loaded.</span></span><br><span class="line">    <span class="comment">// FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Somthing_simple</span><span class="params">(IEventBus modEventBus, ModContainer modContainer)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Register the commonSetup method for modloading</span></span><br><span class="line">        modEventBus.addListener(<span class="built_in">this</span>::commonSetup);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Register ourselves for server and other game events we are interested in.</span></span><br><span class="line">        <span class="comment">// Note that this is necessary if and only if we want *this* class (Somthing_simple) to respond directly to events.</span></span><br><span class="line">        <span class="comment">// Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.</span></span><br><span class="line">        NeoForge.EVENT_BUS.register(<span class="built_in">this</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Register the item to a creative tab</span></span><br><span class="line">        modEventBus.addListener(<span class="built_in">this</span>::addCreative);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Register our mod&#x27;s ModConfigSpec so that FML can create and load the config file for us</span></span><br><span class="line">        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">commonSetup</span><span class="params">(<span class="keyword">final</span> FMLCommonSetupEvent event)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Some common setup code</span></span><br><span class="line">        LOGGER.info(<span class="string">&quot;HELLO FROM COMMON SETUP&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (Config.logDirtBlock)</span><br><span class="line">            LOGGER.info(<span class="string">&quot;DIRT BLOCK &gt;&gt; &#123;&#125;&quot;</span>, BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));</span><br><span class="line"></span><br><span class="line">        LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);</span><br><span class="line"></span><br><span class="line">        Config.items.forEach((item) -&gt; LOGGER.info(<span class="string">&quot;ITEM &gt;&gt; &#123;&#125;&quot;</span>, item.toString()));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Add the example block item to the building blocks tab</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">addCreative</span><span class="params">(BuildCreativeModeTabContentsEvent event)</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// You can use SubscribeEvent and let the Event Bus discover methods to call</span></span><br><span class="line">    <span class="meta">@SubscribeEvent</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onServerStarting</span><span class="params">(ServerStartingEvent event)</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent</span></span><br><span class="line">    <span class="meta">@EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">ClientModEvents</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="meta">@SubscribeEvent</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">onClientSetup</span><span class="params">(FMLClientSetupEvent event)</span> &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="gradle-properties"><a href="#gradle-properties" class="headerlink" title="gradle.properties"></a>gradle.properties</h3><p>如果是github拉取的项目，只要改动后面的mod信息，正确填写就行；如果是生成的脚手架，那基本不用做任何修改，要改的话可以把<code>mod_version</code>的值给改成0.0.1</p>
+<h3 id="Vanilla源代码"><a href="#Vanilla源代码" class="headerlink" title="Vanilla源代码"></a>Vanilla源代码</h3><p>在mod开发中我们不可避免地需要看一些mc香草版本（Vanilla，指没有添加任何插件和模组的基础游戏版本）的源代码，但是我们无法直接查看香草的源代码，这源于mc的代码混淆机制，以对mc的源代码进行保护。</p>
+<p>那么我们如何查看香草源代码呢？</p>
+<p>如果你足够细心，会发现idea右侧的工具栏中有一个gradle的logo（形状是一头大象），点击它，它会给你弹出：</p>
+<p><img src="http://luminous.blog/images/posts/mod%E5%BC%80%E5%8F%91/3.png"></p>
+<p>点击<code>Download Sources</code></p>
+<p><img src="http://luminous.blog/images/posts/mod%E5%BC%80%E5%8F%91/4.png"></p>
+<p>它会自动给你下载源码，下载完成之后，打开任意香草版本类文件，代码最上方会有一行蓝色的文字，右边有个<code>attach sources</code>，点击它，这样你就可以查看香草源代码了</p>
+<h2 id="启动游戏"><a href="#启动游戏" class="headerlink" title="启动游戏"></a>启动游戏</h2><p>这些准备工作做好之后，你就可以尝试启动你的游戏客户端了。选择<code>Client</code>并运行</p>
+<p><img src="http://luminous.blog/images/posts/mod%E5%BC%80%E5%8F%91/5.png"></p>
+<p>等待一段时间直至游戏加载完成，在主界面中打开模组，你就会发现你的mod已经成功在游戏中加载了</p>
+<p><img src="http://luminous.blog/images/posts/mod%E5%BC%80%E5%8F%91/6.png"></p>
+<p>至此，我们已成功踏进了neoforge mod开发的大门！</p>
 
       
     </div>
@@ -518,25 +543,25 @@
       
         <div class="share-wrapper">
   
-    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fluminous.blog%2F2025%2F01%2F13%2FNeoforge%25E5%2588%259D%25E5%25BC%2580%25E5%258F%2591-%25E5%25BC%2580%25E5%2590%25AFmc%2520mod%25E5%25BC%2580%25E5%258F%2591%25E4%25B9%258B%25E6%2597%2585%2F" target="_blank" rel="noopener noreferrer" title="Neoforge初开发-开启mc mod开发之旅">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fluminous.blog%2F2025%2F01%2F13%2FNeoforge%25E5%2588%259D%25E5%25BC%2580%25E5%258F%2591-%25E5%25BC%2580%25E5%2590%25AFmc%2520mod%25E5%25BC%2580%25E5%258F%2591%25E4%25B9%258B%25E6%2597%2585(%25E4%25B8%2580)%2F" target="_blank" rel="noopener noreferrer" title="Neoforge初开发-开启mc mod开发之旅(一)">
       <div class="share-icon icon icon-facebook">
         
       </div>
     </a>
   
-    <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fluminous.blog%2F2025%2F01%2F13%2FNeoforge%25E5%2588%259D%25E5%25BC%2580%25E5%258F%2591-%25E5%25BC%2580%25E5%2590%25AFmc%2520mod%25E5%25BC%2580%25E5%258F%2591%25E4%25B9%258B%25E6%2597%2585%2F&amp;text=Neoforge%E5%88%9D%E5%BC%80%E5%8F%91-%E5%BC%80%E5%90%AFmc%20mod%E5%BC%80%E5%8F%91%E4%B9%8B%E6%97%85&amp;via=http%3A%2F%2Fluminous.blog" target="_blank" rel="noopener noreferrer" title="Neoforge初开发-开启mc mod开发之旅">
+    <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fluminous.blog%2F2025%2F01%2F13%2FNeoforge%25E5%2588%259D%25E5%25BC%2580%25E5%258F%2591-%25E5%25BC%2580%25E5%2590%25AFmc%2520mod%25E5%25BC%2580%25E5%258F%2591%25E4%25B9%258B%25E6%2597%2585(%25E4%25B8%2580)%2F&amp;text=Neoforge%E5%88%9D%E5%BC%80%E5%8F%91-%E5%BC%80%E5%90%AFmc%20mod%E5%BC%80%E5%8F%91%E4%B9%8B%E6%97%85(%E4%B8%80)&amp;via=http%3A%2F%2Fluminous.blog" target="_blank" rel="noopener noreferrer" title="Neoforge初开发-开启mc mod开发之旅(一)">
       <div class="share-icon icon icon-twitter">
         
       </div>
     </a>
   
-    <a href="https://connect.qq.com/widget/shareqq/index.html?url=www.baidu.com&amp;title=Neoforge%E5%88%9D%E5%BC%80%E5%8F%91-%E5%BC%80%E5%90%AFmc%20mod%E5%BC%80%E5%8F%91%E4%B9%8B%E6%97%85&amp;desc=%E8%AE%B0%E5%BD%95%E4%BA%86mc%20neoforge%E5%BC%80%E5%8F%91%E5%88%9D%E4%BD%93%E9%AA%8C&amp;source=http%3A%2F%2Fluminous.blog" target="_blank" rel="noopener noreferrer" title="Neoforge初开发-开启mc mod开发之旅">
+    <a href="https://connect.qq.com/widget/shareqq/index.html?url=www.baidu.com&amp;title=Neoforge%E5%88%9D%E5%BC%80%E5%8F%91-%E5%BC%80%E5%90%AFmc%20mod%E5%BC%80%E5%8F%91%E4%B9%8B%E6%97%85(%E4%B8%80)&amp;desc=%E8%AE%B0%E5%BD%95%E4%BA%86mc%20neoforge%E5%BC%80%E5%8F%91%E5%88%9D%E4%BD%93%E9%AA%8C&amp;source=http%3A%2F%2Fluminous.blog" target="_blank" rel="noopener noreferrer" title="Neoforge初开发-开启mc mod开发之旅(一)">
       <div class="share-icon icon icon-qq">
         
       </div>
     </a>
   
-    <a href="javascript:;"  title="Neoforge初开发-开启mc mod开发之旅">
+    <a href="javascript:;"  title="Neoforge初开发-开启mc mod开发之旅(一)">
       <div class="share-icon icon icon-weixin">
         
           <div id="share-weixin">
@@ -564,21 +589,21 @@
       
       
       
-        <a data-aos="zoom-in" href="/2025/01/13/Neoforge%E5%88%9D%E5%BC%80%E5%8F%91-%E5%BC%80%E5%90%AFmc%20mod%E5%BC%80%E5%8F%91%E4%B9%8B%E6%97%85/#comments" class="article-comment-link">
-          <span class="post-comments-count waline-comment-count" data-path="/2025/01/13/Neoforge%E5%88%9D%E5%BC%80%E5%8F%91-%E5%BC%80%E5%90%AFmc%20mod%E5%BC%80%E5%8F%91%E4%B9%8B%E6%97%85/" itemprop="commentCount"></span>
-          留言
+        <a data-aos="zoom-in" href="/en/2025/01/13/Neoforge%E5%88%9D%E5%BC%80%E5%8F%91-%E5%BC%80%E5%90%AFmc%20mod%E5%BC%80%E5%8F%91%E4%B9%8B%E6%97%85(%E4%B8%80)/#comments" class="article-comment-link">
+          <span class="post-comments-count waline-comment-count" data-path="/en/2025/01/13/Neoforge%E5%88%9D%E5%BC%80%E5%8F%91-%E5%BC%80%E5%90%AFmc%20mod%E5%BC%80%E5%8F%91%E4%B9%8B%E6%97%85(%E4%B8%80)/" itemprop="commentCount"></span>
+          Comments
         </a>
       
       
       
       
         <span data-aos="zoom-in" class="article-visitor-link">
-          <span class="waline-pageview-count" data-path="/2025/01/13/Neoforge%E5%88%9D%E5%BC%80%E5%8F%91-%E5%BC%80%E5%90%AFmc%20mod%E5%BC%80%E5%8F%91%E4%B9%8B%E6%97%85/">0</span>
-          <em class="post-meta-item-text">阅读量</em>
+          <span class="waline-pageview-count" data-path="/en/2025/01/13/Neoforge%E5%88%9D%E5%BC%80%E5%8F%91-%E5%BC%80%E5%90%AFmc%20mod%E5%BC%80%E5%8F%91%E4%B9%8B%E6%97%85(%E4%B8%80)/">0</span>
+          <em class="post-meta-item-text">Readings</em>
         </span>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/Minecraft/" rel="tag" title="Minecraft">Minecraft</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/tags/neoforge/" rel="tag" title="neoforge">neoforge</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/en/tags/Minecraft/" rel="tag" title="Minecraft">Minecraft</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/en/tags/neoforge/" rel="tag" title="neoforge">neoforge</a></li></ul>
 
 
     </footer>
@@ -591,8 +616,8 @@
         
           <img data-src="http://luminous.blog/covers/cover12.webp" data-sizes="auto" alt="java:基于socket通信技术实现的简单聊天室" class="lazyload">
         
-        <a href="/2025/06/02/%E5%9F%BA%E4%BA%8Esocket%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E5%8D%95%E8%81%8A%E5%A4%A9%E5%AE%A4/" aria-label="前一篇: java:基于socket通信技术实现的简单聊天室" title="前一篇: java:基于socket通信技术实现的简单聊天室"></a>
-        <div class="article-nav-caption">前一篇</div>
+        <a href="/en/2025/06/02/%E5%9F%BA%E4%BA%8Esocket%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E5%8D%95%E8%81%8A%E5%A4%A9%E5%AE%A4/" aria-label="Prev: java:基于socket通信技术实现的简单聊天室" title="Prev: java:基于socket通信技术实现的简单聊天室"></a>
+        <div class="article-nav-caption">Prev</div>
         <h3 class="article-nav-title">
           
             java:基于socket通信技术实现的简单聊天室
@@ -606,8 +631,8 @@
       
         <img data-src="http://luminous.blog/covers/cover11.webp" data-sizes="auto" alt="Go语言基本语法" class="lazyload">
       
-      <a href="/2024/11/25/Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" aria-label="后一篇: Go语言基本语法"  title="后一篇: Go语言基本语法"></a>
-      <div class="article-nav-caption">后一篇</div>
+      <a href="/en/2024/11/25/Go%E8%AF%AD%E8%A8%80%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" aria-label="Next: Go语言基本语法"  title="Next: Go语言基本语法"></a>
+      <div class="article-nav-caption">Next</div>
       <h3 class="article-nav-title">
         
           Go语言基本语法
@@ -634,7 +659,7 @@
       
         
       
-      <h2 class="comment-title">说些什么吧！</h2>
+      <h2 class="comment-title">Leave a comment</h2>
       <div class="comment-selector">
         <div class="comment-selector-wrap">
             
@@ -675,17 +700,17 @@
     </div>
     
       <div>
-        基于&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Powered by&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
         Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
       </div>
     
     
       <div>
         <span class="icon-brush"></span>
-        84.2k
+        86.7k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        06:58
+        07:11
       </div>
     
     
@@ -694,10 +719,10 @@
     
       <div>
         <span class="icon-eye"></span>
-        <span id="busuanzi_container_site_pv">总访问量&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        <span id="busuanzi_container_site_pv">Number of visits&nbsp;<span id="busuanzi_value_site_pv"></span></span>
         &nbsp;|&nbsp;
         <span class="icon-user"></span>
-        <span id="busuanzi_container_site_uv">总访客量&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+        <span id="busuanzi_container_site_uv">Number of visitors&nbsp;<span id="busuanzi_value_site_uv"></span></span>
       </div>
     
   </div>
@@ -715,10 +740,10 @@
   <div class="sidebar-wrap">
     
       
-        <div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
   
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Emod%E6%96%87%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">关于mod文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BAmod%E6%97%B6%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">构建mod时要注意的一些问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="toc-number">3.</span> <span class="toc-text">版本控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-number">3.1.</span> <span class="toc-text">游戏版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9C%E7%AE%80%E5%8C%96%E2%80%9D%E8%AF%AD%E4%B9%89%E5%8C%96%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-number">3.2.</span> <span class="toc-text">“简化”语义化版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9C%E6%89%A9%E5%B1%95%E2%80%9D%E8%AF%AD%E4%B9%89%E5%8C%96%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-number">3.3.</span> <span class="toc-text">“扩展”语义化版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Alpha-Beta-Release-Alpha%E3%80%81Beta%E3%80%81%E6%AD%A3%E5%BC%8F%E7%89%88"><span class="toc-number">3.4.</span> <span class="toc-text">Alpha, Beta, Release Alpha、Beta、正式版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mod-jar%E5%8C%85%E5%91%BD%E5%90%8D"><span class="toc-number">3.5.</span> <span class="toc-text">Mod jar包命名</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Emod%E6%96%87%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">关于mod文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BAmod%E6%97%B6%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">构建mod时要注意的一些问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6"><span class="toc-number">3.</span> <span class="toc-text">版本控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-number">3.1.</span> <span class="toc-text">游戏版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9C%E7%AE%80%E5%8C%96%E2%80%9D%E8%AF%AD%E4%B9%89%E5%8C%96%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-number">3.2.</span> <span class="toc-text">“简化”语义化版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9C%E6%89%A9%E5%B1%95%E2%80%9D%E8%AF%AD%E4%B9%89%E5%8C%96%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-number">3.3.</span> <span class="toc-text">“扩展”语义化版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Alpha-Beta-Release-Alpha%E3%80%81Beta%E3%80%81%E6%AD%A3%E5%BC%8F%E7%89%88"><span class="toc-number">3.4.</span> <span class="toc-text">Alpha, Beta, Release Alpha、Beta、正式版</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mod-jar%E5%8C%85%E5%91%BD%E5%90%8D"><span class="toc-number">3.5.</span> <span class="toc-text">Mod jar包命名</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B"><span class="toc-number">4.</span> <span class="toc-text">开始</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mod%E7%B1%BB"><span class="toc-number">4.1.</span> <span class="toc-text">mod类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gradle-properties"><span class="toc-number">4.2.</span> <span class="toc-text">gradle.properties</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vanilla%E6%BA%90%E4%BB%A3%E7%A0%81"><span class="toc-number">4.3.</span> <span class="toc-text">Vanilla源代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%B8%B8%E6%88%8F"><span class="toc-number">5.</span> <span class="toc-text">启动游戏</span></a></li></ol>
   
 </div>
 </div>
@@ -729,15 +754,15 @@
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div>
+    <div>Post</div>
     <div class="sidebar-state-number">17</div>
   </div>
   <div class="sidebar-state-category">
-    <div>分类</div>
+    <div>Category</div>
     <div class="sidebar-state-number">9</div>
   </div>
   <div class="sidebar-state-tag">
-    <div>标签</div>
+    <div>Tag</div>
     <div class="sidebar-state-number">15</div>
   </div>
 </div>
@@ -764,7 +789,7 @@
   
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/" aria-label="首页"></a>
+        <a class="sidebar-menu-link-dummy" href="/en/" aria-label="Home"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -772,11 +797,11 @@
             
           
         </div>
-        <div class="sidebar-menu-link">首页</div>
+        <div class="sidebar-menu-link">Home</div>
       </div>
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="归档"></a>
+        <a class="sidebar-menu-link-dummy" href="/en/archives" aria-label="Archives"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -784,11 +809,11 @@
             
           
         </div>
-        <div class="sidebar-menu-link">归档</div>
+        <div class="sidebar-menu-link">Archives</div>
       </div>
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/about" aria-label="关于"></a>
+        <a class="sidebar-menu-link-dummy" href="/en/about" aria-label="About"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -796,11 +821,11 @@
             
           
         </div>
-        <div class="sidebar-menu-link">关于</div>
+        <div class="sidebar-menu-link">About</div>
       </div>
     
       <div class="sidebar-menu-link-wrap">
-        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="友链"></a>
+        <a class="sidebar-menu-link-dummy" href="/en/friend" aria-label="Friend"></a>
         <div class="sidebar-menu-icon icon ">
           
             
@@ -808,7 +833,7 @@
             
           
         </div>
-        <div class="sidebar-menu-link">友链</div>
+        <div class="sidebar-menu-link">Friend</div>
       </div>
     
   
@@ -925,13 +950,13 @@
       <script data-pjax>
         window.REIMU_POST = {
           author: "Luminous",
-          title: "Neoforge初开发-开启mc mod开发之旅",
-          url: "http://luminous.blog/2025/01/13/Neoforge%E5%88%9D%E5%BC%80%E5%8F%91-%E5%BC%80%E5%90%AFmc%20mod%E5%BC%80%E5%8F%91%E4%B9%8B%E6%97%85/",
+          title: "Neoforge初开发-开启mc mod开发之旅(一)",
+          url: "http://luminous.blog/2025/01/13/Neoforge%E5%88%9D%E5%BC%80%E5%8F%91-%E5%BC%80%E5%90%AFmc%20mod%E5%BC%80%E5%8F%91%E4%B9%8B%E6%97%85(%E4%B8%80)/",
           excerpt: "",
           description: "记录了mc neoforge开发初体验",
           stripContent: "  在我上小学一年级（大概是2012年左右）的时候，我在一本从书店买的游戏期刊中了解到了《Minecraft》这款游戏，我便立刻对它产生了兴趣。那时没有电脑，我就在我妈的手机上下载了Minecraft pe版，这是我人生中第一次接触这款游戏。后来我们家买了台电脑，我就下载了mc pc版又猛玩了一段时间（我记得我一直玩的是1.7.10，虽然这是个mod大版本，但当时还不知道mod这个东西，就挺巧的），但是随着玩的次数越来越多，我逐渐没有了当初对这款游戏的热情。也就在我快要弃坑的时候，我翻到了网上那",
           date: "Mon Jan 13 2025 16:57:44 GMT+0800",
-          updated: "Mon Jan 05 2026 22:18:57 GMT+0800",
+          updated: "Wed Jan 07 2026 17:45:54 GMT+0800",
           cover: "http://luminous.blog/covers/specific/mc1.webp",
         };
       </script>
