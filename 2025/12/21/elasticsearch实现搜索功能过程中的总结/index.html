@@ -48,17 +48,17 @@
 <meta property="og:site_name" content="Luminous&#39; Tiny Home">
 <meta property="og:description" content="在大二上学期初学习微服务时便接触了elasticsearch的相关概念，但一直没找到一个练手的好机会。就在最近（本文编写于2025-12-22），我参与的一项学校项目中我负责的部分用到了es来实现搜索功能，于是我完成后便立刻写此博文来进行总结 什么是elasticsearch？ Elasticsearch（以下简称es） 是一个开源的、分布式的搜索和分析引擎，建立在 Apache Lucene 之">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://luminous.blog/images/covers/elasticsearch.png">
-<meta property="og:image" content="http://luminous.blog/images/covers/elasticsearch.png">
-<meta property="og:image" content="http://luminous.blog/images/posts/elasticsearch/1.png">
-<meta property="og:image" content="http://luminous.blog/images/posts/elasticsearch/2.png">
+<meta property="og:image" content="http://blog.luminous.blog/images/covers/elasticsearch.png">
+<meta property="og:image" content="http://blog.luminous.blog/images/covers/elasticsearch.png">
+<meta property="og:image" content="http://blog.luminous.blog/images/posts/elasticsearch/1.png">
+<meta property="og:image" content="http://blog.luminous.blog/images/posts/elasticsearch/2.png">
 <meta property="article:published_time" content="2025-12-21T14:41:44.000Z">
-<meta property="article:modified_time" content="2026-01-02T06:23:06.073Z">
+<meta property="article:modified_time" content="2026-02-01T10:48:59.703Z">
 <meta property="article:author" content="Luminous">
 <meta property="article:tag" content="elasticsearch">
 <meta property="article:tag" content="存储">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://luminous.blog/images/covers/elasticsearch.png">
+<meta name="twitter:image" content="http://blog.luminous.blog/images/covers/elasticsearch.png">
   
   
     <link rel="alternate" href="/atom.xml" title="Luminous' Tiny Home" type="application/atom+xml">
@@ -268,7 +268,7 @@
 <header id="header" aria-label="Site header">
   
     <picture></picture>
-    <img  fetchpriority="high" src="http://luminous.blog/covers/cover24.webp" alt="elasticsearch实现搜索功能过程中的总结">
+    <img  fetchpriority="high" src="http://blog.luminous.blog/covers/cover24.webp" alt="elasticsearch实现搜索功能过程中的总结">
   
   <div id="header-outer">
     <div id="header-title">
@@ -446,7 +446,7 @@
       <div class="article-date">
   <span class="article-date-link icon-calendar" data-aos="zoom-in">
     <time datetime="2025-12-21T14:41:44.000Z" itemprop="datePublished">2025-12-21</time>
-    <time style="display: none;" id="post-update-time">2026-01-02</time>
+    <time style="display: none;" id="post-update-time">2026-02-01</time>
   </span>
   
 </div>
@@ -476,7 +476,7 @@
 <div class="post-link-card-wrap">
     <div class="post-link-card">
       <a href="https://www.elastic.co/docs/get-started/" title="Elasticsearch" rel="noopener nofollow noreferrer" target="_blank"></a>
-      <div class="post-link-card-cover-wrap"><img src="http://luminous.blog/images/covers/elasticsearch.png" class="no-lightbox" title="Elasticsearch" alt="Elasticsearch"/></div>
+      <div class="post-link-card-cover-wrap"><img src="http://blog.luminous.blog/images/covers/elasticsearch.png" class="no-lightbox" title="Elasticsearch" alt="Elasticsearch"/></div>
       <div class="post-link-card-item-wrap">
         <div class="post-link-card-title">Elasticsearch</div>
         <div class="post-link-card-excerpt"><span class="icon-link"></span>https://www.elastic.co/docs/get-started/</div>
@@ -493,7 +493,7 @@
 <div class="post-link-card-wrap">
     <div class="post-link-card">
       <a href="https://www.elastic.co/cn/kibana" title="Kibana" rel="noopener nofollow noreferrer" target="_blank"></a>
-      <div class="post-link-card-cover-wrap"><img src="http://luminous.blog/images/covers/elasticsearch.png" class="no-lightbox" title="Kibana" alt="Kibana"/></div>
+      <div class="post-link-card-cover-wrap"><img src="http://blog.luminous.blog/images/covers/elasticsearch.png" class="no-lightbox" title="Kibana" alt="Kibana"/></div>
       <div class="post-link-card-item-wrap">
         <div class="post-link-card-title">Kibana</div>
         <div class="post-link-card-excerpt"><span class="icon-link"></span>https://www.elastic.co/cn/kibana</div>
@@ -502,10 +502,10 @@
   </div>
 
 <h3 id="基本部署及操作"><a href="#基本部署及操作" class="headerlink" title="基本部署及操作"></a>基本部署及操作</h3><p>下载完成以后进入你的本地es目录，运行**.&#x2F;bin&#x2F;elasticsearch.bat<strong>（可以把脚本配置到路径环境变量中以便启动），看到命令行窗口一大串的输出时应该就是启动成功了，可以访问</strong>localhost:9200**来验证一下。访问时需要输入用户名和密码，用户名为elastic，初始的密码需要从命令行窗口中寻找一串随机字符串密码，复制粘贴就行。登陆成功以后浏览器会在网页上输出：</p>
-<p><img src="http://luminous.blog/images/posts/elasticsearch/1.png" alt="输出"></p>
+<p><img src="http://blog.luminous.blog/images/posts/elasticsearch/1.png" alt="输出"></p>
 <p>这就证明es启动成功了</p>
 <p>接着启动kibana，运行**.&#x2F;bin&#x2F;kibana.bat<strong>，稍等几分钟，使用浏览器访问</strong>localhost:5601**，登录以后点击左上角展开菜单栏找到开发工具（dev tools）：</p>
-<p><img src="http://luminous.blog/images/posts/elasticsearch/2.png"></p>
+<p><img src="http://blog.luminous.blog/images/posts/elasticsearch/2.png"></p>
 <p>现在，你可以在控制台利用DSL语句操作索引库和文档了，具体语法规范在官方文档也会有清晰的展示，这里不再赘述</p>
 <h3 id="后端调用"><a href="#后端调用" class="headerlink" title="后端调用"></a>后端调用</h3><p>接下来我们需要利用java后端集成es</p>
 <p>第一步便是要在项目中引入es相关依赖：</p>
@@ -612,7 +612,7 @@
       
       <div class="article-nav-link-wrap left">
         
-          <img data-src="http://luminous.blog/covers/cover23.webp" data-sizes="auto" alt="compose-用kotlin优雅地编写UI" class="lazyload">
+          <img data-src="http://blog.luminous.blog/covers/cover23.webp" data-sizes="auto" alt="compose-用kotlin优雅地编写UI" class="lazyload">
         
         <a href="/2025/12/21/compose-%E7%94%A8kotlin%E4%BC%98%E9%9B%85%E5%9C%B0%E7%BC%96%E5%86%99UI/" aria-label="前一篇: compose-用kotlin优雅地编写UI" title="前一篇: compose-用kotlin优雅地编写UI"></a>
         <div class="article-nav-caption">前一篇</div>
@@ -627,7 +627,7 @@
     
     <div class="article-nav-link-wrap right">
       
-        <img data-src="http://luminous.blog/covers/cover22.webp" data-sizes="auto" alt="全栈组学习路线总览" class="lazyload">
+        <img data-src="http://blog.luminous.blog/covers/cover22.webp" data-sizes="auto" alt="全栈组学习路线总览" class="lazyload">
       
       <a href="/2025/11/09/%E5%85%A8%E6%A0%88%E7%BB%84%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E6%80%BB%E8%A7%88/" aria-label="后一篇: 全栈组学习路线总览"  title="后一篇: 全栈组学习路线总览"></a>
       <div class="article-nav-caption">后一篇</div>
@@ -705,10 +705,10 @@
     
       <div>
         <span class="icon-brush"></span>
-        86.7k
+        86.9k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        07:11
+        07:12
       </div>
     
     
@@ -954,8 +954,8 @@
           description: "",
           stripContent: "在大二上学期初学习微服务时便接触了elasticsearch的相关概念，但一直没找到一个练手的好机会。就在最近（本文编写于2025-12-22），我参与的一项学校项目中我负责的部分用到了es来实现搜索功能，于是我完成后便立刻写此博文来进行总结 什么是elasticsearch？ Elasticsearch（以下简称es） 是一个开源的、分布式的搜索和分析引擎，建立在 Apache Lucene 之上。它被设计用于处理海量数据，并提供近乎实时的搜索能力（来自网络）  你可以把es看作是一个功能十分",
           date: "Sun Dec 21 2025 22:41:44 GMT+0800",
-          updated: "Fri Jan 02 2026 14:23:06 GMT+0800",
-          cover: "http://luminous.blog/covers/cover24.webp",
+          updated: "Sun Feb 01 2026 18:48:59 GMT+0800",
+          cover: "http://blog.luminous.blog/covers/cover24.webp",
         };
       </script>
        

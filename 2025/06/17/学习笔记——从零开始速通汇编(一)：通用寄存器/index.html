@@ -48,19 +48,19 @@
 <meta property="og:site_name" content="Luminous&#39; Tiny Home">
 <meta property="og:description" content="🥧寄存器的类型，原理介绍">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/1.jpg">
-<meta property="og:image" content="http://luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/2.png">
-<meta property="og:image" content="http://luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/3.png">
-<meta property="og:image" content="http://luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/4.png">
-<meta property="og:image" content="http://luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/5.png">
-<meta property="og:image" content="http://luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/6.png">
-<meta property="og:image" content="http://luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/7.png">
+<meta property="og:image" content="http://blog.luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/1.jpg">
+<meta property="og:image" content="http://blog.luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/2.png">
+<meta property="og:image" content="http://blog.luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/3.png">
+<meta property="og:image" content="http://blog.luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/4.png">
+<meta property="og:image" content="http://blog.luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/5.png">
+<meta property="og:image" content="http://blog.luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/6.png">
+<meta property="og:image" content="http://blog.luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/7.png">
 <meta property="article:published_time" content="2025-06-17T10:19:03.000Z">
 <meta property="article:modified_time" content="2025-06-17T14:00:00.000Z">
 <meta property="article:author" content="Luminous">
 <meta property="article:tag" content="Assembly">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/1.jpg">
+<meta name="twitter:image" content="http://blog.luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/1.jpg">
   
   
     <link rel="alternate" href="/atom.xml" title="Luminous' Tiny Home" type="application/atom+xml">
@@ -270,7 +270,7 @@
 <header id="header" aria-label="Site header">
   
     <picture></picture>
-    <img  fetchpriority="high" src="http://luminous.blog/covers/cover10.webp" alt="学习笔记——从零开始速通汇编(一)：寄存器">
+    <img  fetchpriority="high" src="http://blog.luminous.blog/covers/cover10.webp" alt="学习笔记——从零开始速通汇编(一)：寄存器">
   
   <div id="header-outer">
     <div id="header-title">
@@ -477,7 +477,7 @@
 <h1 id="学习笔记——从零开始速通汇编-一-：寄存器"><a href="#学习笔记——从零开始速通汇编-一-：寄存器" class="headerlink" title="学习笔记——从零开始速通汇编(一)：寄存器"></a>学习笔记——从零开始速通汇编(一)：寄存器</h1><h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><blockquote>
 <p>笔者所属的专业大一下新开了汇编语言课程，鉴于笔者对计算机的兴趣，特写此系列博客文来记录下汇编语言课程的学习过程及知识点，也可供读者进行学习或者在期末对照此文进行复习或速通</p>
 </blockquote>
-<p><img src="http://luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/1.jpg" alt="嘻嘻"></p>
+<p><img src="http://blog.luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/1.jpg" alt="嘻嘻"></p>
 <hr>
 <h2 id="汇编语言简介："><a href="#汇编语言简介：" class="headerlink" title="汇编语言简介："></a>汇编语言简介：</h2><h3 id="什么是汇编语言"><a href="#什么是汇编语言" class="headerlink" title="什么是汇编语言"></a>什么是汇编语言</h3><p><strong>汇编语言</strong>（<strong>Assembly Language</strong>）是一种低级编程语言，它与计算机的机器语言指令几乎一一对应，但使用人类可读的助记符（<strong>mnemonics</strong>）代替二进制或十六进制操作码</p>
 <h3 id="汇编语言的特点"><a href="#汇编语言的特点" class="headerlink" title="汇编语言的特点"></a>汇编语言的特点</h3><ol>
@@ -548,16 +548,16 @@
 <p>AX,BX,CX,DX,SI,DI,SP,BP,IP,CS,SS,DS,ES,PSW</p>
 </blockquote>
 <p>其AX寄存器的逻辑结构如图所示：</p>
-<p><img src="http://luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/2.png" alt="寄存器逻辑结构"></p>
+<p><img src="http://blog.luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/2.png" alt="寄存器逻辑结构"></p>
 <blockquote>
 <p>不光是AX，BX、CX、DX都是这种结构</p>
 <p>注意：数据都是以二进制来存放</p>
 </blockquote>
 <p>一个16位寄存器可以存储一个16位的数据</p>
 <p>如十进制数18(二进制10010)，在寄存器AX中的存储为：</p>
-<p><img src="http://luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/3.png" alt="十进制数18"></p>
+<p><img src="http://blog.luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/3.png" alt="十进制数18"></p>
 <p>8086寄存器上一代是8位寄存器，所以为了保证原来编写的程序在8086寄存器能正常运行，将每个8086寄存器划分为两个可以独立使用的8位寄存器</p>
-<p><img src="http://luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/4.png" alt="高位低位寄存器"></p>
+<p><img src="http://blog.luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/4.png" alt="高位低位寄存器"></p>
 <p>如图，0-7为AL(low，低位)，8-15为AH(high，高位)</p>
 <blockquote>
 <p>同理：</p>
@@ -579,9 +579,9 @@
 <h5 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h5><p>这里先介绍两个常用的指令：</p>
 <p>MOV  把某数送到某地</p>
 <p>ADD  把某数加到某地</p>
-<p><img src="http://luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/5.png" alt="mov和add指令"></p>
+<p><img src="http://blog.luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/5.png" alt="mov和add指令"></p>
 <p>了解了基本用法之后，可以看下面表格加深理解</p>
-<p><img src="http://luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/6.png" alt="mov和add指令"></p>
+<p><img src="http://blog.luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/6.png" alt="mov和add指令"></p>
 <div class="tag-note note-warning note-flat"><p>注意：如果相加后数字超过四位，那么最高位舍去</p></div>
 
 <h3 id="其他寄存器和段"><a href="#其他寄存器和段" class="headerlink" title="其他寄存器和段"></a>其他寄存器和段</h3><h4 id="BP-SI-DI"><a href="#BP-SI-DI" class="headerlink" title="BP\SI\DI"></a>BP\SI\DI</h4><p>这三者也是通用寄存器家族的成员，但它们与AX\BX\CX\DX的本质区别在于<strong>它们都是不能分解的16位寄存器，可以存放16位的数据</strong></p>
@@ -610,7 +610,7 @@
 <p><strong>OF(Overflow Flag):</strong></p>
 <p><strong>溢出标志位</strong>   当算术运算的结果超出了有符号数的可表达范围时，OF&#x3D;1；未超出时，OF&#x3D;0</p>
 <p>例：</p>
-<p><img src="http://luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/7.png" alt="条件标志状态分析"></p>
+<p><img src="http://blog.luminous.blog/images/posts/%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80/7.png" alt="条件标志状态分析"></p>
 <h4 id="段寄存器"><a href="#段寄存器" class="headerlink" title="段寄存器"></a>段寄存器</h4><p><strong>存储器</strong>的地址分为<strong>段地址</strong>和<strong>偏移地址</strong></p>
 <p><strong>段寄存器</strong>就是来存放<strong>段地址</strong>的</p>
 <p><strong>CS:</strong></p>
@@ -709,7 +709,7 @@
       
       <div class="article-nav-link-wrap left">
         
-          <img data-src="http://luminous.blog/covers/cover1.webp" data-sizes="auto" alt="docker基本使用与进阶" class="lazyload">
+          <img data-src="http://blog.luminous.blog/covers/cover1.webp" data-sizes="auto" alt="docker基本使用与进阶" class="lazyload">
         
         <a href="/2025/08/15/docker%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%B8%8E%E8%BF%9B%E9%98%B6/" aria-label="前一篇: docker基本使用与进阶" title="前一篇: docker基本使用与进阶"></a>
         <div class="article-nav-caption">前一篇</div>
@@ -724,7 +724,7 @@
     
     <div class="article-nav-link-wrap right">
       
-        <img data-src="http://luminous.blog/covers/cover6.webp" data-sizes="auto" alt="学习笔记——从零开始速通汇编(三)：数据传送类&amp;算术运算类指令系统" class="lazyload">
+        <img data-src="http://blog.luminous.blog/covers/cover6.webp" data-sizes="auto" alt="学习笔记——从零开始速通汇编(三)：数据传送类&amp;算术运算类指令系统" class="lazyload">
       
       <a href="/2025/06/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%80%9F%E9%80%9A%E6%B1%87%E7%BC%96(%E4%B8%89)%EF%BC%9A%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E7%B1%BB&%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%B1%BB%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" aria-label="后一篇: 学习笔记——从零开始速通汇编(三)：数据传送类&amp;算术运算类指令系统"  title="后一篇: 学习笔记——从零开始速通汇编(三)：数据传送类&amp;算术运算类指令系统"></a>
       <div class="article-nav-caption">后一篇</div>
@@ -802,10 +802,10 @@
     
       <div>
         <span class="icon-brush"></span>
-        86.7k
+        86.9k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        07:11
+        07:12
       </div>
     
     
@@ -1052,7 +1052,7 @@
           stripContent: "导航 ✨学习笔记——从零开始速通汇编(一)：寄存器 | JinYu🐟 🎉学习笔记——从零开始速通汇编(二)：汇编程序语句结构&amp;amp;寻址方式 | JinYu🐟 🎊学习笔记——从零开始速通汇编(三)：数据传送类&amp;amp;算术运算类指令系统 | JinYu🐟 🎃学习笔记——从零开始速通汇编(四)：逻辑运算与移位操作类指令系统 | JinYu🐟 🎄学习笔记——从零开始速通汇编(五)：程序控制类&amp;amp;串操作类指令系统 | JinYu🐟  学习笔记——从零开始速通汇编(一)：寄存器",
           date: "Tue Jun 17 2025 18:19:03 GMT+0800",
           updated: "Tue Jun 17 2025 22:00:00 GMT+0800",
-          cover: "http://luminous.blog/covers/cover10.webp",
+          cover: "http://blog.luminous.blog/covers/cover10.webp",
         };
       </script>
        
