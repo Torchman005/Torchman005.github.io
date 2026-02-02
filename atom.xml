@@ -116,9 +116,9 @@
     <category term="微服务" scheme="http://luminous.blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="java" scheme="http://luminous.blog/tags/java/"/>
-    
     <category term="Feign" scheme="http://luminous.blog/tags/Feign/"/>
+    
+    <category term="java" scheme="http://luminous.blog/tags/java/"/>
     
   </entry>
   
@@ -190,14 +190,14 @@
   </entry>
   
   <entry>
-    <title>学习笔记——从零开始速通汇编(二)：汇编程序语句结构&amp;寻址方式</title>
-    <link href="http://luminous.blog/2025/06/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%80%9F%E9%80%9A%E6%B1%87%E7%BC%96(%E4%BA%8C)%EF%BC%9A%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F%E8%AF%AD%E5%8F%A5%E7%BB%93%E6%9E%84&amp;%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F/"/>
-    <id>http://luminous.blog/2025/06/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%80%9F%E9%80%9A%E6%B1%87%E7%BC%96(%E4%BA%8C)%EF%BC%9A%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F%E8%AF%AD%E5%8F%A5%E7%BB%93%E6%9E%84&amp;%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F/</id>
+    <title>学习笔记——从零开始速通汇编(三)：数据传送类&amp;算术运算类指令系统</title>
+    <link href="http://luminous.blog/2025/06/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%80%9F%E9%80%9A%E6%B1%87%E7%BC%96(%E4%B8%89)%EF%BC%9A%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E7%B1%BB&amp;%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%B1%BB%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://luminous.blog/2025/06/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%80%9F%E9%80%9A%E6%B1%87%E7%BC%96(%E4%B8%89)%EF%BC%9A%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E7%B1%BB&amp;%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%B1%BB%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/</id>
     <published>2025-06-17T10:19:03.000Z</published>
     <updated>2025-06-17T14:00:00.000Z</updated>
     
     
-    <summary type="html">🥧讲解汇编程序的语句如何编写</summary>
+    <summary type="html">🥧介绍数据传送和算术运算指令的基本用法</summary>
     
     
     
@@ -209,14 +209,14 @@
   </entry>
   
   <entry>
-    <title>学习笔记——从零开始速通汇编(三)：数据传送类&amp;算术运算类指令系统</title>
-    <link href="http://luminous.blog/2025/06/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%80%9F%E9%80%9A%E6%B1%87%E7%BC%96(%E4%B8%89)%EF%BC%9A%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E7%B1%BB&amp;%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%B1%BB%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/"/>
-    <id>http://luminous.blog/2025/06/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%80%9F%E9%80%9A%E6%B1%87%E7%BC%96(%E4%B8%89)%EF%BC%9A%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%81%E7%B1%BB&amp;%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%B1%BB%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/</id>
+    <title>学习笔记——从零开始速通汇编(二)：汇编程序语句结构&amp;寻址方式</title>
+    <link href="http://luminous.blog/2025/06/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%80%9F%E9%80%9A%E6%B1%87%E7%BC%96(%E4%BA%8C)%EF%BC%9A%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F%E8%AF%AD%E5%8F%A5%E7%BB%93%E6%9E%84&amp;%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F/"/>
+    <id>http://luminous.blog/2025/06/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%80%9F%E9%80%9A%E6%B1%87%E7%BC%96(%E4%BA%8C)%EF%BC%9A%E6%B1%87%E7%BC%96%E7%A8%8B%E5%BA%8F%E8%AF%AD%E5%8F%A5%E7%BB%93%E6%9E%84&amp;%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F/</id>
     <published>2025-06-17T10:19:03.000Z</published>
     <updated>2025-06-17T14:00:00.000Z</updated>
     
     
-    <summary type="html">🥧介绍数据传送和算术运算指令的基本用法</summary>
+    <summary type="html">🥧讲解汇编程序的语句如何编写</summary>
     
     
     
