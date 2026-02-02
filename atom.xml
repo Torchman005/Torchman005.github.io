@@ -116,9 +116,9 @@
     <category term="微服务" scheme="http://luminous.blog/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"/>
     
     
-    <category term="Feign" scheme="http://luminous.blog/tags/Feign/"/>
-    
     <category term="java" scheme="http://luminous.blog/tags/java/"/>
+    
+    <category term="Feign" scheme="http://luminous.blog/tags/Feign/"/>
     
   </entry>
   
