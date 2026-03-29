@@ -41,13 +41,15 @@
 
   
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="基本概念JWT（JSON Web Token）是一种基于 JSON 的开放标准（RFC 7519），用于在各方之间安全地传输信息。它是一种无状态的认证机制，通过数字签名确保信息的完整性和真实性。 JWT 的作用 无状态认证无需服务器存储会话：JWT 包含所有必要的用户信息，服务器不需要在数据库或内存中存储会话状态水平扩展：便于服务器集群的水平扩展，因为任何服务器都可以验证 JWT减少数据库查询：验">
+<meta property="og:type" content="article">
 <meta property="og:title" content="JWT究竟是什么？">
 <meta property="og:url" content="http://luminous.blog/en/2026/03/29/JWT%E7%A9%B6%E7%AB%9F%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/index.html">
 <meta property="og:site_name" content="Luminous&#39; Tiny Home">
+<meta property="og:description" content="基本概念JWT（JSON Web Token）是一种基于 JSON 的开放标准（RFC 7519），用于在各方之间安全地传输信息。它是一种无状态的认证机制，通过数字签名确保信息的完整性和真实性。 JWT 的作用 无状态认证无需服务器存储会话：JWT 包含所有必要的用户信息，服务器不需要在数据库或内存中存储会话状态水平扩展：便于服务器集群的水平扩展，因为任何服务器都可以验证 JWT减少数据库查询：验">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-03-29T07:52:15.000Z">
-<meta property="article:modified_time" content="2026-03-29T08:03:41.706Z">
+<meta property="article:modified_time" content="2026-03-29T08:25:08.478Z">
 <meta property="article:author" content="Luminous">
 <meta property="article:tag" content="jwt">
 <meta name="twitter:card" content="summary">
@@ -315,7 +317,7 @@
           <div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
   
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">JWT 的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT-%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">JWT 的使用流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Go-%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84-JWT-%E5%AE%9E%E7%8E%B0"><span class="toc-number">4.</span> <span class="toc-text">Go 语言中的 JWT 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT-%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">5.</span> <span class="toc-text">JWT 的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">5.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-number">5.2.</span> <span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-number">5.3.</span> <span class="toc-text">最佳实践</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B"><span class="toc-number">5.4.</span> <span class="toc-text">输入输出示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90-Token%EF%BC%9A"><span class="toc-number">5.4.1.</span> <span class="toc-text">生成 Token：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%EF%BC%9A"><span class="toc-number">5.4.2.</span> <span class="toc-text">输出：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-Token%EF%BC%9A"><span class="toc-number">5.4.3.</span> <span class="toc-text">解析 Token：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%EF%BC%9A-1"><span class="toc-number">5.4.4.</span> <span class="toc-text">输出：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol>
   
 </div>
 </div>
@@ -457,7 +459,102 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
       
-        
+        <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>JWT（JSON Web Token）是一种基于 JSON 的开放标准（RFC 7519），用于在各方之间安全地传输信息。它是一种无状态的认证机制，通过数字签名确保信息的完整性和真实性。</p>
+<h2 id="JWT-的作用"><a href="#JWT-的作用" class="headerlink" title="JWT 的作用"></a>JWT 的作用</h2><ol>
+<li><strong>无状态认证</strong><br>无需服务器存储会话：JWT 包含所有必要的用户信息，服务器不需要在数据库或内存中存储会话状态<br>水平扩展：便于服务器集群的水平扩展，因为任何服务器都可以验证 JWT<br>减少数据库查询：验证用户身份时不需要查询数据库，提高性能</li>
+<li><strong>跨服务认证</strong><br>微服务架构：在微服务环境中，JWT 可以在不同服务之间传递用户身份信息<br>跨域认证：支持跨域请求的身份验证，适用于前后端分离架构</li>
+<li><strong>信息交换</strong><br>  安全传输数据：通过数字签名确保数据在传输过程中不被篡改<br>  包含自定义声明：可以在 Payload 中添加自定义信息，如用户角色、权限等<br>  JWT 的结构<br>  JWT 由三部分组成，用点（.）分隔：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Header.Payload.Signature</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><strong>Header（头部）</strong><br>包含两部分信息：</li>
+</ol>
+<ul>
+<li><p>令牌类型：通常为 “JWT”</p>
+</li>
+<li><p>签名算法：如 HMAC SHA256 或 RSA</p>
+</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;alg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HS256&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;typ&quot;</span><span class="punctuation">:</span> <span class="string">&quot;JWT&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>Payload（载荷）</strong><br>包含声明（claims），分为三种类型：</li>
+</ol>
+<ul>
+<li><p>注册声明：预定义的声明，如 iss（签发者）、exp（过期时间）、sub（主题）等</p>
+</li>
+<li><p>公共声明：可以自定义的声明，但建议使用 IANA JSON Web Token Registry 中定义的</p>
+</li>
+<li><p>私有声明：应用特定的声明，如用户 ID、角色等</p>
+</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;sub&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1234567890&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;John Doe&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;iat&quot;</span><span class="punctuation">:</span> <span class="number">1516239022</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;role&quot;</span><span class="punctuation">:</span> <span class="string">&quot;admin&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="3">
+<li><strong>Signature（签名）</strong><br>使用指定的算法对 Header 和 Payload 进行签名，确保消息未被篡改：</li>
+</ol>
+<ul>
+<li><p>HMAC SHA256 算法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HMACSHA256(base64UrlEncode(header) + &quot;.&quot; + base64UrlEncode(payload), secret)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>RSA 算法：使用私钥签名，公钥验证</p>
+</li>
+</ul>
+<h2 id="JWT-的使用流程"><a href="#JWT-的使用流程" class="headerlink" title="JWT 的使用流程"></a>JWT 的使用流程</h2><ol>
+<li><p><strong>生成 JWT（登录时）</strong><br>用户提供用户名和密码<br>服务器验证凭据<br>服务器生成 JWT，包含用户信息和过期时间<br>服务器将 JWT 返回给客户端<br>客户端存储 JWT（通常在 localStorage 或 cookie 中）</p>
+</li>
+<li><p><strong>使用 JWT（访问受保护资源时）</strong><br>客户端在请求头中携带 JWT：Authorization: Bearer <token><br>服务器验证 JWT 的签名和过期时间<br>服务器从 JWT 中提取用户信息<br>服务器根据用户信息授权访问</p>
+</li>
+<li><p><strong>验证 JWT</strong><br>检查签名是否有效<br>检查令牌是否过期<br>检查其他声明（如签发者、受众等）</p>
+</li>
+</ol>
+<h2 id="Go-语言中的-JWT-实现"><a href="#Go-语言中的-JWT-实现" class="headerlink" title="Go 语言中的 JWT 实现"></a>Go 语言中的 JWT 实现</h2><p>以 <code>internal/utils/jwt.go</code> 文件为例，通常包含以下功能：</p>
+<ol>
+<li><strong>生成 Token</strong></li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GenerateToken</span><span class="params">(userID <span class="type">uint</span>, username <span class="type">string</span>)</span></span> (<span class="type">string</span>, <span class="type">error</span>) &#123;</span><br><span class="line">    <span class="comment">// 定义 claims</span></span><br><span class="line">    claims := jwt.MapClaims&#123;</span><br><span class="line">        <span class="string">&quot;user_id&quot;</span>:  userID,</span><br><span class="line">        <span class="string">&quot;username&quot;</span>: username,</span><br><span class="line">        <span class="string">&quot;exp&quot;</span>:      time.Now().Add(time.Hour * <span class="number">24</span>).Unix(), <span class="comment">// 24小时过期</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 创建 token</span></span><br><span class="line">token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 签名 token</span></span><br><span class="line">tokenString, err := token.SignedString([]<span class="type">byte</span>(<span class="string">&quot;your-secret-key&quot;</span>))</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;&quot;</span>, err</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> tokenString, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>解析与验证 Token</strong></li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ParseToken</span><span class="params">(tokenString <span class="type">string</span>)</span></span> (jwt.MapClaims, <span class="type">error</span>) &#123;</span><br><span class="line">    <span class="comment">// 解析 token</span></span><br><span class="line">    token, err := jwt.Parse(tokenString, <span class="function"><span class="keyword">func</span><span class="params">(token *jwt.Token)</span></span> (<span class="keyword">interface</span>&#123;&#125;, <span class="type">error</span>) &#123;</span><br><span class="line">        <span class="comment">// 验证签名方法</span></span><br><span class="line">        <span class="keyword">if</span> _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nil</span>, fmt.Errorf(<span class="string">&quot;unexpected signing method: %v&quot;</span>, token.Header[<span class="string">&quot;alg&quot;</span>])</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> []<span class="type">byte</span>(<span class="string">&quot;your-secret-key&quot;</span>), <span class="literal">nil</span></span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span>, err</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 验证 token 是否有效</span></span><br><span class="line"><span class="keyword">if</span> claims, ok := token.Claims.(jwt.MapClaims); ok &amp;&amp; token.Valid &#123;</span><br><span class="line">    <span class="keyword">return</span> claims, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="literal">nil</span>, errors.New(<span class="string">&quot;invalid token&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>在中间件中使用</strong></li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">JWTAuthMiddleware</span><span class="params">()</span></span> gin.HandlerFunc &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">        tokenString := c.GetHeader(<span class="string">&quot;Authorization&quot;</span>)</span><br><span class="line">        <span class="keyword">if</span> tokenString == <span class="string">&quot;&quot;</span> &#123;</span><br><span class="line">            c.JSON(http.StatusUnauthorized, gin.H&#123;<span class="string">&quot;error&quot;</span>: <span class="string">&quot;Authorization header required&quot;</span>&#125;)</span><br><span class="line">            c.Abort()</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">            <span class="comment">// 移除 &quot;Bearer &quot; 前缀</span></span><br><span class="line">    tokenString = strings.TrimPrefix(tokenString, <span class="string">&quot;Bearer &quot;</span>)</span><br><span class="line">    </span><br><span class="line">    claims, err := ParseToken(tokenString)</span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">        c.JSON(http.StatusUnauthorized, gin.H&#123;<span class="string">&quot;error&quot;</span>: <span class="string">&quot;Invalid or expired token&quot;</span>&#125;)</span><br><span class="line">        c.Abort()</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 将用户信息存储到上下文</span></span><br><span class="line">    c.Set(<span class="string">&quot;user_id&quot;</span>, claims[<span class="string">&quot;user_id&quot;</span>])</span><br><span class="line">    c.Set(<span class="string">&quot;username&quot;</span>, claims[<span class="string">&quot;username&quot;</span>])</span><br><span class="line">    </span><br><span class="line">    c.Next()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="JWT-的优缺点"><a href="#JWT-的优缺点" class="headerlink" title="JWT 的优缺点"></a>JWT 的优缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>无状态：服务器不需要存储会话信息，易于水平扩展<br>跨服务：适用于微服务架构和跨域场景<br>自包含：令牌包含所有必要信息，减少数据库查询<br>标准化：遵循 RFC 7519 标准，被广泛支持</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>令牌大小：包含较多信息时，令牌可能较大，增加网络传输开销</li>
+<li>无法撤销：一旦签发，在过期前无法主动撤销（除非使用黑名单机制）</li>
+<li>敏感信息：Payload 是 Base64 编码的，不是加密的，不应存储敏感信息</li>
+<li>签名密钥管理：需要安全管理签名密钥，防止泄露</li>
+</ol>
+<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h3><ol>
+<li>使用安全的签名算法：优先使用 RS256（非对称加密）而非 HS256（对称加密）</li>
+<li>设置合理的过期时间：根据应用场景设置适当的过期时间</li>
+<li>存储敏感信息：不在 Payload 中存储敏感信息，如密码</li>
+<li>使用 HTTPS：在传输过程中使用 HTTPS 保护 JWT</li>
+<li>实现令牌刷新机制：提供刷新令牌的接口，避免用户频繁登录</li>
+<li>添加黑名单：用于撤销已签发但未过期的令牌</li>
+</ol>
+<h3 id="输入输出示例"><a href="#输入输出示例" class="headerlink" title="输入输出示例"></a>输入输出示例</h3><h4 id="生成-Token："><a href="#生成-Token：" class="headerlink" title="生成 Token："></a>生成 Token：</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">token, err := GenerateToken(<span class="number">1</span>, <span class="string">&quot;alice&quot;</span>)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">&#125;</span><br><span class="line">fmt.Println(<span class="string">&quot;Generated token:&quot;</span>, token)</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出："><a href="#输出：" class="headerlink" title="输出："></a>输出：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Generated token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFsaWNlIiwiZXhwIjoxNzE0MTc3MjAwfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</span><br></pre></td></tr></table></figure>
+
+<h4 id="解析-Token："><a href="#解析-Token：" class="headerlink" title="解析 Token："></a>解析 Token：</h4><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">claims, err := ParseToken(<span class="string">&quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFsaWNlIiwiZXhwIjoxNzE0MTc3MjAwfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c&quot;</span>)</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatal(err)</span><br><span class="line">&#125;</span><br><span class="line">fmt.Println(<span class="string">&quot;User ID:&quot;</span>, claims[<span class="string">&quot;user_id&quot;</span>])</span><br><span class="line">fmt.Println(<span class="string">&quot;Username:&quot;</span>, claims[<span class="string">&quot;username&quot;</span>])</span><br></pre></td></tr></table></figure>
+
+<h4 id="输出：-1"><a href="#输出：-1" class="headerlink" title="输出："></a>输出：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plainText</span><br><span class="line">User ID: 1</span><br><span class="line">Username: alice</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>JWT 是一种强大的认证机制，通过无状态设计和数字签名，为现代应用提供了安全、高效的身份验证方案。它特别适用于前后端分离架构、微服务系统和跨域场景，能够简化认证流程并提高系统的可扩展性。</p>
+<p>在使用 JWT 时，需要注意安全最佳实践，如使用安全的签名算法、合理设置过期时间、保护签名密钥等，以确保系统的安全性。通过正确实现和使用 JWT，可以构建更加安全、可靠的认证系统。</p>
+
       
     </div>
     <footer class="article-footer">
@@ -616,10 +713,10 @@
     
       <div>
         <span class="icon-brush"></span>
-        94.5k
+        98.3k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        07:50
+        08:10
       </div>
     
     
@@ -652,7 +749,7 @@
         <div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
   
-    
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">JWT 的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT-%E7%9A%84%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">JWT 的使用流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Go-%E8%AF%AD%E8%A8%80%E4%B8%AD%E7%9A%84-JWT-%E5%AE%9E%E7%8E%B0"><span class="toc-number">4.</span> <span class="toc-text">Go 语言中的 JWT 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JWT-%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">5.</span> <span class="toc-text">JWT 的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%82%B9"><span class="toc-number">5.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-number">5.2.</span> <span class="toc-text">缺点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="toc-number">5.3.</span> <span class="toc-text">最佳实践</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%A4%BA%E4%BE%8B"><span class="toc-number">5.4.</span> <span class="toc-text">输入输出示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90-Token%EF%BC%9A"><span class="toc-number">5.4.1.</span> <span class="toc-text">生成 Token：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%EF%BC%9A"><span class="toc-number">5.4.2.</span> <span class="toc-text">输出：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-Token%EF%BC%9A"><span class="toc-number">5.4.3.</span> <span class="toc-text">解析 Token：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%EF%BC%9A-1"><span class="toc-number">5.4.4.</span> <span class="toc-text">输出：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol>
   
 </div>
 </div>
@@ -863,9 +960,9 @@
           url: "http://luminous.blog/2026/03/29/JWT%E7%A9%B6%E7%AB%9F%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/",
           excerpt: "",
           description: "",
-          stripContent: "",
+          stripContent: "基本概念JWT（JSON Web Token）是一种基于 JSON 的开放标准（RFC 7519），用于在各方之间安全地传输信息。它是一种无状态的认证机制，通过数字签名确保信息的完整性和真实性。 JWT 的作用 无状态认证无需服务器存储会话：JWT 包含所有必要的用户信息，服务器不需要在数据库或内存中存储会话状态水平扩展：便于服务器集群的水平扩展，因为任何服务器都可以验证 JWT减少数据库查询：验证用户身份时不需要查询数据库，提高性能 跨服务认证微服务架构：在微服务环境中，JWT 可以在不同服务",
           date: "Sun Mar 29 2026 15:52:15 GMT+0800",
-          updated: "Sun Mar 29 2026 16:03:41 GMT+0800",
+          updated: "Sun Mar 29 2026 16:25:08 GMT+0800",
           cover: "http://blog.luminous.blog/covers/cover26.webp",
         };
       </script>
