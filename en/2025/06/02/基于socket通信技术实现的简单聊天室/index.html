@@ -1,0 +1,1367 @@
+
+  <!DOCTYPE html>
+  <html lang="en"  
+    
+      data-theme-mode="auto"
+    
+  >
+  <head>
+  
+  <meta charset="utf-8">
+  
+
+  
+
+  
+
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.clipboard_tips = {"success":{"zh-CN":"复制成功 (*^▽^*)","en":"Copy successfully (*^▽^*)"},"fail":{"zh-CN":"复制失败 (ﾟ⊿ﾟ)ﾂ","en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = '本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'http://luminous.blog';window.REIMU_CONFIG.i18n_languages = ["en"];</script>
+  
+  <title>
+    java:基于socket通信技术实现的简单聊天室 |
+    
+    Luminous&#39; Tiny Home
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+  
+  
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.0.0/css/regular.min.css" integrity="sha384-PmxfVzUpFiyj5ZqzN3upnv7G4x9YAlMQar&#x2F;qCBLEYSaWr&#x2F;DUQ9f&#x2F;8ITCT0aN7byC" crossorigin="anonymous">
+<link rel="stylesheet" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.0.0/css/solid.min.css" integrity="sha384-HMy1VqP4zke4zzaS+hmFgbW3QXDYD+qtueW3unq30MTgdOnarIgANSya8s5qKRh5" crossorigin="anonymous">
+
+    <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.0.0/css/brands.min.css" integrity="sha384-IzIkDWjFFaoFz413tu2x9R4cMiJ3EGuxOf&#x2F;7Q8X0LFhqz9fU5zT2go7BgenYdKgN" crossorigin="anonymous">
+<link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.0.0/css/v5-font-face.min.css" integrity="sha384-691KBFHHuy2pnDTyR36VZ90jy7dXWBfC5D1nzy5rkDlqQQ&#x2F;vRs&#x2F;nmmK++LBfAp&#x2F;C" crossorigin="anonymous">
+<link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/@fortawesome/fontawesome-free@7.0.0/css/v4-font-face.min.css" integrity="sha384-7c0mz5ReY2wCEDKNNEdrKdbtS&#x2F;6+5dEgNsz&#x2F;dU3e9m7xldAdTFwNTAuX+s4sJHJl" crossorigin="anonymous">
+  
+  
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+  
+  
+    <meta name="description" content="🥧传统socket实现的私聊、群聊、文件发送等功能的tiny版QQ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java:基于socket通信技术实现的简单聊天室">
+<meta property="og:url" content="http://luminous.blog/en/2025/06/02/%E5%9F%BA%E4%BA%8Esocket%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E5%8D%95%E8%81%8A%E5%A4%A9%E5%AE%A4/index.html">
+<meta property="og:site_name" content="Luminous&#39; Tiny Home">
+<meta property="og:description" content="🥧传统socket实现的私聊、群聊、文件发送等功能的tiny版QQ">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://blog.luminous.blog/images/covers/github-mark.png">
+<meta property="og:image" content="http://blog.luminous.blog/images/posts/socket%E9%A1%B9%E7%9B%AE/1.png">
+<meta property="og:image" content="http://blog.luminous.blog/images/posts/socket%E9%A1%B9%E7%9B%AE/2.png">
+<meta property="og:image" content="http://blog.luminous.blog/images/posts/socket%E9%A1%B9%E7%9B%AE/3.png">
+<meta property="article:published_time" content="2025-06-02T10:19:03.000Z">
+<meta property="article:modified_time" content="2025-06-02T14:00:00.000Z">
+<meta property="article:author" content="Luminous">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="socket">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.luminous.blog/images/covers/github-mark.png">
+  
+  
+    <link rel="alternate" href="/atom.xml" title="Luminous' Tiny Home" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
+  
+  
+    
+      
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@waline/client@2.15.8/dist/waline.css" integrity="sha384-vltfZtesCdl6NYVcFVcjEaIi5RpNvZe9t7fXvq8twVtcoy+Ub9QgnxUYJmwOhYCK" crossorigin="anonymous">
+
+    
+  
+  
+  
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+  
+  
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
+
+  
+  
+    <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.css" integrity="sha384-tLMkTWh2pfXNWGFlUS0w1TFtRG5xZ9lPWFOooj+vDDLIL+xBGQU&#x2F;voDBY5XE2lVh" crossorigin="anonymous">
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+  <body>
+    
+    
+  <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate">
+        
+          <img src="/images/favicon.ico" alt="loading" />
+        
+      </div>
+      
+      
+        
+      
+      <div class="loading-word">Loading...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+    
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon ">
+             
+              
+                &#xf015;
+              
+             
+          </div>
+          <a class="main-nav-link" href="/en/">Home</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon ">
+             
+              
+                &#xf187;
+              
+             
+          </div>
+          <a class="main-nav-link" href="/en/archives">Archives</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon ">
+             
+              
+                &#xf007;
+              
+             
+          </div>
+          <a class="main-nav-link" href="/en/about">About</a>
+        </span>
+      
+        <span class="main-nav-link-wrap">
+          <div class="main-nav-icon icon ">
+             
+              
+                &#xf2b5;
+              
+             
+          </div>
+          <a class="main-nav-link" href="/en/friend">Friend</a>
+        </span>
+      
+    
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+    
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed" aria-label="RSS Feed" target="_blank"></a>
+    
+    
+      <a id="nav-search-btn" class="nav-icon popup-trigger" title="Search" aria-label="Search"></a>
+    
+  </nav>
+  
+    
+    <nav id="i18n-nav" aria-label="Language selection">
+      <div class="custom-dropdown">
+        <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
+          <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
+          <span id="selected-lang">English</span>
+        </div>
+        <ul class="select-items" id="select-items" role="listbox" aria-label="Languages">
+          
+            <li data-value="zh-CN" role="option" aria-selected="false">简体中文</li>
+          
+            <li data-value="en" role="option" class="selected" aria-selected="true">English</li>
+          
+        </ul>
+      </div>
+      <script>
+        var selectSelected = document.getElementById("select-selected");
+        var selectedLang = document.getElementById("selected-lang");
+        var selectItems = document.getElementById("select-items");
+        var selectOptions = selectItems.querySelectorAll("li");
+
+        selectSelected.addEventListener("click", () => {
+          selectItems.classList.toggle("show");
+          var expanded = selectSelected.getAttribute("aria-expanded") === "true";
+          selectSelected.setAttribute("aria-expanded", (!expanded).toString());
+        });
+
+        selectOptions.forEach((item) => {
+          item.addEventListener("click", () => {
+            const langMap = {};
+            
+              langMap['zh-CN'] = '/2025/06/02/基于socket通信技术实现的简单聊天室/';
+            
+              langMap['en'] = '/en/2025/06/02/基于socket通信技术实现的简单聊天室/';
+            
+            selectedLang.textContent = item.textContent;
+            selectItems.classList.remove("show");
+            selectOptions.forEach((option) => {
+              option.classList.remove("selected");
+            });
+            item.classList.add("selected");
+            window.location = langMap[item.dataset.value];
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!event.target.closest(".custom-dropdown")) {
+            selectItems.classList.remove("show");
+            selectSelected.setAttribute("aria-expanded", "false");
+          }
+        });
+      </script>
+    </nav>
+  
+</div>
+<header id="header" aria-label="Site header">
+  
+    <picture></picture>
+    <img  fetchpriority="high" src="http://blog.luminous.blog/covers/cover12.webp" alt="java:基于socket通信技术实现的简单聊天室">
+  
+  <div id="header-outer">
+    <div id="header-title">
+      
+        
+        
+          <span id="logo">
+            <h1 data-aos="slide-up">java:基于socket通信技术实现的简单聊天室</h1>
+          </span>
+        
+      
+      
+        
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+          
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content" class="sidebar-left"  >
+          <aside id="sidebar" aria-label="Sidebar">
+  
+  <div class="sidebar-wrapper-container sticky">
+  
+    
+    
+      <meting-js
+        theme="var(--color-link)"
+        id="13796951407"
+        server="netease"
+        type="playlist"
+        
+        
+        
+        
+        
+        preload="true"
+        
+        
+        list-folded="true"
+        
+      ></meting-js>
+    
+  
+ 
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+      
+        
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+  
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java-%E5%9F%BA%E4%BA%8Esocket%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E5%8D%95%E8%81%8A%E5%A4%A9%E5%AE%A4"><span class="toc-number">1.</span> <span class="toc-text">[java]基于socket通信技术实现的简单聊天室</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#socket%E6%A0%B8%E5%BF%83java%E7%BC%96%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">socket核心java编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">1.2.2.</span> <span class="toc-text">环境准备</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JDK%E4%B8%8B%E8%BD%BD%E5%8F%8A%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">JDK下载及环境变量配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B"><span class="toc-number">1.2.3.</span> <span class="toc-text">项目编程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">开始</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#chatcommon"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">chatcommon</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#chatmain-chatframe"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">chatmain&#x2F;chatframe</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#resources"><span class="toc-number">1.2.3.4.</span> <span class="toc-text">resources</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#service"><span class="toc-number">1.2.3.5.</span> <span class="toc-text">service</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E4%B8%8E%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD"><span class="toc-number">1.2.3.5.1.</span> <span class="toc-text">注册与登录功能</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A7%81%E8%81%8A%E5%8A%9F%E8%83%BD"><span class="toc-number">1.2.3.5.2.</span> <span class="toc-text">私聊功能</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%8A%9F%E8%83%BD"><span class="toc-number">1.2.3.5.3.</span> <span class="toc-text">其他功能</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+  
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="Luminous" class="lazyload">
+  <div class="sidebar-author-name">Luminous</div>
+  <div class="sidebar-description">动漫宅&amp;技术宅</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Post</div>
+    <div class="sidebar-state-number">19</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>Category</div>
+    <div class="sidebar-state-number">11</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>Tag</div>
+    <div class="sidebar-state-number">17</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/Torchman005 itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
+    <div class="icon-youtube sidebar-social-icon">
+      <a href=https://www.youtube.com/@luminousZJ itemprop="url" target="_blank" aria-label="youtube" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
+    <div class="icon-bilibili sidebar-social-icon">
+      <a href=https://space.bilibili.com/356164519?spm_id_from=333.1007.0.0 itemprop="url" target="_blank" aria-label="bilibili" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
+    <div class="icon-stackoverflow sidebar-social-icon">
+      <a href=https://stackoverflow.com/users/30805314/luminous itemprop="url" target="_blank" aria-label="stackoverflow" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/" aria-label="Home"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              &#xf015;
+            
+          
+        </div>
+        <div class="sidebar-menu-link">Home</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/archives" aria-label="Archives"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              &#xf187;
+            
+          
+        </div>
+        <div class="sidebar-menu-link">Archives</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/about" aria-label="About"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              &#xf007;
+            
+          
+        </div>
+        <div class="sidebar-menu-link">About</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/friend" aria-label="Friend"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              &#xf2b5;
+            
+          
+        </div>
+        <div class="sidebar-menu-link">Friend</div>
+      </div>
+    
+  
+</div>
+</div>
+        
+      
+      
+        
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+        
+      
+    </div>
+  </div>
+  
+  <div class="sidebar-widget">
+  
+  </div>
+  
+  </div>
+  
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-基于socket通信技术实现的简单聊天室" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2025-06-02T10:19:03.000Z" itemprop="datePublished">2025-06-02</time>
+    <time style="display: none;" id="post-update-time">2025-06-02</time>
+  </span>
+  
+</div>
+
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/en/categories/%E9%A1%B9%E7%9B%AE/" title="项目">项目</a>
+  </div>
+
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+      
+        <h1 id="java-基于socket通信技术实现的简单聊天室"><a href="#java-基于socket通信技术实现的简单聊天室" class="headerlink" title="[java]基于socket通信技术实现的简单聊天室"></a>[java]基于socket通信技术实现的简单聊天室</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>socket，你也许没听说过，但你不可能没用到过(<del>除非你21世纪以来没有接触过电子产品</del>)。常见如QQ，微信，只要存在聊天框和评论的地方，socket都发挥着它的作用。本文章将会分<strong>三大模块</strong>(socket后端编程，数据库，UI编程)，带你DIY一个属于自己的<strong>聊天室</strong>。</p>
+<p>本项目已在GitHub开源:</p>
+<div class="post-link-card-wrap">
+    <div class="post-link-card">
+      <a href="https://github.com/Torchman005/Simple-Chat-Room" title="Simple-Chat-Room" rel="noopener nofollow noreferrer" target="_blank"></a>
+      <div class="post-link-card-cover-wrap"><img src="http://blog.luminous.blog/images/covers/github-mark.png" class="no-lightbox" title="Simple-Chat-Room" alt="Simple-Chat-Room"/></div>
+      <div class="post-link-card-item-wrap">
+        <div class="post-link-card-title">Simple-Chat-Room</div>
+        <div class="post-link-card-excerpt"><span class="icon-link"></span>https://github.com/Torchman005/Simple-Chat-Room</div>
+      </div>
+    </div>
+  </div>
+
+
+<blockquote>
+<p>socket核心模块：了解客户端与服务端之间信息传递的原理，手刃客户端，服务端</p>
+<p>数据库模块：学习如何保存用户信息、群聊信息，实现数据的持久化</p>
+<p>UI模块：为用户提供一个易于操作的窗口，美化聊天室，降低使用门槛</p>
+</blockquote>
+<p>本项目需要的工具：jdk17(本人使用)，IDEA，maven(IDEA有自带的)，Navicat，mysql，javaFX相关依赖，JDBC相关依赖，最低2C2G云服务器，Xterminal(只要能连接服务器就行)，<del>一个会思考的大脑</del></p>
+<p>需要会的东西：JavaSE基础，sql语句，数据库操作，maven依赖管理，Linux基本命令，docker操作(不作硬性要求)</p>
+<hr>
+<h2 id="socket核心java编程"><a href="#socket核心java编程" class="headerlink" title="socket核心java编程"></a>socket核心java编程</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p><strong>socket</strong>编程属于网络编程的一种经典方式，我们可以通过socket关键字实现网络上的通信。socket(插座)，我们可以把它抽象的理解为客户端和服务端都需要一个socket插座，通过网络将这两个插座连接来实现客户端与客户端、客户端与服务端之间信息的传递。</p>
+<blockquote>
+<p>一般的大型项目会使用<strong>WebSocket</strong>技术以及<strong>Netty</strong>+<strong>SpringBoot</strong>来支持大用户量的服务，但本文仅提供了聊天室的入门小项目教程，遂采用传统<strong>socket</strong>实现聊天功能</p>
+</blockquote>
+<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><h4 id="JDK下载及环境变量配置"><a href="#JDK下载及环境变量配置" class="headerlink" title="JDK下载及环境变量配置"></a>JDK下载及环境变量配置</h4><p>鉴于欲编写本项目的人应基本掌握<strong>Java</strong>基础，这里我会一笔带过</p>
+<p>因为本项目是基于java语言编程，所以需要从Java官网下载对应版本的<strong>JDK</strong></p>
+<p><em><strong>Java</strong>官网</em>：<a target="_blank" rel="noopener" href="https://www.java.com/zh-CN/">https://www.java.com/zh-CN/</a></p>
+<p>下载安装包后双击安装程序，选择安装路径(可以保持默认)，然后一直点下一步，选项都保持默认，直至安装完成</p>
+<p>安装完成以后在高级系统设置中添加<strong>Path</strong></p>
+<blockquote>
+<p>如果这些东西还需要我详细说的话，建议先从Java基础开始学起→_→</p>
+</blockquote>
+<h3 id="项目编程"><a href="#项目编程" class="headerlink" title="项目编程"></a>项目编程</h3><h4 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h4><p>首先我们要在<strong>IDEA</strong>中新建<strong>maven</strong>项目，然后在<strong>main</strong>目录下创建包，以下是我文件的目录结构</p>
+<p><img src="http://blog.luminous.blog/images/posts/socket%E9%A1%B9%E7%9B%AE/1.png" alt="客户端"><img src="http://blog.luminous.blog/images/posts/socket%E9%A1%B9%E7%9B%AE/2.png" alt="服务端"></p>
+<blockquote>
+<p>说明：</p>
+<p><strong>cfg</strong>存放配置文件</p>
+<p><strong>service</strong>存放一些聊天功能如私聊、群聊的实现类</p>
+<p><strong>chatcommon</strong>存放User用户类和Message信息类，客户端与服务端需保持一致</p>
+<p><strong>utils</strong>为工具包，存放自己写的方便编程的工具类</p>
+<p><strong>main</strong>和<strong>chatframe</strong>分别为客户端和服务端的启动类</p>
+</blockquote>
+<h4 id="chatcommon"><a href="#chatcommon" class="headerlink" title="chatcommon"></a>chatcommon</h4><p>我们先从这个包入手，因为客户端与服务端的信息传递都靠这个包中的类，只有写完其中的类才能实现双端交互</p>
+<p><strong>User</strong>类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jinyu.chatcommon;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line"><span class="comment">//    指定序列化版本号</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">1L</span>;</span><br><span class="line">    <span class="keyword">private</span> String userId; <span class="comment">// 用户Id属性</span></span><br><span class="line">    <span class="keyword">private</span> String pwd; <span class="comment">// 密码属性</span></span><br><span class="line">    <span class="keyword">private</span> String userType; <span class="comment">// 用户信息类型(判断用户是登录还是注册)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getUserType</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> userType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUserType</span><span class="params">(String userType)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.userType = userType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">User</span><span class="params">(String userId, String pwd)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.userId = userId;</span><br><span class="line">        <span class="built_in">this</span>.pwd = pwd;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">User</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;User&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;userId=&#x27;&quot;</span> + userId + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&quot;, pwd=&#x27;&quot;</span> + pwd + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getUserId</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> userId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUserId</span><span class="params">(String userId)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.userId = userId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getPwd</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> pwd;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setPwd</span><span class="params">(String pwd)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.pwd = pwd;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>声明了用户的<strong>userId</strong>、<strong>pwd</strong>，添加了构造方法和<strong>getter</strong>,<strong>setter</strong>方法，并重写了<strong>toString</strong>方法</p>
+<p><strong>UserType</strong>接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jinyu.chatcommon;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserType</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">USER_LOGIN</span> <span class="operator">=</span> <span class="string">&quot;1&quot;</span>; <span class="comment">// 用户登录</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">USER_REGISTER</span> <span class="operator">=</span> <span class="string">&quot;2&quot;</span>; <span class="comment">// 用户注册</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这个接口用来设定客户端发送给服务端的用户信息类型，判断是要登录还是要注册</p>
+<p><strong>Message</strong>类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jinyu.chatcommon;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"><span class="keyword">import</span> java.util.PrimitiveIterator;</span><br><span class="line"><span class="keyword">import</span> java.util.Queue;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Message</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">    <span class="comment">// 指定序列化版本号</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">1L</span>;</span><br><span class="line">    <span class="keyword">private</span> String sender; <span class="comment">// 发送者Id</span></span><br><span class="line">    <span class="keyword">private</span> String getter; <span class="comment">// 接收者Id</span></span><br><span class="line">    <span class="keyword">private</span> String content;<span class="comment">// 发送内容</span></span><br><span class="line">    <span class="keyword">private</span> String sendTime; <span class="comment">// 发送时间</span></span><br><span class="line">    <span class="keyword">private</span> String mesType;<span class="comment">// 消息类型（接口定义）</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 和文件相关的字段</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">byte</span>[] fileBytes; <span class="comment">// 用来读取文件的字节数组</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="variable">fileLen</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> String dest;<span class="comment">// 文件传输到哪里</span></span><br><span class="line">    <span class="keyword">private</span> String src;<span class="comment">// 文件源路径</span></span><br><span class="line">    <span class="keyword">private</span> Queue&lt;String&gt; groupMembers; <span class="comment">// 群组用户队列，临时存储群聊成员</span></span><br><span class="line">    <span class="keyword">private</span> Queue&lt;String&gt; onlineUsers; <span class="comment">// 在线用户队列，临时存储在线用户</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> isUser; <span class="comment">// 判断有无此用户</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> isGroup; <span class="comment">// 判断有无此群聊</span></span><br><span class="line">    <span class="keyword">private</span> String groupName; <span class="comment">// 群聊名称</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Message</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Message</span><span class="params">(String mesType, String content)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.mesType = mesType;</span><br><span class="line">        <span class="built_in">this</span>.content = content;</span><br><span class="line">        <span class="built_in">this</span>.sendTime = <span class="keyword">new</span> <span class="title class_">java</span>.util.Date().toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Message</span><span class="params">(String mesType)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.mesType = mesType;</span><br><span class="line">        <span class="built_in">this</span>.sendTime = <span class="keyword">new</span> <span class="title class_">java</span>.util.Date().toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isUser</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> isUser;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUser</span><span class="params">(<span class="type">boolean</span> user)</span> &#123;</span><br><span class="line">        isUser = user;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isGroup</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> isGroup;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setGroup</span><span class="params">(<span class="type">boolean</span> group)</span> &#123;</span><br><span class="line">        isGroup = group;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Queue&lt;String&gt; <span class="title function_">getOnlineUsers</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> onlineUsers;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setOnlineUsers</span><span class="params">(Queue&lt;String&gt; onlineUsers)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.onlineUsers = onlineUsers;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Queue&lt;String&gt; <span class="title function_">getGroupMembers</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> groupMembers;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setGroupMembers</span><span class="params">(Queue&lt;String&gt; groupMembers)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.groupMembers = groupMembers;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getGroupName</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> groupName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setGroupName</span><span class="params">(String groupName)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.groupName = groupName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">byte</span>[] getFileBytes() &#123;</span><br><span class="line">        <span class="keyword">return</span> fileBytes;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setFileBytes</span><span class="params">(<span class="type">byte</span>[] fileBytes)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.fileBytes = fileBytes;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getFileLen</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> fileLen;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setFileLen</span><span class="params">(<span class="type">int</span> fileLen)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.fileLen = fileLen;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getDest</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> dest;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setDest</span><span class="params">(String dest)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.dest = dest;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getSrc</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> src;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSrc</span><span class="params">(String src)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.src = src;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getSender</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> sender;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSender</span><span class="params">(String sender)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.sender = sender;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getGetter</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> getter;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setGetter</span><span class="params">(String getter)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.getter = getter;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getContent</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setContent</span><span class="params">(String content)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.content = content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getSendTime</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> sendTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setSendTime</span><span class="params">(String sendTime)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.sendTime = sendTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getMesType</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> mesType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setMesType</span><span class="params">(String mesType)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.mesType = mesType;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>Message</strong>接口(主要设置消息类型)：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jinyu.chatcommon;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">MessageType</span> &#123;</span><br><span class="line">    <span class="type">String</span> <span class="variable">MESSAGE_LOGIN_SUCCEED</span> <span class="operator">=</span> <span class="string">&quot;1&quot;</span>;<span class="comment">//登录成功的消息</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">MESSAGE_LOGIN_FAIL</span> <span class="operator">=</span> <span class="string">&quot;2&quot;</span>;<span class="comment">//登录失败的消息</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">MESSAGE_COMM_MES</span> <span class="operator">=</span> <span class="string">&quot;3&quot;</span>;<span class="comment">//Message和User对象接受消息</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">MESSAGE_REQ_ONLINE_USERS</span> <span class="operator">=</span> <span class="string">&quot;4&quot;</span>;<span class="comment">//请求返回在线用户列表</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">MESSAGE_RET_ONLINE_USERS_LIST</span> <span class="operator">=</span> <span class="string">&quot;5&quot;</span>;<span class="comment">//返回在线用户列表</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">MESSAGE_CLIENT_EXIT</span> <span class="operator">=</span> <span class="string">&quot;6&quot;</span>;<span class="comment">//用户退出</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">MESSAGE_TO_GROUP_MES</span> <span class="operator">=</span> <span class="string">&quot;7&quot;</span>;<span class="comment">//群发消息</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">MESSAGE_FILE_MES</span> <span class="operator">=</span> <span class="string">&quot;8&quot;</span>;<span class="comment">//文件发送</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">MESSAGE_PULL_GROUP_MES</span> <span class="operator">=</span> <span class="string">&quot;9&quot;</span>;<span class="comment">//拉群</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">MESSAGE_SEND_TO_ALL</span> <span class="operator">=</span> <span class="string">&quot;10&quot;</span>;<span class="comment">//服务端推送新闻</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">MESSAGE_SYSTEM</span> <span class="operator">=</span> <span class="string">&quot;11&quot;</span>;<span class="comment">//系统消息</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">MESSAGE_REGISTER</span> <span class="operator">=</span> <span class="string">&quot;12&quot;</span>;<span class="comment">//注册</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">MESSAGE_REGISTER_SUCCEED</span> <span class="operator">=</span> <span class="string">&quot;12&quot;</span>;<span class="comment">//注册成功</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">MESSAGE_REGISTER_FAIL</span> <span class="operator">=</span> <span class="string">&quot;13&quot;</span>;<span class="comment">//注册失败</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>通过设置消息类型(<strong>MessageType</strong>)来让服务端识别不同的功能请求，从而实现不同的功能</p>
+<h4 id="chatmain-chatframe"><a href="#chatmain-chatframe" class="headerlink" title="chatmain&#x2F;chatframe"></a>chatmain&#x2F;chatframe</h4><p>这两个包下都分别只有一个类，那就是程序的启动入口(主类)</p>
+<p>客户端：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jinyu.main;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.jinyu.ui.LoginUI;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javafx.application.Application;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ChatMain</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 设置系统属性，解决中文乱码</span></span><br><span class="line">        System.setProperty(<span class="string">&quot;file.encoding&quot;</span>, <span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">        <span class="comment">// 启动JavaFX应用</span></span><br><span class="line">        Application.launch(LoginUI.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个<strong>main</strong>方法启动的是UI界面，UI的逻辑全部写在<strong>ui</strong>这个包下</p>
+<p>服务端：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jinyu.chatframe;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.jinyu.chatserver.service.ChatServer;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ChatFrame</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">ChatServer</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过new个<strong>ChatServer</strong>对象来启动服务端</p>
+<h4 id="resources"><a href="#resources" class="headerlink" title="resources"></a>resources</h4><p>resources中专门存放项目的各种配置文件，在这个项目中，我们要写的配置文件十分简单</p>
+<p>客户端：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#配置文件我命名为config.properties，所以下文会用config指代这个文件</span></span><br><span class="line"><span class="attr">host</span>=<span class="string">127.0.0.1</span></span><br><span class="line"><span class="attr">port</span>=<span class="string">2323</span></span><br></pre></td></tr></table></figure>
+
+<p>这里配置了要连接的服务器的ip和端口</p>
+<p>服务端：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">port</span>=<span class="string">2323</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="service"><a href="#service" class="headerlink" title="service"></a>service</h4><h5 id="注册与登录功能"><a href="#注册与登录功能" class="headerlink" title="注册与登录功能"></a>注册与登录功能</h5><p><em><strong>前言</strong></em></p>
+<p>无论是注册还是登录，都需要用户的信息，而用户的信息需要用户自己在UI界面给的输入框中输入回车才会读取，所以在<strong>LoginUI</strong>和<strong>RegisterUI</strong>类中，我会读取输入框用户输入的数据，紧接着调用<strong>ToUserFunction</strong>中的注册和登录方法并传入参数</p>
+<blockquote>
+<p>关于UI方面都会在第三模块中解释，所以在这里不作代码演示，我们直接来看service中的逻辑&lt;(￣︶￣)↗[GO!]</p>
+</blockquote>
+<p><img src="http://blog.luminous.blog/images/posts/socket%E9%A1%B9%E7%9B%AE/3.png" alt="ToUserFunction类"></p>
+<p><em><strong>注册</strong></em></p>
+<p>众所周知，不管你用哪个应用或上哪个网站，用户都得先注册账号，将用户信息存储在数据库才能够使用原有账号密码登录，所以我这里先介绍注册的逻辑及实现</p>
+<p>客户端：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ToUserFunction类</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">registerUser</span><span class="params">(String userId, String pwd)</span> &#123;</span><br><span class="line">    <span class="type">boolean</span> <span class="variable">b</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 读取配置文件</span></span><br><span class="line">        <span class="type">ClassLoader</span> <span class="variable">classLoader</span> <span class="operator">=</span> ToUserFunction.class.getClassLoader();</span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">input</span> <span class="operator">=</span> classLoader.getResourceAsStream(<span class="string">&quot;config.properties&quot;</span>);</span><br><span class="line">        <span class="type">Properties</span> <span class="variable">prop</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line">        prop.load(input);</span><br><span class="line">        <span class="type">String</span> <span class="variable">host</span> <span class="operator">=</span> prop.getProperty(<span class="string">&quot;host&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">sport</span> <span class="operator">=</span> prop.getProperty(<span class="string">&quot;port&quot;</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">port</span> <span class="operator">=</span> Integer.parseInt(sport);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建socket连接</span></span><br><span class="line">        socket = <span class="keyword">new</span> <span class="title class_">Socket</span>(InetAddress.getByName(host), port);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 向服务端传输用户信息</span></span><br><span class="line">        user.setUserId(userId);</span><br><span class="line">        user.setPwd(pwd);</span><br><span class="line">        user.setUserType(UserType.USER_REGISTER);</span><br><span class="line">        <span class="type">ObjectOutputStream</span> <span class="variable">oos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(socket.getOutputStream());</span><br><span class="line">        oos.writeObject(user); </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 接收服务端回复的注册信息</span></span><br><span class="line">        <span class="type">ObjectInputStream</span> <span class="variable">ois</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(socket.getInputStream());</span><br><span class="line">        <span class="type">Message</span> <span class="variable">mes</span> <span class="operator">=</span> (Message)ois.readObject();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 判断注册是否成功</span></span><br><span class="line">        <span class="keyword">if</span>(mes.getMesType().equals(MessageType.MESSAGE_REGISTER_SUCCEED)) &#123;</span><br><span class="line">            b = <span class="literal">true</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            displayMessage(<span class="keyword">new</span> <span class="title class_">Message</span>(MessageType.MESSAGE_SYSTEM, <span class="string">&quot;注册失败(用户名已存在)&quot;</span>));</span><br><span class="line">            socket.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        displayMessage(<span class="keyword">new</span> <span class="title class_">Message</span>(MessageType.MESSAGE_SYSTEM, <span class="string">&quot;注册失败: &quot;</span> + e.getMessage()));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这个是用户在客户端的注册实现，我们来剖析一下</p>
+</blockquote>
+<p>首先，我们需要让客户端与服务端建立连接，就需要用到socket</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Socket</span> <span class="variable">socket</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Socket</span>(InetAddress.getByName(host), port);</span><br></pre></td></tr></table></figure>
+
+<p>这里我们首先创建了一个<strong>socket</strong>对象，其中的参数分别是你要连接的服务器的<strong>InetAddress</strong>对象和所在端口号(这里解释一下，<strong>InetAddress</strong>类中的<strong>getByName</strong>方法是利用主机的IP地址来返回<strong>InetAddress</strong>对象的)，所以要读取<strong>resources</strong>中的配置文件(<strong>config</strong>)</p>
+<p>此时服务端需要监听来自客户端<strong>socket</strong>的动作，客户端与服务端之间才能建立连接，于是在<strong>服务端</strong>写出如下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ChatServer类</span></span><br><span class="line"><span class="type">ServerSocket</span> <span class="variable">ss</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="title function_">ChatServer</span><span class="params">()</span> <span class="keyword">throws</span> Exception&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">//             启动推送新闻的线程</span></span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Thread</span>(<span class="keyword">new</span> <span class="title class_">SendNewsToAllService</span>()).start();</span><br><span class="line">        <span class="comment">//            读取配置文件</span></span><br><span class="line">        <span class="type">ClassLoader</span> <span class="variable">classLoader</span> <span class="operator">=</span> ChatServer.class.getClassLoader();</span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">input</span> <span class="operator">=</span> classLoader.getResourceAsStream(<span class="string">&quot;config.properties&quot;</span>);</span><br><span class="line">        <span class="type">Properties</span> <span class="variable">prop</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line">        prop.load(input);</span><br><span class="line">        <span class="type">String</span> <span class="variable">sport</span> <span class="operator">=</span> prop.getProperty(<span class="string">&quot;port&quot;</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">port</span> <span class="operator">=</span> Integer.parseInt(sport);</span><br><span class="line">        System.out.println(<span class="string">&quot;服务端在&quot;</span> + port + <span class="string">&quot;端口监听&quot;</span>);</span><br><span class="line">        ss = <span class="keyword">new</span> <span class="title class_">ServerSocket</span>(port);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            <span class="type">Socket</span> <span class="variable">socket</span> <span class="operator">=</span> ss.accept();<span class="comment">// 监听客户端的连接，若没有则阻塞</span></span><br><span class="line">            <span class="comment">//                对象输入输出流读取用户对象</span></span><br><span class="line">            <span class="type">ObjectInputStream</span> <span class="variable">ois</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(socket.getInputStream());</span><br><span class="line">            <span class="type">ObjectOutputStream</span> <span class="variable">oos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(socket.getOutputStream());</span><br><span class="line">            <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> (User) ois.readObject();</span><br><span class="line">            <span class="comment">//                准备一个Message对象，用来回复客户端</span></span><br><span class="line">            <span class="type">Message</span> <span class="variable">message</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Message</span>();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            ss.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这整个代码都是在<strong>ChatServer</strong>这个类的构造方法中执行的，保证服务端启动后这些代码会立即执行</p>
+<p>可以看出，服务端首先也是读取配置文件，创建<strong>ServerSocket</strong>对象，把从配置文件读取的端口号(<strong>port</strong>)作为参数传入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">ServerSocket</span> <span class="variable">ss</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ServerSocket</span>(port);</span><br></pre></td></tr></table></figure>
+
+<p>然后调用<strong>ServerSocke</strong>t的<strong>accept</strong>方法来监听客户端连接</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Socket</span> <span class="variable">socket</span> <span class="operator">=</span> ss.accept();</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：因为将会有多个客户端登录，所以客户端只监听一次是远远不够的，这时就需要在外面包裹一层<strong>while循环</strong>来持续监听</p>
+</blockquote>
+<p><em><strong>至此，客户端与服务端之间已建立连接</strong></em></p>
+<blockquote>
+<p>服务端就先告一段落，让我们回到客户端</p>
+</blockquote>
+<p>客户端：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ToUserFunction类</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 向服务端传输用户信息</span></span><br><span class="line">user.setUserId(userId);</span><br><span class="line">user.setPwd(pwd);</span><br><span class="line">user.setUserType(UserType.USER_REGISTER);</span><br></pre></td></tr></table></figure>
+
+<p>用户的注册，就是要把用户输入的信息传到服务端，让服务端写入数据库</p>
+<p>这里的目的，就是封装好<strong>User对象</strong>，set好User的<strong>Id</strong>，<strong>pwd</strong>和**你此次传输的用户信息类型(UserType)**，然后通过IO流传给服务端</p>
+<p>下面，是创建<strong>ObjectInputStream</strong>和<strong>ObjectOutputStream</strong>来读写<strong>User对象</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ToUserFunction类</span></span><br><span class="line"></span><br><span class="line"><span class="type">ObjectOutputStream</span> <span class="variable">oos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(socket.getOutputStream());</span><br><span class="line">oos.writeObject(user); </span><br><span class="line"><span class="comment">// 接收服务端回复的注册信息</span></span><br><span class="line"><span class="type">ObjectInputStream</span> <span class="variable">ois</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(socket.getInputStream());</span><br><span class="line"><span class="type">Message</span> <span class="variable">mes</span> <span class="operator">=</span> (Message)ois.readObject();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断注册是否成功</span></span><br><span class="line"><span class="keyword">if</span>(mes.getMesType().equals(MessageType.MESSAGE_REGISTER_SUCCEED)) &#123;</span><br><span class="line">    b = <span class="literal">true</span>; <span class="comment">// 判定为成功，返回true</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    displayMessage(<span class="keyword">new</span> <span class="title class_">Message</span>(MessageType.MESSAGE_SYSTEM, <span class="string">&quot;注册失败(用户名已存在)&quot;</span>));</span><br><span class="line">    socket.close();</span><br><span class="line">&#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">    displayMessage(<span class="keyword">new</span> <span class="title class_">Message</span>(MessageType.MESSAGE_SYSTEM, <span class="string">&quot;注册失败: &quot;</span> + e.getMessage()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>ObjectOutputStream</strong>写入服务端的socket后，服务端读入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ChatServer类</span></span><br><span class="line"></span><br><span class="line"><span class="type">ObjectInputStream</span> <span class="variable">ois</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(socket.getInputStream());</span><br><span class="line"> <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> (User) ois.readObject();</span><br><span class="line"><span class="comment">// 准备个message对象来承载信息并发送至客户端</span></span><br><span class="line"><span class="type">Message</span> <span class="variable">message</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Message</span>();</span><br></pre></td></tr></table></figure>
+
+<p>读入以后就要判断这个User的类型了，判断它是登录还是注册</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(user.getUserType().equals(UserType.USER_REGISTER))&#123;</span><br><span class="line">    <span class="comment">//这里涉及数据库SQL操作，暂不作处理</span></span><br><span class="line">    <span class="comment">//注册成功</span></span><br><span class="line">    message.setMesType(MessageType.MESSAGE_REGISTER_SUCCEED);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//注册失败</span></span><br><span class="line">        message.setMesType(MessageType.MESSAGE_REGISTER_FAIL);</span><br><span class="line">    &#125;</span><br><span class="line">    oos.writeObject(message);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>随后将message传给客户端</p>
+<p><code>oos.writeObject(message);</code></p>
+<p>客户端：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ToUserFunction类</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 接收服务端回复的注册信息</span></span><br><span class="line"><span class="type">ObjectInputStream</span> <span class="variable">ois</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(socket.getInputStream());</span><br><span class="line"><span class="type">Message</span> <span class="variable">mes</span> <span class="operator">=</span> (Message)ois.readObject();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断注册是否成功</span></span><br><span class="line"><span class="keyword">if</span>(mes.getMesType().equals(MessageType.MESSAGE_REGISTER_SUCCEED)) &#123;</span><br><span class="line">    b = <span class="literal">true</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    displayMessage(<span class="keyword">new</span> <span class="title class_">Message</span>(MessageType.MESSAGE_SYSTEM, <span class="string">&quot;注册失败(用户名已存在)&quot;</span>));</span><br><span class="line">    socket.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>客户端接收到来自客户端注册成功与否的信息，并将结果返回</p>
+<blockquote>
+<p>注册逻辑已完成o(<em>￣︶￣</em>)o</p>
+</blockquote>
+<p><em><strong>登录</strong></em></p>
+<p>其实登录的大体逻辑和注册差不多，只不过多了验证Id、密码和创建用户线程的步骤</p>
+<p>客户端：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ToUserFunction类</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">checkUser</span><span class="params">(String userId, String pwd)</span>&#123;</span><br><span class="line">    <span class="comment">//        给登录的用户账号和密码初始化，便于后续验证</span></span><br><span class="line">    user.setUserId(userId);</span><br><span class="line">    user.setPwd(pwd);</span><br><span class="line">    user.setUserType(UserType.USER_LOGIN);</span><br><span class="line"></span><br><span class="line">    <span class="type">boolean</span> <span class="variable">b</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">// 读取配置文件</span></span><br><span class="line">        <span class="type">ClassLoader</span> <span class="variable">classLoader</span> <span class="operator">=</span> ToUserFunction.class.getClassLoader();</span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">input</span> <span class="operator">=</span> classLoader.getResourceAsStream(<span class="string">&quot;config.properties&quot;</span>);</span><br><span class="line">        <span class="type">Properties</span> <span class="variable">prop</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line">        prop.load(input);</span><br><span class="line">        <span class="type">String</span> <span class="variable">host</span> <span class="operator">=</span> prop.getProperty(<span class="string">&quot;host&quot;</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">sport</span> <span class="operator">=</span> prop.getProperty(<span class="string">&quot;port&quot;</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">port</span> <span class="operator">=</span> Integer.parseInt(sport);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 创建socket连接</span></span><br><span class="line">        socket = <span class="keyword">new</span> <span class="title class_">Socket</span>(InetAddress.getByName(host), port);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//            向服务端传输用户信息，传的是对象</span></span><br><span class="line">        <span class="type">ObjectOutputStream</span> <span class="variable">oos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(socket.getOutputStream());</span><br><span class="line">        oos.writeObject(user);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>服务端：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ChatServer类</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(user.getUserType().equals(UserType.USER_LOGIN))&#123;</span><br><span class="line">    <span class="comment">//                然后再验证是否能够成功登录</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="comment">/*这里需要使用SQL语句检索数据库并比对来判断用户Id和密码的合理性*/</span>)&#123;</span><br><span class="line">        message.setMesType(MessageType.MESSAGE_LOGIN_SUCCEED);</span><br><span class="line">        <span class="comment">//                    加入线程</span></span><br><span class="line">        <span class="type">ServerConnectClientThread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ServerConnectClientThread</span>(socket, user.getUserId());</span><br><span class="line">        thread.start();</span><br><span class="line">        ClientThreadsManage.addServerConnectClientThread(user.getUserId(), thread);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//                    将用户Id加入在线用户队列</span></span><br><span class="line">        OnlineUsers.addOnlineUsers(user.getUserId());</span><br><span class="line"></span><br><span class="line">        <span class="comment">//                    然后把message传给客户端</span></span><br><span class="line">        oos.writeObject(message);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//                    登录失败</span></span><br><span class="line">        System.out.println(<span class="string">&quot;用户账号或密码不正确&quot;</span>);</span><br><span class="line">        message.setMesType(MessageType.MESSAGE_LOGIN_FAIL);</span><br><span class="line">        oos.writeObject(message);</span><br><span class="line">        socket.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>服务端验证用户Id和密码是否匹配，若匹配则登陆成功，给<strong>message</strong>设置登陆成功的类型，并增加对应用户线程</p>
+<p>客户端：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//            还要接受服务端回复的登录信息</span></span><br><span class="line"><span class="type">ObjectInputStream</span> <span class="variable">ois</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(socket.getInputStream());</span><br><span class="line"><span class="type">Message</span> <span class="variable">mes</span> <span class="operator">=</span> (Message)ois.readObject();</span><br><span class="line"></span><br><span class="line"><span class="comment">//            判断登录是否成功</span></span><br><span class="line"><span class="keyword">if</span>(mes.getMesType().equals(MessageType.MESSAGE_LOGIN_SUCCEED))&#123;</span><br><span class="line">    b = <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">//                因为登录成功，所以新增一个通信线程</span></span><br><span class="line">    <span class="type">ClientConnectServerThread</span> <span class="variable">thread</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ClientConnectServerThread</span>(socket, chatUI);</span><br><span class="line">    <span class="comment">//                启动线程</span></span><br><span class="line">    thread.start();</span><br><span class="line">    <span class="comment">//                把这个线程存到map集合中统一管理</span></span><br><span class="line">    ClientConnServerThreadsManage.addClientConnectServerThread(userId, thread);</span><br><span class="line"></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    displayMessage(<span class="keyword">new</span> <span class="title class_">Message</span>(MessageType.MESSAGE_SYSTEM, <span class="string">&quot;用户名或密码不正确&quot;</span>));</span><br><span class="line">    socket.close();</span><br><span class="line">&#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">    displayMessage(<span class="keyword">new</span> <span class="title class_">Message</span>(MessageType.MESSAGE_SYSTEM, <span class="string">&quot;登录失败: &quot;</span> + e.getMessage()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>客户端再次接收到服务端传来的信息，确定自己是登录成功还是登录失败，若登陆成功则添加自身对应线程</p>
+<blockquote>
+<p>这里遇到了一个新的内容：线程</p>
+</blockquote>
+<p>认真思考的人已经注意到了，既然这里new了一个新线程，那这个线程类的内容是什么呢？</p>
+<p>如你所见，下面分别是客户端和服务端的线程类：</p>
+<p>客户端：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ClientConnectServerThread类</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.jinyu.chatclient.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.jinyu.chatcommon.Message;</span><br><span class="line"><span class="keyword">import</span> com.jinyu.chatcommon.MessageType;</span><br><span class="line"><span class="keyword">import</span> com.jinyu.ui.ChatUI;</span><br><span class="line"><span class="keyword">import</span> com.jinyu.utils.Utility;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.management.ObjectName;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectInput;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectInputStream;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"><span class="keyword">import</span> java.util.Queue;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ClientConnectServerThread</span> <span class="keyword">extends</span> <span class="title class_">Thread</span>&#123;</span><br><span class="line">    <span class="comment">//    全局变量事先声明</span></span><br><span class="line">    <span class="keyword">private</span> Socket socket;</span><br><span class="line">    <span class="keyword">private</span> ChatUI chatUI;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ClientConnectServerThread</span><span class="params">(Socket socket,ChatUI chatUI)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.socket = socket;</span><br><span class="line">        <span class="built_in">this</span>.chatUI = chatUI;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//        while循环来持续接收服务端传来的信息</span></span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="comment">//            等待读取</span></span><br><span class="line">            <span class="comment">//            System.out.println(&quot;(等待读取)&quot;);</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="type">ObjectInputStream</span> <span class="variable">ois</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(socket.getInputStream());</span><br><span class="line">                <span class="type">Message</span> <span class="variable">mes</span> <span class="operator">=</span> (Message) ois.readObject();</span><br><span class="line">                <span class="comment">//            等待服务端传来message</span></span><br><span class="line">                <span class="keyword">if</span> (mes.getMesType().equals(MessageType.MESSAGE_RET_ONLINE_USERS_LIST)) &#123;</span><br><span class="line">                    <span class="comment">//                服务端的信息是返回在线用户列表，所以这里等待接收</span></span><br><span class="line">                    Queue&lt;String&gt; onlineUsers = mes.getOnlineUsers();</span><br><span class="line">                    chatUI.updateOnlineUsers(onlineUsers);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (mes.getMesType().equals(MessageType.MESSAGE_COMM_MES)) &#123;</span><br><span class="line">                    <span class="comment">//                普通的聊天消息</span></span><br><span class="line">                    chatUI.displayMessage(mes);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span>(mes.getMesType().equals(MessageType.MESSAGE_FILE_MES))&#123;</span><br><span class="line">                    chatUI.displayMessage(mes);</span><br><span class="line">                    <span class="comment">// 文件保存逻辑将在UI中处理</span></span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span>(mes.getMesType().equals(MessageType.MESSAGE_SEND_TO_ALL))&#123;</span><br><span class="line">                    <span class="comment">//                    服务端推送消息</span></span><br><span class="line">                    chatUI.displayMessage(mes);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span>(mes.getMesType().equals(MessageType.MESSAGE_TO_GROUP_MES))&#123;</span><br><span class="line">                    <span class="keyword">if</span>(mes.isGroup())&#123;</span><br><span class="line">                        chatUI.displayMessage(mes);</span><br><span class="line">                    &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                        chatUI.displayMessage(<span class="keyword">new</span> <span class="title class_">Message</span>(MessageType.MESSAGE_SYSTEM, <span class="string">&quot;无此群聊＞﹏＜&quot;</span>));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    chatUI.displayMessage(<span class="keyword">new</span> <span class="title class_">Message</span>(MessageType.MESSAGE_SYSTEM, <span class="string">&quot;其他类型的信息，暂时不做处理&quot;</span>));</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                chatUI.displayMessage(<span class="keyword">new</span> <span class="title class_">Message</span>(MessageType.MESSAGE_SYSTEM, <span class="string">&quot;接收消息错误: &quot;</span> + e.getMessage()));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> Socket <span class="title function_">getSocket</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> socket;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>服务端：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ServerConnectClientThread类</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.jinyu.chatserver.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.Queue;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.jinyu.chatcommon.Message;</span><br><span class="line"><span class="keyword">import</span> com.jinyu.chatcommon.MessageType;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ServerConnectClientThread</span> <span class="keyword">extends</span> <span class="title class_">Thread</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Socket socket;</span><br><span class="line">    <span class="keyword">private</span> String userId;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ServerConnectClientThread</span><span class="params">(Socket socket, String userId)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.socket = socket;</span><br><span class="line">        <span class="built_in">this</span>.userId = userId;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> Socket <span class="title function_">getSocket</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.socket;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                System.out.println(userId + <span class="string">&quot;已连接并保持通信&quot;</span>);</span><br><span class="line">                <span class="type">ObjectInputStream</span> <span class="variable">ois</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectInputStream</span>(socket.getInputStream());</span><br><span class="line">                <span class="type">Message</span> <span class="variable">mes</span> <span class="operator">=</span> (Message) ois.readObject();</span><br><span class="line">                <span class="comment">//                获取在线用户列表并且发给客户端</span></span><br><span class="line">                <span class="keyword">if</span>(mes.getMesType().equals(MessageType.MESSAGE_REQ_ONLINE_USERS))&#123;</span><br><span class="line">                    System.out.println(mes.getSender() + <span class="string">&quot;请求获取在线用户列表&quot;</span>);</span><br><span class="line">                    Queue&lt;String&gt; onlineUsers = ClientThreadsManage.getOnlineUsers();</span><br><span class="line">                    <span class="type">Message</span> <span class="variable">mes2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Message</span>();</span><br><span class="line">                    mes2.setMesType(MessageType.MESSAGE_RET_ONLINE_USERS_LIST);</span><br><span class="line">                    mes2.setOnlineUsers(onlineUsers);</span><br><span class="line">                    mes2.setGetter(mes.getSender());</span><br><span class="line"></span><br><span class="line">                    <span class="type">ObjectOutputStream</span> <span class="variable">oos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(socket.getOutputStream());</span><br><span class="line">                    oos.writeObject(mes2);</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(mes.getMesType().equals(MessageType.MESSAGE_CLIENT_EXIT))&#123;</span><br><span class="line">                    <span class="comment">//                    调用方法</span></span><br><span class="line">                    ClientThreadsManage.removeSCCThread(mes.getSender());</span><br><span class="line">                    System.out.println(userId + <span class="string">&quot;退出登录&quot;</span>);</span><br><span class="line">                    OnlineUsers.deleteUser(userId);</span><br><span class="line">                    socket.close(); <span class="comment">// 关闭socket连接</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(mes.getMesType().equals(MessageType.MESSAGE_COMM_MES))&#123;</span><br><span class="line">                    <span class="comment">//                    私聊转发</span></span><br><span class="line">                    <span class="type">ObjectOutputStream</span> <span class="variable">oos</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        oos = <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(ClientThreadsManage.getServerConnectClientThread(mes.getGetter()).getSocket().getOutputStream());</span><br><span class="line">                        oos.writeObject(mes);<span class="comment">//若要离线留言，可发送给数据库</span></span><br><span class="line">                    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                        System.out.println( mes.getGetter() + <span class="string">&quot;不在线，无法私聊&quot;</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span>(mes.getMesType().equals(MessageType.MESSAGE_FILE_MES))&#123;</span><br><span class="line">                    <span class="comment">//                    文件转发</span></span><br><span class="line">                    <span class="type">ServerConnectClientThread</span> <span class="variable">thread</span> <span class="operator">=</span> ClientThreadsManage.getServerConnectClientThread(mes.getGetter());</span><br><span class="line">                    <span class="type">ObjectOutputStream</span> <span class="variable">oos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(thread.getSocket().getOutputStream());</span><br><span class="line">                    oos.writeObject(mes);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span>(mes.getMesType().equals(MessageType.MESSAGE_PULL_GROUP_MES)) &#123;</span><br><span class="line">                    <span class="comment">//                    拉群，并将群存储</span></span><br><span class="line">                    Groups.addGroup(mes.getGroupName(), mes.getGroupMembers());</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span>(mes.getMesType().equals(MessageType.MESSAGE_TO_GROUP_MES))&#123;</span><br><span class="line">                    <span class="comment">//                    群发消息</span></span><br><span class="line">                    <span class="comment">//                    判断是否有此群聊</span></span><br><span class="line">                    <span class="keyword">if</span>(Groups.hasGroup(mes.getGroupName()))&#123;</span><br><span class="line">                        mes.setGroup(<span class="literal">true</span>);</span><br><span class="line">                        Queue&lt;String&gt; group = Groups.getGroup(mes.getGroupName());</span><br><span class="line">                        Iterator&lt;String&gt; iterator = group.iterator();</span><br><span class="line">                        <span class="keyword">while</span>(iterator.hasNext())&#123;</span><br><span class="line">                            <span class="type">String</span> <span class="variable">onlineUser</span> <span class="operator">=</span> iterator.next();</span><br><span class="line">                            <span class="keyword">if</span>(!onlineUser.equals(mes.getSender()))&#123;</span><br><span class="line">                                <span class="comment">//                            排除发消息的用户</span></span><br><span class="line">                                <span class="type">ObjectOutputStream</span> <span class="variable">oos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(ClientThreadsManage.getServerConnectClientThread(onlineUser).getSocket().getOutputStream());</span><br><span class="line">                                oos.writeObject(mes);</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                        <span class="comment">//                        将不存在群组的信息发送给客户端</span></span><br><span class="line">                        System.out.println(<span class="string">&quot;不存在此群聊&quot;</span>);</span><br><span class="line">                        mes.setGroup(<span class="literal">false</span>);</span><br><span class="line">                        <span class="type">ObjectOutputStream</span> <span class="variable">oos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(ClientThreadsManage.getServerConnectClientThread(mes.getSender()).getSocket().getOutputStream());</span><br><span class="line">                        oos.writeObject(mes);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">                    System.out.println(<span class="string">&quot;其他类型的信息，暂时不作处理&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                <span class="comment">// 处理客户端异常断开连接的情况</span></span><br><span class="line">                System.out.println(userId + <span class="string">&quot;退出登录&quot;</span>);</span><br><span class="line">                ClientThreadsManage.removeSCCThread(userId);</span><br><span class="line">                OnlineUsers.deleteUser(userId);</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    socket.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">                    ex.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>客户端和服务端的线程类代码看似很长，其实逻辑很简单，那就是接收来自服务端&#x2F;客户端的信息，判断信息的类型来实现相应的<strong>代码&#x2F;功能</strong></p>
+<p>创建这些线程后，得需要有一个专门的单位去管理它们，于是就出现了线程管理类</p>
+<p>客户端：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ClientConnServerThreadManage类</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.jinyu.chatclient.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">用来管理每个用户线程的类（用map集合存储）</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ClientConnServerThreadsManage</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> HashMap&lt;String, ClientConnectServerThread&gt; hm = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//    添加用户线程</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">addClientConnectServerThread</span><span class="params">(String userId, ClientConnectServerThread thread)</span> &#123;</span><br><span class="line">        hm.put(userId, thread);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//    根据userId获取用户线程</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> ClientConnectServerThread <span class="title function_">getClientConnectServerThread</span><span class="params">(String userId)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> hm.get(userId);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// 删除线程</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">removeCCSThread</span><span class="params">(String userId)</span>&#123;</span><br><span class="line">        hm.remove(userId);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>服务端：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ClientThreadsManage类</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.jinyu.chatserver.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Queue;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ClientThreadsManage</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> HashMap&lt;String, ServerConnectClientThread&gt; threads = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> HashMap&lt;String, ServerConnectClientThread&gt; <span class="title function_">getThreads</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> threads;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">addServerConnectClientThread</span><span class="params">(String userId, ServerConnectClientThread serverConnectClientThread)</span>&#123;</span><br><span class="line"></span><br><span class="line">        threads.put(userId, serverConnectClientThread);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> ServerConnectClientThread <span class="title function_">getServerConnectClientThread</span><span class="params">(String userId)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> threads.get(userId);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Queue&lt;String&gt; <span class="title function_">getOnlineUsers</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> OnlineUsers.onlineUsers;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">removeSCCThread</span><span class="params">(String userId)</span>&#123;</span><br><span class="line">        threads.remove(userId);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>每次创建线程之后，需将线程纳入线程管理类，将线程都放入一个集合统一管理</p>
+<blockquote>
+<p>了解完线程的大体内容之后，我们再回到登录逻辑</p>
+</blockquote>
+<p>添加好对应用户的线程之后，这名用户便成为了我们平常所说的<strong>在线用户</strong></p>
+<p>登录已完成，看似复杂，实际上只要捋清楚每个类的职责，并不困难(<del>迫真</del>)</p>
+<h5 id="私聊功能"><a href="#私聊功能" class="headerlink" title="私聊功能"></a>私聊功能</h5><blockquote>
+<p>其实本项目的大体框架已经完成，剩下的功能实现逻辑都很相似，我在这就先就着一个典型例子详细介绍</p>
+</blockquote>
+<p>就比如私聊逻辑，一开始客户端选择进行私聊，并将发送者ID(<strong>senderId</strong>)、接收者ID(<strong>getterId</strong>)、发送的内容(<strong>content</strong>)、消息类型(<strong>MessageType</strong>)封装进message对象中发送给服务端</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ClientMessageService类</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendMessageToOne</span><span class="params">( String content, String senderId, String getterId)</span>&#123;</span><br><span class="line">    <span class="comment">//        实现私聊</span></span><br><span class="line">    <span class="comment">//        封装message</span></span><br><span class="line">    <span class="type">Message</span> <span class="variable">mes</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Message</span>();</span><br><span class="line">    mes.setMesType(MessageType.MESSAGE_COMM_MES);</span><br><span class="line">    mes.setSender(senderId);</span><br><span class="line">    mes.setContent(content);</span><br><span class="line">    mes.setGetter(getterId);</span><br><span class="line">    mes.setSendTime(<span class="keyword">new</span> <span class="title class_">Date</span>().toString());<span class="comment">//发送时间</span></span><br><span class="line">    System.out.println(<span class="string">&quot;\n&quot;</span> + mes.getSendTime() + <span class="string">&quot;  &quot;</span> + mes.getSender() + <span class="string">&quot;: &quot;</span> + mes.getContent());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">ObjectOutputStream</span> <span class="variable">oos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(ClientConnServerThreadsManage.getClientConnectServerThread(senderId).getSocket().getOutputStream());</span><br><span class="line">        oos.writeObject(mes);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>服务端接收信息的代码就由线程类来执行</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ServerConnectClientThread类</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(mes.getMesType().equals(MessageType.MESSAGE_COMM_MES))&#123;</span><br><span class="line">    <span class="comment">//                    私聊转发</span></span><br><span class="line">    <span class="type">ObjectOutputStream</span> <span class="variable">oos</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        oos = <span class="keyword">new</span> <span class="title class_">ObjectOutputStream</span>(ClientThreadsManage.getServerConnectClientThread(mes.getGetter()).getSocket().getOutputStream());</span><br><span class="line">        oos.writeObject(mes);<span class="comment">//若要离线留言，可发送给数据库</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        System.out.println( mes.getGetter() + <span class="string">&quot;不在线，无法私聊&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>OK，服务端接收了来自客户端的<strong>message</strong>，那么服务端在这里就起到一个转发的作用，有了getterId，我们就可以从线程管理类中找到这个getterId对应的线程，服务端就可以准确地把<strong>message</strong>发送给这个客户端，接收者接收到<strong>message</strong>以后，客户端线程就会再次判断信息的类型，如果是私聊类型，便会输出私聊消息的内容到指定区域</p>
+<h5 id="其他功能"><a href="#其他功能" class="headerlink" title="其他功能"></a>其他功能</h5><blockquote>
+<p>私聊功能已完成，其他功能大同小异，我不会再详细剖析，我会交代一些细节，读者可以自己尝试实现</p>
+</blockquote>
+<p><strong>获取在线用户列表</strong>：实现这个功能主要在于如何获取在线用户Id，而我们知道判断一个用户是否在线就要看线程集合中有没有这个用户Id对应的线程，所以，我们可以遍历线程集合来获取在线用户的Id并传给客户端</p>
+<p><strong>创建群聊</strong>：拉群需要知道群聊名、在线用户都有谁，我们可以将每个群的群成员放入到一个队列中，再将群聊放入一个HashMap中集中管理，key为群聊名，value为用户队列</p>
+<p><strong>群聊</strong>：跟私聊的逻辑实现差不多，只不过这个要发给好几个人，就要在要发的群聊的用户队列中遍历用户来传信息</p>
+<p><strong>文件发送</strong>：跟私聊，群聊很相似，唯一不同就是要使用File的IO流来传文件</p>
+<p><strong>服务端新闻推送</strong>：主要还是遍历，遍历每个在线客户端，给它们发消息，并且用while循环不断读取需要发送的消息</p>
+<p><strong>无异常退出</strong>：这个需要在用户想要退出的时候，服务端从管理线程的集合中移除该用户线程</p>
+<p><strong>后端模块已基本完成，现在你就可以打开服务端，多开客户端来在控制台体验一下自己写的无UI聊天室</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+        <div class="share-wrapper">
+  
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fluminous.blog%2F2025%2F06%2F02%2F%25E5%259F%25BA%25E4%25BA%258Esocket%25E9%2580%259A%25E4%25BF%25A1%25E6%258A%2580%25E6%259C%25AF%25E5%25AE%259E%25E7%258E%25B0%25E7%259A%2584%25E7%25AE%2580%25E5%258D%2595%25E8%2581%258A%25E5%25A4%25A9%25E5%25AE%25A4%2F" target="_blank" rel="noopener noreferrer" title="java:基于socket通信技术实现的简单聊天室">
+      <div class="share-icon icon icon-facebook">
+        
+      </div>
+    </a>
+  
+    <a href="https://twitter.com/intent/tweet?url=http%3A%2F%2Fluminous.blog%2F2025%2F06%2F02%2F%25E5%259F%25BA%25E4%25BA%258Esocket%25E9%2580%259A%25E4%25BF%25A1%25E6%258A%2580%25E6%259C%25AF%25E5%25AE%259E%25E7%258E%25B0%25E7%259A%2584%25E7%25AE%2580%25E5%258D%2595%25E8%2581%258A%25E5%25A4%25A9%25E5%25AE%25A4%2F&amp;text=java%3A%E5%9F%BA%E4%BA%8Esocket%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E5%8D%95%E8%81%8A%E5%A4%A9%E5%AE%A4&amp;via=http%3A%2F%2Fluminous.blog" target="_blank" rel="noopener noreferrer" title="java:基于socket通信技术实现的简单聊天室">
+      <div class="share-icon icon icon-twitter">
+        
+      </div>
+    </a>
+  
+    <a href="https://connect.qq.com/widget/shareqq/index.html?url=www.baidu.com&amp;title=java%3A%E5%9F%BA%E4%BA%8Esocket%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E5%8D%95%E8%81%8A%E5%A4%A9%E5%AE%A4&amp;desc=%F0%9F%A5%A7%E4%BC%A0%E7%BB%9Fsocket%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%A7%81%E8%81%8A%E3%80%81%E7%BE%A4%E8%81%8A%E3%80%81%E6%96%87%E4%BB%B6%E5%8F%91%E9%80%81%E7%AD%89%E5%8A%9F%E8%83%BD%E7%9A%84tiny%E7%89%88QQ&amp;source=http%3A%2F%2Fluminous.blog" target="_blank" rel="noopener noreferrer" title="java:基于socket通信技术实现的简单聊天室">
+      <div class="share-icon icon icon-qq">
+        
+      </div>
+    </a>
+  
+    <a href="javascript:;"  title="java:基于socket通信技术实现的简单聊天室">
+      <div class="share-icon icon icon-weixin">
+        
+          <div id="share-weixin">
+            <div class="share-weixin-dom">
+              <div class="share-weixin-content">
+                <img id="share-weixin-banner"> 
+                <div id="share-weixin-title"></div>
+                <div id="share-weixin-desc"></div>
+              </div>
+              <div class="share-weixin-qrcode">
+                <div class="share-weixin-info">
+                  <div id="share-weixin-author"></div>
+                  <div id="share-weixin-theme">Powered By hexo-theme-reimu</div>
+                </div>
+                <img id="share-weixin-qr" >
+              </div>
+            </div>
+            <div class="share-weixin-canvas"></div>
+          </div>
+        
+      </div>
+    </a>
+  
+</div>
+      
+      
+      
+        <a data-aos="zoom-in" href="/en/2025/06/02/%E5%9F%BA%E4%BA%8Esocket%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E5%8D%95%E8%81%8A%E5%A4%A9%E5%AE%A4/#comments" class="article-comment-link">
+          <span class="post-comments-count waline-comment-count" data-path="/en/2025/06/02/%E5%9F%BA%E4%BA%8Esocket%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E5%8D%95%E8%81%8A%E5%A4%A9%E5%AE%A4/" itemprop="commentCount"></span>
+          Comments
+        </a>
+      
+      
+      
+      
+        <span data-aos="zoom-in" class="article-visitor-link">
+          <span class="waline-pageview-count" data-path="/en/2025/06/02/%E5%9F%BA%E4%BA%8Esocket%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E5%8D%95%E8%81%8A%E5%A4%A9%E5%AE%A4/">0</span>
+          <em class="post-meta-item-text">Readings</em>
+        </span>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/en/tags/java/" rel="tag" title="java">java</a></li><li class="article-tag-list-item" data-aos="zoom-in"><a class="article-tag-list-link" href="/en/tags/socket/" rel="tag" title="socket">socket</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+  <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+    
+      
+      <div class="article-nav-link-wrap left">
+        
+          <img data-src="http://blog.luminous.blog/covers/cover15.webp" data-sizes="auto" alt="学习笔记——从零开始速通汇编(五)：程序控制类&amp;串操作类指令系统" class="lazyload">
+        
+        <a href="/en/2025/06/17/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E9%80%9F%E9%80%9A%E6%B1%87%E7%BC%96(%E4%BA%94)%EF%BC%9A%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E7%B1%BB&%E4%B8%B2%E6%93%8D%E4%BD%9C%E7%B1%BB%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" aria-label="Prev: 学习笔记——从零开始速通汇编(五)：程序控制类&amp;串操作类指令系统" title="Prev: 学习笔记——从零开始速通汇编(五)：程序控制类&amp;串操作类指令系统"></a>
+        <div class="article-nav-caption">Prev</div>
+        <h3 class="article-nav-title">
+          
+            学习笔记——从零开始速通汇编(五)：程序控制类&amp;串操作类指令系统
+          
+        </h3>
+      </div>
+    
+    
+    
+    <div class="article-nav-link-wrap right">
+      
+        <img data-src="http://blog.luminous.blog/covers/specific/mc1.webp" data-sizes="auto" alt="Neoforge初开发-开启mc mod开发之旅(一)" class="lazyload">
+      
+      <a href="/en/2025/01/13/Neoforge%E5%88%9D%E5%BC%80%E5%8F%91-%E5%BC%80%E5%90%AFmc%20mod%E5%BC%80%E5%8F%91%E4%B9%8B%E6%97%85(%E4%B8%80)/" aria-label="Next: Neoforge初开发-开启mc mod开发之旅(一)"  title="Next: Neoforge初开发-开启mc mod开发之旅(一)"></a>
+      <div class="article-nav-caption">Next</div>
+      <h3 class="article-nav-title">
+        
+          Neoforge初开发-开启mc mod开发之旅(一)
+        
+      </h3>
+    </div>
+    
+  </nav>
+
+
+</article>
+
+
+
+
+
+
+
+
+
+  <section id="comments" data-aos="fade-up">
+    <div class="comment-header">
+      
+      
+        
+      
+      <h2 class="comment-title">Leave a comment</h2>
+      <div class="comment-selector">
+        <div class="comment-selector-wrap">
+            
+            <div class="selector-item" data-selector="waline">
+              <span>waline</span>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+    <div class="comment-content">
+      
+        <div class="comment waline-comment" data-aos="fade-up"
+          id="waline-comment">
+        </div>
+      
+    </div>
+  </section>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    
+    <div>
+      <span class="icon-copyright"></span>
+      
+      
+      
+        2020-2026
+      
+      <span class="footer-info-sep rotate"></span>
+      Luminous
+    </div>
+    
+      <div>
+        Powered by&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+    
+    
+      <div>
+        <span class="icon-brush"></span>
+        94.5k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        07:50
+      </div>
+    
+    
+    
+    
+    
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">Number of visits&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">Number of visitors&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+    
+  </div>
+</footer>
+
+        
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+    
+      
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+  
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java-%E5%9F%BA%E4%BA%8Esocket%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E5%8D%95%E8%81%8A%E5%A4%A9%E5%AE%A4"><span class="toc-number">1.</span> <span class="toc-text">[java]基于socket通信技术实现的简单聊天室</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#socket%E6%A0%B8%E5%BF%83java%E7%BC%96%E7%A8%8B"><span class="toc-number">1.2.</span> <span class="toc-text">socket核心java编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="toc-number">1.2.2.</span> <span class="toc-text">环境准备</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JDK%E4%B8%8B%E8%BD%BD%E5%8F%8A%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">JDK下载及环境变量配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A8%8B"><span class="toc-number">1.2.3.</span> <span class="toc-text">项目编程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">开始</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#chatcommon"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">chatcommon</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#chatmain-chatframe"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">chatmain&#x2F;chatframe</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#resources"><span class="toc-number">1.2.3.4.</span> <span class="toc-text">resources</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#service"><span class="toc-number">1.2.3.5.</span> <span class="toc-text">service</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E4%B8%8E%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD"><span class="toc-number">1.2.3.5.1.</span> <span class="toc-text">注册与登录功能</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A7%81%E8%81%8A%E5%8A%9F%E8%83%BD"><span class="toc-number">1.2.3.5.2.</span> <span class="toc-text">私聊功能</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%8A%9F%E8%83%BD"><span class="toc-number">1.2.3.5.3.</span> <span class="toc-text">其他功能</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+  
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="Luminous" class="lazyload">
+  <div class="sidebar-author-name">Luminous</div>
+  <div class="sidebar-description">动漫宅&amp;技术宅</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Post</div>
+    <div class="sidebar-state-number">19</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>Category</div>
+    <div class="sidebar-state-number">11</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>Tag</div>
+    <div class="sidebar-state-number">17</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+    <div class="icon-github sidebar-social-icon">
+      <a href=https://github.com/Torchman005 itemprop="url" target="_blank" aria-label="github" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
+    <div class="icon-youtube sidebar-social-icon">
+      <a href=https://www.youtube.com/@luminousZJ itemprop="url" target="_blank" aria-label="youtube" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
+    <div class="icon-bilibili sidebar-social-icon">
+      <a href=https://space.bilibili.com/356164519?spm_id_from=333.1007.0.0 itemprop="url" target="_blank" aria-label="bilibili" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
+    <div class="icon-stackoverflow sidebar-social-icon">
+      <a href=https://stackoverflow.com/users/30805314/luminous itemprop="url" target="_blank" aria-label="stackoverflow" rel="noopener nofollow noreferrer"></a>
+    </div>
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/" aria-label="Home"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              &#xf015;
+            
+          
+        </div>
+        <div class="sidebar-menu-link">Home</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/archives" aria-label="Archives"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              &#xf187;
+            
+          
+        </div>
+        <div class="sidebar-menu-link">Archives</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/about" aria-label="About"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              &#xf007;
+            
+          
+        </div>
+        <div class="sidebar-menu-link">About</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/en/friend" aria-label="Friend"></a>
+        <div class="sidebar-menu-icon icon ">
+          
+            
+              &#xf2b5;
+            
+          
+        </div>
+        <div class="sidebar-menu-link">Friend</div>
+      </div>
+    
+  
+</div>
+</div>
+      
+    
+  </div>
+  
+    
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+    
+  
+</nav>
+
+    </div>
+    
+      <div class="site-search">
+        <div class="reimu-popup popup">
+          <div class="reimu-search">
+            <div class="reimu-search-input-icon"></div>
+            <div id="reimu-search-input"></div>
+            <div class="popup-btn-close"></div>
+          </div>
+          <div class="reimu-results">
+            <div id="reimu-stats"></div>
+            <div id="reimu-hits"></div>
+            <div id="reimu-pagination" class="reimu-pagination"></div>
+          </div>
+          <img class="reimu-bg" src="/images/reimu.png"/>
+        </div>
+      </div>
+    
+    
+    
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+  
+<script src="/js/generator_search.js" defer></script>
+
+
+
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js" integrity="sha384-8LyaidD9GPxQQgLJO&#x2F;WRw&#x2F;O2h3BoNq&#x2F;ApI&#x2F;ecpvM6RsrCz2qP2ppBXUKihP4V&#x2F;2d" crossorigin="anonymous"></script>
+
+  <script>
+    window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'))
+  </script>
+
+
+
+  
+<script src="https://npm.webcache.cn/theme-shokax-pjax@0.0.3/dist/index.umd.js" integrity="sha384-xneY1WY8hOfUzswrE4CrYq35N4BdVcxqxwHPr9zawE&#x2F;jMSCxD+jAPU55x&#x2F;jj3wlf" crossorigin="anonymous"></script>
+
+  
+<script src="/js/pjax.js"></script>
+
+
+
+
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+    
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "Luminous",
+          title: "java:基于socket通信技术实现的简单聊天室",
+          url: "http://luminous.blog/2025/06/02/%E5%9F%BA%E4%BA%8Esocket%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E7%9A%84%E7%AE%80%E5%8D%95%E8%81%8A%E5%A4%A9%E5%AE%A4/",
+          excerpt: "",
+          description: "🥧传统socket实现的私聊、群聊、文件发送等功能的tiny版QQ",
+          stripContent: "[java]基于socket通信技术实现的简单聊天室引言socket，你也许没听说过，但你不可能没用到过(除非你21世纪以来没有接触过电子产品)。常见如QQ，微信，只要存在聊天框和评论的地方，socket都发挥着它的作用。本文章将会分三大模块(socket后端编程，数据库，UI编程)，带你DIY一个属于自己的聊天室。 本项目已在GitHub开源:                                    Simple-Chat-Room         https://github.",
+          date: "Mon Jun 02 2025 18:19:03 GMT+0800",
+          updated: "Mon Jun 02 2025 22:00:00 GMT+0800",
+          cover: "http://blog.luminous.blog/covers/cover12.webp",
+        };
+      </script>
+       
+    
+    
+      
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+        
+          
+<script src="https://npm.webcache.cn/@zumer/snapdom@1.9.9/dist/snapdom.min.js" integrity="sha384-taz9Bq0wPqLsuiB4ix4blTozt&#x2F;y84cjbMX5ZWkfPPjpVBme8M&#x2F;jWopanNBcdH&#x2F;qp" crossorigin="anonymous" defer data-pjax></script>
+
+          
+<script src="https://npm.webcache.cn/qrcode@1.5.1/build/qrcode.js" integrity="sha384-VT1EeewTCEXgndcPMQ0PzV+uVFYjxFIjmAA7s5gcMX9t4Dt5TD+OVQIn7NJWIXn7" crossorigin="anonymous" defer data-pjax></script>
+
+        
+      
+    
+    
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+      
+        
+
+
+
+
+
+
+
+
+<script data-pjax>
+  var loadScript = (src, integrity) => {
+    const script = document.createElement('script');
+    script.src = src;
+    if (integrity) script.integrity = integrity;
+    script.crossOrigin = 'anonymous';
+    return script;
+  };
+
+  var commentConfigKeys = ["waline"];
+  var commentConfig = {
+    
+    
+    waline: {
+      enable: true,
+      load: async () => {
+        const container = document.querySelector('.waline-comment');
+        if (!container) return;
+        container.style.display = 'block';
+
+        let walineInit;
+        const walineCdn = 'https://cdn.jsdelivr.net/npm/@waline/client@2.15.8/dist/waline.mjs';
+        const walineIntegrity = 'sha384-9sbqJjrfGjbkI6/PI4nU/MvBfEmkkPC4YK9I4zBeMIf1CVCZdCMH/KinBEAZII/5';
+
+        const module = await safeImport(walineCdn, walineIntegrity);
+        walineInit = module.init;
+
+        window.walineInstance = walineInit({
+          el: '.waline-comment',
+          serverURL: 'https://blog-waline-9f6kfq9ge-torchmans-projects.vercel.app/',
+          lang: document.documentElement.lang || 'en',
+          locale: {},
+          emoji: ["https://unpkg.com/@waline/emojis@1.2.0/weibo","https://unpkg.com/@waline/emojis@1.2.0/alus","https://unpkg.com/@waline/emojis@1.2.0/bilibili","https://unpkg.com/@waline/emojis@1.2.0/qq","https://unpkg.com/@waline/emojis@1.2.0/tieba","https://unpkg.com/@waline/emojis@1.2.0/tw-emoji"],
+          meta: ["nick","mail","link"],
+          requiredMeta: ["nick","mail"],
+          wordLimit: JSON.parse('0'),
+          comment: true,
+          pageSize: JSON.parse('10'),
+          dark: 'html[data-theme="dark"]',
+          pageview: JSON.parse('true'),
+        });
+      }
+    },
+    
+    
+    
+    
+  }
+  commentConfig.enable = commentConfigKeys.some(key => commentConfig[key].enable);
+
+  var defaultComment = '';
+  if (commentConfig.enable) {
+    // 1. 首先检查localStorage中是否有保存的评论类型
+    var savedCommentType = localStorage.getItem('commentType');
+    
+    // 2. 如果localStorage中有值且对应的评论系统可用，就使用它
+    if (savedCommentType) {
+      if (commentConfig[savedCommentType]?.enable) {
+        defaultComment = savedCommentType;
+      }
+    }
+    
+    // 3. 如果localStorage无效，检查配置的默认评论系统
+    if (!defaultComment) {
+      var configDefault = 'waline';
+      if (commentConfig[configDefault]?.enable) {
+        defaultComment = configDefault;
+      }
+    }
+    
+    // 4. 如果前两项都无效，按指定顺序找到第一个可用的评论系统
+    if (!defaultComment) {
+      defaultComment = commentConfigKeys.find(sys => commentConfig[sys].enable) || '';
+    }
+  }
+  function loadComments() {
+    if (!commentConfig.enable) return;
+    const loadedComments = {
+      valine: false,
+      waline: false,
+      twikoo: false,
+      gitalk: false,
+      giscus: false
+    };
+
+    // 隐藏所有评论容器
+    const hideAllComments = () => {
+      const commentContainers = document.querySelectorAll('.comment');
+      commentContainers.forEach(container => {
+        container.style.display = 'none';
+      });
+    };
+
+    // 按需加载评论系统
+    const loadCommentSystem = (type) => {
+      if (loadedComments[type]) {
+        // 如果已加载，只需显示对应容器
+        document.querySelector(`.${type}-comment`).style.display = 'block';
+        return;
+      }
+
+      // 根据类型加载对应的脚本
+      commentConfig[type]?.load();
+      loadedComments[type] = true;
+    };
+
+    // 评论组件选择器
+    const changeActiveCommentItems = (item) => {
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let i = 0; i < commentItems.length; i++) {
+        commentItems[i].classList.remove('active');
+      }
+      item.classList.add('active');
+
+      // 获取要加载的评论系统类型
+      const commentType = item.getAttribute('data-selector');
+
+      // 隐藏所有评论系统
+      hideAllComments();
+
+      // 加载选中的评论系统
+      loadCommentSystem(commentType);
+    };
+
+    const commentInit = () => {
+      // 评论组件选择器点击事件
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let item of commentItems) {
+        item.addEventListener('click', () => {
+          // 保存选择器状态
+          const commentType = item.getAttribute('data-selector');
+          window.localStorage.setItem('commentType', commentType);
+          // 切换选中状态
+          changeActiveCommentItems(item);
+        });
+      }
+
+      // 检查是否需要加载默认评论系统
+      if (defaultComment) {
+        const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
+        if (!defaultSelectorItem) return;
+        defaultSelectorItem.style.display = 'block';
+        defaultSelectorItem.classList.add('active');
+        loadCommentSystem(defaultComment);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', commentInit);
+    } else {
+      commentInit();
+    }
+  };
+  loadComments();
+</script>
+
+      
+    
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.10.0' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+
+
+
+  
+<script src="https://npm.webcache.cn/aplayer@1.10.1/dist/APlayer.min.js" integrity="sha384-gdGYZwHnfJM54evoZhpO0s6ZF5BQiybkiyW7VXr+h5UfruuRL&#x2F;aORyw+5+HZoU6e" crossorigin="anonymous"></script>
+
+  
+
+
+
+  
+  <script>
+    if (window.matchMedia('(max-width: 959px)').matches) {
+      const meting = _$('meting-js');
+      if (meting) {
+        meting.setAttribute('fixed', 'true');
+        const aside = meting.parentNode?.parentNode;
+        if (aside?.tagName === 'ASIDE') {
+          meting.parentNode.removeChild(meting);
+          document.body.appendChild(meting);
+        }
+      }
+    }
+  </script>
+  
+<script src="https://npm.webcache.cn/meting@2.0.1/dist/Meting.min.js" integrity="sha384-ASVlpKF80A22OXTK3tfEjZm1EL6uFMKIC4p8+0maanw1S&#x2F;IyB+Y4JG+ZDU7GpKE8" crossorigin="anonymous"></script>
+
+
+
+
+    
+  </body>
+  </html>
+
